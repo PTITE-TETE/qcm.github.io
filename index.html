@@ -4,9 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Titre de la page</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <!-- Lien vers votre fichier CSS externe -->
   <link rel="stylesheet" href="style.css">
 </head>
+<script >
+const data = [
+  ["QUESTION", "REPONSE 1", "REPONSE 2", "REPONSE 3", "REPONSE 4", "REPONSE 5", "Code réponse", "Numéro de question", "Année du QCM"],
+  ["Concernant le tronc :", "Il se compose de plusieurs vertèbres", "Il assure la mobilité des membres inférieurs", "Il assure la mobilité des membres supérieurs", "Il assure la protection de la boîte crânienne", "", "10000", "Q1", "2022"],
+  ["De combien de vertèbres se compose le rachis cervical?", "5", "6", "7", "8", "", "00100", "Q2", "2022"],
+  ["Comment se nomme la première vertèbre cervicale?", "Axis", "Axes", "Axas", "Atlas", "", "00010", "Q3", "2022"],
+  ["Quel élément anatomique passe par le foramen vertébral?", "La moelle osseuse", "Le nerf spinal", "La moelle épinière", "L'artère vertébrale", "", "00100", "Q4", "2022"],
+  ["Concernant la vertèbre type, elle est", "Fictive", "Cervicale", "Impaire", "Asymétrique", "", "10100", "Q5", "2022"],
+  ["De quoi se compose l'arc vertébral postérieur?", "Du corps vertébral", "Du processus épineux", "Des processus transverses", "Du disque vertébral", "", "01100", "Q6", "2022"],
+  ["Que trouve-t-on en arrière de la jonction des lames vertébrales?", "Le processus transverse", "Le processus articulaire postérieur", "Le processus épineux", "Rien", "", "00100", "Q7", "2022"],
+  ["Que forment les pédicules sus et sous-jacents d'une vertèbre?", "Le foramen vertébral", "Le foramen Magnum", "Le foramen intervertébral", "Le foramen transversaire", "", "00100", "Q8", "2022"],
+  ["Concernant le plateau vertébral:", "Il est complètement spongieux", "Il se compose en périphérie du listel marginal", "Il est convexe verticalement", "Il est rectangulaire", "", "01000", "Q9", "2022"],
+  ["Combien de foramens trouve-t-on sur une vertèbre type?", "0", "2", "3", "4", "", "00100", "Q10", "2022"],
+  ["A quel étage vertébral trouve-t-on les processus transverses en forme de gouttière?", "Au niveau sacré", "Au niveau lombaire", "Au niveau thoracique", "Au niveau cervical", "", "00010", "Q11", "2022"],
+  ["A quel étage vertébral trouve-t-on les foramens transversaires?", "Au niveau sacré", "Au niveau lombaire", "Au niveau thoracique", "Au niveau cervical", "", "00010", "Q12", "2022"]
+]
+var num_question=1;
+</script>
 <script>
 function rep1_select(){
     if (document.getElementById('reponse_1').style.backgroundColor == "white"){
@@ -53,6 +72,28 @@ function rep5_select(){
     }
 }
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function q_suivante(num_question){
+    num_question=getRandomInt(data.length)
+    document.getElementById("question").textContent = data[num_question][0] 
+    document.getElementById("reponse_1").textContent = data[num_question][1] 
+    document.getElementById("reponse_2").textContent = data[num_question][2] 
+    document.getElementById("reponse_3").textContent = data[num_question][3] 
+    document.getElementById("reponse_4").textContent = data[num_question][4] 
+    document.getElementById("reponse_5").textContent = data[num_question][5] 
+
+    document.getElementById('reponse_1').style.backgroundColor = "white"
+    document.getElementById('reponse_2').style.backgroundColor = "white"
+    document.getElementById('reponse_3').style.backgroundColor = "white"
+    document.getElementById('reponse_4').style.backgroundColor = "white"
+    document.getElementById('reponse_5').style.backgroundColor = "white"
+
+}
+
+
 </script>
 
 
@@ -66,7 +107,7 @@ function rep5_select(){
 
   <!-- Corps de la page -->
   <main>
-    <p id="question">la question est la suivante aezrerzarerzretzzfe zrafdzaezdf zdfdzae: </p>
+    <p id="question">Question : </p>
     <section id="checkbox">
         <p style="background-color:white" onclick="rep1_select()" id="reponse_1">La pluie tambourinait sur les toits, tandis que les feuilles dansaient au rythme du vent d'automne dans les rues désertes</p>
         <p style="background-color:white" onclick="rep2_select()" id="reponse_2">La pluie tambourinait sur les toits, tandis que les feuilles dansaient au rythme du vent d'automne dans les rues désertes</p>
@@ -76,7 +117,7 @@ function rep5_select(){
     </section> 
     <section id="bouton">
     <input id="valider" type="button" value="Valider">
-    <input id="q_suivante" type="button" value="Q suivante">
+    <input id="q_suivante" type="button" value="Q suivante" onclick="q_suivante()">
     </section>
   </main>
 

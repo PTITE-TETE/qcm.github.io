@@ -1,0 +1,43 @@
+body{
+    margin:0px;
+    padding:0px;
+}
+
+#question{
+    height: 25%;
+    font-size: 3vw;
+    background-color: gray;
+    margin: 0px;
+}
+
+#checkbox{
+    background-color: rgb(86, 131, 161);
+    display: flex;
+    flex-direction: column;
+}
+
+#bouton{
+    background-color: rgb(158, 75, 75);
+    display: flex;
+    flex-direction: row;
+}
+#valider{
+    background-color: rgb(88, 241, 68);
+    padding: 1%;
+    margin: 1%;
+    border-radius: 10%;
+}
+
+#q_suivante{
+    background-color: gray;
+    padding: 1%;
+    margin: 1%;
+    border-radius: 10%;
+}
+
+#checkbox p{
+    font-size: 2vw;
+    margin:1%;
+    padding: 1%;
+    background-color: rgb(152, 86, 161);
+}

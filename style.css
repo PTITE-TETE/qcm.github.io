@@ -12,12 +12,13 @@ main{
 #question{
     height: 15%;
     font-size: 6vw;
-    background-color: gray;
+    background-color: #233040;
+    color: white;
     margin: 0px;
 }
 
 #checkbox{
-    background-color: rgb(86, 131, 161);
+    background-color: #233040;
     display: inline-block;
     height: 70%;
 }
@@ -26,8 +27,12 @@ main{
     height: 17.8%;
 }
 
+#checkbox input{
+    padding-right: 3px;
+}
+
 #bouton{
-    background-color: rgb(158, 75, 75);
+    background-color: #ea1736;
     display: inline-block;
     height: 15%;
     width: 100%;
@@ -56,5 +61,6 @@ main{
     font-size: 5vw;
     margin:1%;
     padding: 1%;
-    background-color: rgb(152, 86, 161);
+    background-color: #ea1736;
+    border-radius: 2%;
 }

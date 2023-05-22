@@ -18,27 +18,38 @@ main{
 
 #checkbox{
     background-color: rgb(86, 131, 161);
-    display: flex;
-    flex-direction: column;
+    display: inline-block;
+    height: 70%;
+}
+
+#checkbox p{
+    height: 17.8%;
 }
 
 #bouton{
     background-color: rgb(158, 75, 75);
-    display: flex;
-    flex-direction: row;
+    display: inline-block;
+    height: 15%;
+    width: 100%;
+    padding:1%;
 }
 #valider{
     background-color: rgb(88, 241, 68);
     padding: 1%;
     margin: 1%;
     border-radius: 10%;
+    width: 46%;
+    height: 90%;
+    font-size: 6vw;
 }
 
 #q_suivante{
     background-color: gray;
     padding: 1%;
-    margin: 1%;
     border-radius: 10%;
+    width: 46%;
+    height: 90%;
+    font-size: 6vw;
 }
 
 #checkbox p{

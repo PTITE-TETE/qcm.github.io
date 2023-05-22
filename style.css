@@ -10,7 +10,7 @@ main{
     height: 100%;
 }
 #question{
-    height: 15%;
+    height: 18%;
     font-size: 6vw;
     background-color: #233040;
     color: white;
@@ -24,17 +24,13 @@ main{
 }
 
 #checkbox p{
-    height: 17.8%;
-}
-
-#checkbox input{
-    padding-right: 3px;
+    height: 18%;
 }
 
 #bouton{
     background-color: #233040;
     display: inline-block;
-    height: 15%;
+    height: 12%;
     width: 100%;
     padding:1%;
 }
@@ -61,7 +57,6 @@ main{
     font-size: 5vw;
     margin:1%;
     margin: 2% 2% 2% 2%;
-    background-color:white ;
     border-radius: 2%;
 }
 

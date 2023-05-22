@@ -4,7 +4,7 @@ html{
 body{
     margin:0px;
     padding:0px;
-    height: 100%;
+    height: 99%;
 }
 main{
     height: 100%;
@@ -32,14 +32,14 @@ main{
 }
 
 #bouton{
-    background-color: #ea1736;
+    background-color: #233040;
     display: inline-block;
     height: 15%;
     width: 100%;
     padding:1%;
 }
 #valider{
-    background-color: rgb(88, 241, 68);
+    background-color: rgb(128, 226, 115);
     padding: 1%;
     margin: 1%;
     border-radius: 10%;
@@ -60,7 +60,9 @@ main{
 #checkbox p{
     font-size: 5vw;
     margin:1%;
-    padding: 1%;
-    background-color: #df5368;
+    margin: 2% 2% 2% 2%;
+    background-color:white ;
     border-radius: 2%;
 }
+
+/*#df5368*/

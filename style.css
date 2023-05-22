@@ -1,11 +1,17 @@
+html{
+    height: 100%;
+}
 body{
     margin:0px;
     padding:0px;
+    height: 100%;
 }
-
+main{
+    height: 100%;
+}
 #question{
-    height: 25%;
-    font-size: 3vw;
+    height: 15%;
+    font-size: 6vw;
     background-color: gray;
     margin: 0px;
 }
@@ -36,7 +42,7 @@ body{
 }
 
 #checkbox p{
-    font-size: 2vw;
+    font-size: 5vw;
     margin:1%;
     padding: 1%;
     background-color: rgb(152, 86, 161);

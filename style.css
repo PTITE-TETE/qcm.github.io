@@ -20,7 +20,7 @@ main{
 #checkbox{
     background-color: #233040;
     display: inline-block;
-    height: 67%;
+    height: 66%;
 }
 
 #checkbox p{
@@ -68,6 +68,6 @@ main{
     font-size: 5vw;
     margin: 0px;
     margin: 1%;
-    height: 2%;
+    height: 3%;
 }
 /*#df5368*/

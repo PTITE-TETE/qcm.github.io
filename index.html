@@ -57,6 +57,7 @@ const rep = [
 var num_question=1;
 </script>
 <script>
+    var score =0;
 function rep1_select(){
     if (document.getElementById('reponse_1').style.backgroundColor == "white"){
         document.getElementById('reponse_1').style.backgroundColor ="grey"
@@ -107,6 +108,26 @@ function getRandomInt(max) {
 }
 
 function q_suivante(){
+
+    if((document.getElementById('reponse_1').style.backgroundColor !="yellow" && document.getElementById('reponse_1').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_2').style.backgroundColor !="yellow" && document.getElementById('reponse_2').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_3').style.backgroundColor !="yellow" && document.getElementById('reponse_3').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_4').style.backgroundColor !="yellow" && document.getElementById('reponse_4').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_5').style.backgroundColor !="yellow" && document.getElementById('reponse_5').style.backgroundColor !="red")
+    &&(
+        document.getElementById('reponse_1').style.backgroundColor =="green" ||
+        document.getElementById('reponse_2').style.backgroundColor =="green" ||
+        document.getElementById('reponse_3').style.backgroundColor =="green" ||
+        document.getElementById('reponse_4').style.backgroundColor =="green" ||
+        document.getElementById('reponse_5').style.backgroundColor =="green" 
+    )){
+        score++; 
+    }
+    else 
+    {
+        score =0;
+    }
+
     num_question=getRandomInt(data.length)
     document.getElementById("question").textContent = data[num_question][0] 
     document.getElementById("reponse_1").textContent = data[num_question][1] 
@@ -121,6 +142,7 @@ function q_suivante(){
     document.getElementById('reponse_4').style.backgroundColor = "white"
     document.getElementById('reponse_5').style.backgroundColor = "white"
 
+    document.getElementById('score').innerHTML = "score : " + score;
 }
 
 function valider(){
@@ -174,6 +196,8 @@ function valider(){
     else if(document.getElementById('reponse_5').style.backgroundColor =="white" && chars[4] == "1" ){
         document.getElementById('reponse_5').style.backgroundColor ="yellow"
     }
+
+   
 }
 
 
@@ -190,6 +214,7 @@ function valider(){
 
   <!-- Corps de la page -->
   <main>
+    <p id="score">score : 0</p>
     <p id="question">Question : </p>
     <section id="checkbox">
         <p style="background-color:white" onclick="rep1_select()" id="reponse_1">La pluie tambourinait sur les toits, tandis que les feuilles dansaient au rythme du vent d'automne dans les rues désertes</p>

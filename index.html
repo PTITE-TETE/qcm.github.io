@@ -10,49 +10,236 @@
 </head>
 <script >
 const data = [
-  ["À quel étage rachidien trouve-t-on des foramens transversaires ?", "Aucun", "Rachis thoracique", "Rachis lombaire", "Tous les étages", "Rachis cervical"],
-  ["Quelle est l'orientation des surfaces articulaires des masses latérales de l'atlas ?", "Obliques en bas et en dedans", "Obliques en bas et en dehors", "Obliques en haut et en dedans", "Obliques en haut et en dehors", "Verticales vers le haut"],
-  ["Quels sont les ligaments que l'on trouve sur l'odontoïde ?", "Les ligaments orler", "Les ligaments alaires", "Les ligaments en l'air", "Les ligaments parterre", "Les ligaments grand air"],
-  ["Que trouve-t-on à la jonction de la face postérieure et des faces latérales d'une vertèbre thoracique ?", "Des saillies osseuses", "Des foramens vertébraux", "Des surfaces articulaires", "Des ligaments", "Des muscles"],
-  ["Comment nomme-t-on la courbure du rachis lombaire et du rachis cervical ?", "La scoliose", "La lordose", "La cyphose", "La tuberculose", "Le saccharose"],
-  ["À quelle fusion osseuse correspond la crête sacrale intermédiaire de la face postérieure du sacrum ?", "Fusion des processus épineux", "Fusion des lames vertébrales", "Fusion des pédicules", "Fusion des corps vertébraux", "Fusion des processus articulaires postérieurs"],
-  ["Les fausses côtes s'articulent avec quel cartilage costal ?", "Aucun", "Le Sème cartilage costal", "Le 6ème cartilage costal", "Le 7ème cartilage costal", "Le 8ème cartilage costal"],
-  ["Comment se nomme la courbure des côtes selon les bords ?", "Le cisaillement", "La vrille", "La torsion", "Le cintrage", "L'enroulement"],
-  ["Quel muscle s'insère sur la face interne de la côte ?", "Il n'y en a pas", "Le muscle intercostal externe", "Le muscle intercostal interne", "Le muscle intercostal intime", "Le muscle paracostal inférieur"],
-  ["Quels sont les trois parties qui composent l'extrémité postérieure d'une côte d'arrière en avant ?", "Col-tête-tubercule costal", "Tête-col-tubercule costal", "Tubercule costal-tête-col", "Tubercule costal-col-tête", "Tête-corps costal-tubercule costal"],
-  ["Quel est le ligament qui ne s'insère pas sur le col costal ?", "Le ligament costo-transversaire supérieur", "Le ligament costo-lamellaire", "Le ligament costo-transversaire (interosseux)", "Le ligament costo-transversaire latéral"],
-  ["De quelles articulations parle-t-on quand on nomme les articulations intervertébrales ?", "Articulations coporéales", "Articulations interfacettaires antérieures", "Articulations interfacettaires postérieures", "Articulations intercorporéales et interfacettaires postérieures", "Articulations boréales et interfacettaires antérieures"],
-  ["Quelle est la composition du ligament cruciforme du complexe articulaire occiput-atlas-axis ?", "Ligament transverse et ligament longitudinal (faisceau supérieur et inférieur)", "Ligament transverse et faisceau supérieur du ligament longitudinal", "Ligament transverse et faisceau inférieur du ligament longitudinal", "Ligament transverse et membrane tectoria", "Ligament transverse et ligament de l'apex"],
-  ["Où se situe l'os éthmoïde ?", "En avant de l'os frontal et en arrière de l'os occipital", "En avant de l'os sphénoïde et en arrière de l'os frontal", "Entre les os pariétaux", "En arrière de l'os sphénoïde et en avant de l'os occipital", "En arrière de l'os frontal et en arrière de l'os sphénoïde"],
-  ["Quels sont les trois parties qui composent l'os temporal ?", "L'écaille, la caudale, la latérale", "L'écaille, la latérale, la principale", "L'écaille, la variable, l'optimale", "L'écaille, le rocher, la mastoïde", "L'écaille, le crochet, le myéloïde"],
-  ["Quelle est l'origine du muscle long de la tête ?", "Tubercule antérieur du processus transverse de C6 à C3", "Processus épineux de T6 à T3", "Tubercule antérieur du processus mamillaire de L3 à LS", "Tubercule antérieur du processus accessoire de L3 à LS", "Tubercule costal"],
-  ["Quelle est l'origine du muscle scalène antérieur ?", "Tubercule du scalène antérieur de la Sème côte", "Tubercule du scalène antérieur de la 4ème côte", "Tubercule du scalène antérieur de la 3ème côte", "Tubercule du scalène antérieur de la 2ème côte", "Tubercule du scalène antérieur de la ère côte"],
-  ["Quel est le rôle du muscle transverse du thorax ?", "Flexion thoracique", "Extension thoracique", "Stabilise la partie antéro-inférieure du thorax", "Expiration", "Inspiration"],
-  ["Parmi les origines du muscle diaphragme, laquelle est fausse ?", "Pilier principal droit, corps vertébraux de L1, L2, L3", "Face postérieure du manubrium sternal", "Pilier accessoire sur L2", "Arcades fibreuses médiales L2-L1", "Appendice xiphoïde"],
-  ["Quelle est la terminaison des faisceaux costo-transversaire et ilio-transversaire du muscle carré des lombes ?", "Sommet des processus transverses de T12 à L3", "Apophyse épineuse de L2 et L3", "Crête iliaque", "Face postérieure des apophyses transverses de L1 à L3", "Processus costiformes"]
+    [
+    "Q1 Concernant le syndrome malin, quelles sont les affirmations fausses ?",
+    " a) C’est une complication des neuroleptiques.",
+    " b) Il est dû à un surdosage en benzodiazépines.",
+    " c) C’est une forme d’épilepsie.",
+    " d) Il s’agit d’une complication de l’asthme.",
+    " e) Souvent mortelle."
+  ],
+  [
+    "Q2 Parmi les affirmations suivantes, quelles sont celles qui caractérisent le syndrome extrapyramidal ?",
+    " a) Un tremblement de repos.",
+    " b) Une hypotonie.",
+    " c) Une hypertonie.",
+    " d) Une akinésie.",
+    " e) Une apraxie."
+  ],
+  [
+    "Q3 Quelles sont, parmi les données suivantes, celles qui définissent une hypertension artérielle ?",
+    " a) Une diastolique supérieure à 90 mmHg.",
+    " b) Une systolique supérieure à 90 mmHg.",
+    " c) Une diastolique supérieure à 160 mmHg.",
+    " d) Une systolique supérieure à 160 mmHg.",
+    " e) Le chiffre de la systolique détermine la gravité de l’HTA."
+  ],
+  [
+    "Q4 Parmi ces différents types de crise d’épilepsie chez l’enfant, quelles sont celles qui sont dites généralisées ?",
+    " a) Le petit mal.",
+    " b) L’épilepsie occipitale.",
+    " c) Le syndrome de West.",
+    " d) Le grand mal.",
+    " e) L’épilepsie Rolandique."
+  ],
+  [
+    "Q5 La rubéole congénitale peut entrainer plusieurs types de malformations, lesquelles ?",
+    " a) Des malformations pulmonaires.",
+    " b) Des malformations cardiaques.",
+    " c) Des malformations digestives.",
+    " d) Une surdité.",
+    " e) Des malformations rénales."
+  ],
+  [
+    "Q6 Parmi les diagnostics différentiels suivants, quels sont ceux de la maladie d’Alzheimer ?",
+    " a) La syphilis tertiaire.",
+    " b) Le traumatisme crânien.",
+    " c) La dépression.",
+    " d) Le syndrome parkinsonien.",
+    " e) Toutes les réponses sont justes."
+  ],
+  [
+    "Q7 Parmi les affirmations suivantes, quelles sont celles qui caractérisent le diabète non-insulino-dépendant ?",
+    " a) Il nécessite souvent un régime hypoglucidique.",
+    " b) Est découvert chez l’adolescent.",
+    " c) Il peut entrainer une rétinopathie.",
+    " d) Son traitement nécessite l’utilisation d’un carnet d’auto-surveillance.",
+    " e) Il peut évoluer vers un diabète insulino-dépendant."
+  ],
+  [
+    "Q8 Concernant l’infection au VIH, quelles sont les affirmations vraies ?",
+    " a) Le virus est présent dans les liquides biologiques de la personne atteinte.",
+    " b) La candidose est une atteinte pulmonaire.",
+    " c) La cible du VIH est la molécule CD4.",
+    " d) Le stade III est le stade des infections opportunistes.",
+    " e) La toxoplasmose donne des abcès digestifs."
+  ],
+  [
+    "Q9 Concernant l’aphasie de Wernicke, quelles sont les affirmations fausses ?",
+    " a) Le malade parle peu.",
+    " b) Le malade parle beaucoup.",
+    " c) Le patient est conscient de ses troubles.",
+    " d) La compréhension est perturbée.",
+    " e) L’écriture est normale."
+  ],
+  [
+    "Q10 Il existe un vaccin contre :",
+    " a) L’hépatite C.",
+    " b) La rubéole.",
+    " c) La listéria.",
+    " d) La rougeole.",
+    " e) La varicelle."
+  ],
+  [
+    "Q11 Une angine à streptocoque non traitée peut avoir plusieurs complications, lesquelles ?",
+    " a) Une atteinte cérébrale.",
+    " b) Une atteinte cardiaque.",
+    " c) Une atteinte digestive.",
+    " d) Une atteinte articulaire.",
+    " e) Une atteinte cutanée."
+  ],
+  [
+    "Q12 Concernant les benzodiazépines, quelles affirmations sont fausses ?",
+    " a) Leur arrêt brutal peut entrainer des crises convulsives.",
+    " b) Leur prescription est limitée à 8 semaines.",
+    " c) Elles sont indiquées en cas de délirium tremens.",
+    " d) L’insuffisance rénale est une contre-indication.",
+    " e) Elles sont indiquées dans le traitement du tétanos."
+  ],
+  [
+    "Q13 Parmi les signes cliniques suivants, quels sont ceux évocateurs d’une méningite ?",
+    " a) Des céphalées.",
+    " b) Une tension des fontanelles.",
+    " c) Des vomissements.",
+    " d) Des hallucinations visuelles.",
+    " e) Une hypotonie de la nuque."
+  ],
+  [
+    "Q14 Quelles sont, parmi les affirmations suivantes, celles qui caractérisent l’anémie ?",
+    " a) Une pâleur.",
+    " b) Un amaigrissement.",
+    " c) Une asthénie.",
+    " d) Une augmentation de la tension artérielle.",
+    " e) Elle peut être due à une hémolyse."
+  ],
+  [
+    "Q15 Quels sont, parmi les signes cliniques suivants, ceux de la maladie d’Alzheimer ?",
+    " a) L’apraxie.",
+    " b) L’akinésie.",
+    " c) L’agnosie.",
+    " d) L’amimie.",
+    " e) L’ataxie."
+  ],
+  [
+    "Q16 Quels sont, parmi les germes suivants, ceux responsables d’infections néonatales ?",
+    " a) Le Staphylocoque.",
+    " b) Le Streptocoque.",
+    " c) La toxoplasmose.",
+    " d) La rubéole.",
+    " e) La listéria."
+  ],
+  [
+    "Q17 Concernant le suivi d’un traitement par sel de lithium, quelles sont les affirmations vraies ?",
+    " a) Un bilan rénal régulier.",
+    " b) Un bilan hépatique régulier.",
+    " c) Un bilan thyroïdien.",
+    " d) Un bilan immunologique.",
+    " e) Un bilan cardiaque."
+  ],
+  [
+    "Q18 Concernant l’hépatite B, quelles affirmations sont vraies ?",
+    " a) 80% des patients sont asymptomatiques.",
+    " b) L’hépatite fulminante est le plus souvent mortelle.",
+    " c) Le porteur chronique peut transmettre le virus de l’hépatite B.",
+    " d) La phase ictérique se caractérise par des urines foncées.",
+    " e) Seuls les porteurs symptomatiques peuvent évoluer vers une hépatite chronique."
+  ],
+  [
+    "Q19 La douleur est caractérisée par quelles affirmations ?",
+    " a) Pour les douleurs faibles et modérées, on peut associer aspirine et anti-inflammatoires.",
+    " b) La douleur déclenchée par les mouvements est une douleur nociceptive.",
+    " c) Une douleur neurogène est caractérisée par des brulures.",
+    " d) La douleur chronique est une douleur qui dure depuis plus de 3 mois.",
+    " e) Il existe deux types de douleur."
+  ],
+  [
+    "Q20 Parmi les différentes classes d’antidépresseurs suivantes, lesquelles existent ?",
+    " a) Les apparentés aux tricycliques.",
+    " b) Les inhibiteurs de la monoamine oxydée.",
+    " c) Les inhibiteurs non spécifiques de la recapture de la sérotonine.",
+    " d) Les tricycliques.",
+    " e) Les Benzodiazépines."
+  ],
+  [
+    "Q21 Quels sont les signes cliniques qui caractérisent le syndrome cérébelleux ?",
+    " a) Des troubles de la marche.",
+    " b) Une hypertonie.",
+    " c) Des troubles de la parole.",
+    " d) Une hypermétrie.",
+    " e) Un nystagmus."
+  ],
+  [
+    "Q22 Plusieurs affirmations concernant le syndrome pyramidal sont vraies ; lesquelles ?",
+    " a) Un déficit moteur homolatéral à la lésion, en cas d’atteinte au niveau du cortex cérébral.",
+    " b) Une hypotonie.",
+    " c) Une abolition des réflexes.",
+    " d) Une évolution vers la spasticité.",
+    " e) Un déficit moteur bilatéral, en cas d’atteinte au niveau de la moelle épinière."
+  ],
+  [
+    "Q23 Concernant l’arthrose, quelles affirmations sont fausses ?",
+    " a) C’est l’inflammation de l’articulation qui prédomine.",
+    " b) Toute douleur impose l’arrêt de l’effort.",
+    " c) Les douleurs sont diurnes et nocturnes.",
+    " d) La destruction du cartilage en est à l’origine.",
+    " e) Pour en faire le diagnostic, il faut pratiquer un arthro-scanner."
+  ],
+  [
+    "Q24 Concernant le cancer, quelles affirmations sont vraies ?",
+    " a) Une tumeur bénigne peut être un cancer.",
+    " b) Il évolue lentement.",
+    " c) Le stade de cancer généralisé est celui des métastases.",
+    " d) Son traitement initial repose sur la chirurgie.",
+    " e) Le tabac peut être responsable de cancer de la vessie."
+  ],
+  [
+    "Q25 Concernant la bronchiolite, quelles affirmations sont vraies ?",
+    " a) C’est une infection due à une bactérie.",
+    " b) C’est une urgence respiratoire chez le nourrisson.",
+    " c) Son traitement repose sur la kinésithérapie.",
+    " d) C’est une épidémie printanière.",
+    " e) Elle est due à un parasite."
+  ]
 ];
 
 const rep = [
-    "00001",
-    "00100",
-    "01000",
-    "00100",
-    "01000",
-    "00001",
-    "00010",
-    "10000",
-    "00010",
-    "01000",
-    "00010",
-    "00010",
-    "10000",
-    "01000",
-    "00010",
-    "10000",
-    "00001",
-    "00100",
-    "01000",
-    "00010"]
+    "01110",
+  "10110",
+  "10010",
+  "10110",
+  "01010",
+  "11100",
+  "10101",
+  "10100",
+  "10101",
+  "01011",
+  "01010",
+  "01010",
+  "11100",
+  "10101",
+  "10100",
+  "01001",
+  "10100",
+  "11110",
+  "01100",
+  "10010",
+  "10111",
+  "00011",
+  "10101",
+  "00111",
+  "01100"
+  
+];
 
 var num_question=1;
 </script>

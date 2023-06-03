@@ -4,6 +4,7 @@
     background-color: #233040;
     color: white;
     margin: 0px;
+    overflow: scroll;
 }
 
 #checkbox{

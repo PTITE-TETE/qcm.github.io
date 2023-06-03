@@ -1,0 +1,38 @@
+main{
+    background-color: #233040;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    top:0px;
+    
+}
+#name{
+    margin: 0px;
+    margin-bottom: 5%;
+    font-size: 5vw;
+    padding: 2%;
+    color: black;
+    background-color: white;
+    top:0px;
+    position: relative;
+}
+
+#matiere{
+    display: flex;
+    flex-direction: column;
+
+}
+
+#matiere li{
+    background-color: white;
+    margin:3%;
+    padding: 2%;
+    border-radius: 50%;
+    text-align: center;
+}
+
+#matiere a{
+    text-decoration: none;
+    font-size: 5vw;
+    color: black;
+}

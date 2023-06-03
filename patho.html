@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phatologie Médicale</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- Lien vers votre fichier CSS externe -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="qcm.css">
+</head>
+<script >
+const data = [
+
+/// 2016 ///
+    [
+    "Concernant le syndrome malin, quelles sont les affirmations fausses ?",
+    "C’est une complication des neuroleptiques.",
+    "Il est dû à un surdosage en benzodiazépines.",
+    "C’est une forme d’épilepsie.",
+    "Il s’agit d’une complication de l’asthme.",
+    "Souvent mortelle."
+  ],
+  [
+    "Parmi les affirmations suivantes, quelles sont celles qui caractérisent le syndrome extrapyramidal ?",
+    "Un tremblement de repos.",
+    "Une hypotonie.",
+    "Une hypertonie.",
+    "Une akinésie.",
+    "Une apraxie."
+  ],
+  [
+    "Quelles sont, parmi les données suivantes, celles qui définissent une hypertension artérielle ?",
+    "Une diastolique supérieure à 90 mmHg.",
+    "Une systolique supérieure à 90 mmHg.",
+    "Une diastolique supérieure à 160 mmHg.",
+    "Une systolique supérieure à 160 mmHg.",
+    "Le chiffre de la systolique détermine la gravité de l’HTA."
+  ],
+  [
+    "Parmi ces différents types de crise d’épilepsie chez l’enfant, quelles sont celles qui sont dites généralisées ?",
+    "Le petit mal.",
+    "L’épilepsie occipitale.",
+    "Le syndrome de West.",
+    "Le grand mal.",
+    "L’épilepsie Rolandique."
+  ],
+  [
+    "La rubéole congénitale peut entrainer plusieurs types de malformations, lesquelles ?",
+    "Des malformations pulmonaires.",
+    "Des malformations cardiaques.",
+    "Des malformations digestives.",
+    "Une surdité.",
+    "Des malformations rénales."
+  ],
+  [
+    "Parmi les diagnostics différentiels suivants, quels sont ceux de la maladie d’Alzheimer ?",
+    "La syphilis tertiaire.",
+    "Le traumatisme crânien.",
+    "La dépression.",
+    "Le syndrome parkinsonien.",
+    "Toutes les réponses sont justes."
+  ],
+  [
+    "Parmi les affirmations suivantes, quelles sont celles qui caractérisent le diabète non-insulino-dépendant ?",
+    "Il nécessite souvent un régime hypoglucidique.",
+    "Est découvert chez l’adolescent.",
+    "Il peut entrainer une rétinopathie.",
+    "Son traitement nécessite l’utilisation d’un carnet d’auto-surveillance.",
+    "Il peut évoluer vers un diabète insulino-dépendant."
+  ],
+  [
+    "Concernant l’infection au VIH, quelles sont les affirmations vraies ?",
+    "Le virus est présent dans les liquides biologiques de la personne atteinte.",
+    "La candidose est une atteinte pulmonaire.",
+    "La cible du VIH est la molécule CD4.",
+    "Le stade III est le stade des infections opportunistes.",
+    "La toxoplasmose donne des abcès digestifs."
+  ],
+  [
+    "Concernant l’aphasie de Wernicke, quelles sont les affirmations fausses ?",
+    "Le malade parle peu.",
+    "Le malade parle beaucoup.",
+    "Le patient est conscient de ses troubles.",
+    "La compréhension est perturbée.",
+    "L’écriture est normale."
+  ],
+  [
+    "Il existe un vaccin contre :",
+    "L’hépatite C.",
+    "La rubéole.",
+    "La listéria.",
+    "La rougeole.",
+    "La varicelle."
+  ],
+  [
+    "Une angine à streptocoque non traitée peut avoir plusieurs complications, lesquelles ?",
+    "Une atteinte cérébrale.",
+    "Une atteinte cardiaque.",
+    "Une atteinte digestive.",
+    "Une atteinte articulaire.",
+    "Une atteinte cutanée."
+  ],
+  [
+    "Concernant les benzodiazépines, quelles affirmations sont fausses ?",
+    "Leur arrêt brutal peut entrainer des crises convulsives.",
+    "Leur prescription est limitée à 8 semaines.",
+    "Elles sont indiquées en cas de délirium tremens.",
+    "L’insuffisance rénale est une contre-indication.",
+    "Elles sont indiquées dans le traitement du tétanos."
+  ],
+  [
+    "Parmi les signes cliniques suivants, quels sont ceux évocateurs d’une méningite ?",
+    "Des céphalées.",
+    "Une tension des fontanelles.",
+    "Des vomissements.",
+    "Des hallucinations visuelles.",
+    "Une hypotonie de la nuque."
+  ],
+  [
+    "Quelles sont, parmi les affirmations suivantes, celles qui caractérisent l’anémie ?",
+    "Une pâleur.",
+    "Un amaigrissement.",
+    "Une asthénie.",
+    "Une augmentation de la tension artérielle.",
+    "Elle peut être due à une hémolyse."
+  ],
+  [
+    "Quels sont, parmi les signes cliniques suivants, ceux de la maladie d’Alzheimer ?",
+    "L’apraxie.",
+    "L’akinésie.",
+    "L’agnosie.",
+    "L’amimie.",
+    "L’ataxie."
+  ],
+  [
+    "Quels sont, parmi les germes suivants, ceux responsables d’infections néonatales ?",
+    "Le Staphylocoque.",
+    "Le Streptocoque.",
+    "La toxoplasmose.",
+    "La rubéole.",
+    "La listéria."
+  ],
+  [
+    "Concernant le suivi d’un traitement par sel de lithium, quelles sont les affirmations vraies ?",
+    "Un bilan rénal régulier.",
+    "Un bilan hépatique régulier.",
+    "Un bilan thyroïdien.",
+    "Un bilan immunologique.",
+    "Un bilan cardiaque."
+  ],
+  [
+    "Concernant l’hépatite B, quelles affirmations sont vraies ?",
+    "80% des patients sont asymptomatiques.",
+    "L’hépatite fulminante est le plus souvent mortelle.",
+    "Le porteur chronique peut transmettre le virus de l’hépatite B.",
+    "La phase ictérique se caractérise par des urines foncées.",
+    "Seuls les porteurs symptomatiques peuvent évoluer vers une hépatite chronique."
+  ],
+  [
+    "La douleur est caractérisée par quelles affirmations ?",
+    "Pour les douleurs faibles et modérées, on peut associer aspirine et anti-inflammatoires.",
+    "La douleur déclenchée par les mouvements est une douleur nociceptive.",
+    "Une douleur neurogène est caractérisée par des brulures.",
+    "La douleur chronique est une douleur qui dure depuis plus de 3 mois.",
+    "Il existe deux types de douleur."
+  ],
+  [
+    "Parmi les différentes classes d’antidépresseurs suivantes, lesquelles existent ?",
+    "Les apparentés aux tricycliques.",
+    "Les inhibiteurs de la monoamine oxydée.",
+    "Les inhibiteurs non spécifiques de la recapture de la sérotonine.",
+    "Les tricycliques.",
+    "Les Benzodiazépines."
+  ],
+  [
+    "Quels sont les signes cliniques qui caractérisent le syndrome cérébelleux ?",
+    "Des troubles de la marche.",
+    "Une hypertonie.",
+    "Des troubles de la parole.",
+    "Une hypermétrie.",
+    "Un nystagmus."
+  ],
+  [
+    "Plusieurs affirmations concernant le syndrome pyramidal sont vraies ; lesquelles ?",
+    "Un déficit moteur homolatéral à la lésion, en cas d’atteinte au niveau du cortex cérébral.",
+    "Une hypotonie.",
+    "Une abolition des réflexes.",
+    "Une évolution vers la spasticité.",
+    "Un déficit moteur bilatéral, en cas d’atteinte au niveau de la moelle épinière."
+  ],
+  [
+    "Concernant l’arthrose, quelles affirmations sont fausses ?",
+    "C’est l’inflammation de l’articulation qui prédomine.",
+    "Toute douleur impose l’arrêt de l’effort.",
+    "Les douleurs sont diurnes et nocturnes.",
+    "La destruction du cartilage en est à l’origine.",
+    "Pour en faire le diagnostic, il faut pratiquer un arthro-scanner."
+  ],
+  [
+    "Concernant le cancer, quelles affirmations sont vraies ?",
+    "Une tumeur bénigne peut être un cancer.",
+    "Il évolue lentement.",
+    "Le stade de cancer généralisé est celui des métastases.",
+    "Son traitement initial repose sur la chirurgie.",
+    "Le tabac peut être responsable de cancer de la vessie."
+  ],
+  [
+    " Concernant la bronchiolite, quelles affirmations sont vraies ?",
+    "C’est une infection due à une bactérie.",
+    "C’est une urgence respiratoire chez le nourrisson.",
+    "Son traitement repose sur la kinésithérapie.",
+    "C’est une épidémie printanière.",
+    "Elle est due à un parasite."
+  ]
+
+
+
+
+/// 2017 ///
+
+
+
+  [
+    "Au cours de l’examen clinique, quelles sont les parties du corps qui peuvent être auscultées ?",
+    "Les ganglions.",
+    "Les poumons.",
+    "Les artères.",
+    "Les veines.",
+    "L’abdomen."
+  ],
+  [
+    "Concernant le secret médical, quelles sont parmi les propositions suivantes, celles qui font appel aux dérogations obligatoires ?",
+    "La déclaration d’accident du travail.",
+    "Le certificat d’internement à la demande d’un tiers.",
+    "La séropositivité.",
+    "Une agression sexuelle sur une jeune femme de 18 ans.",
+    "Le certificat de décès."
+  ],
+  [
+    "Le mini mental score est utilisé pour les diagnostics :",
+    "De la maladie bipolaire.",
+    "De la désorientation temporo-spatiale.",
+    "De l’enfant surdoué.",
+    "Des troubles mnésiques.",
+    "De la dépression."
+  ],
+  [
+    "Parmi les signes cliniques suivants, quels sont ceux du diagnostic positif de la maladie d’Alzheimer ?",
+    "L’ataxie.",
+    "L’aphasie.",
+    "L’asthénie.",
+    "L’agnosie.",
+    "L’apraxie."
+  ],
+  [
+    "Concernant la bronchiolite, quelles sont les affirmations fausses ?",
+    "Le traitement repose sur la kinésithérapie.",
+    "C’est une affection virale.",
+    "C’est une affection bactérienne.",
+    "On met systématiquement l’enfant sous antibiotiques.",
+    "La fièvre est le principal critère d’hospitalisation."
+  ],
+  [
+    "Quelles sont, parmi les affirmations suivantes, celles qui caractérisent le syndrome pyramidal ?",
+    "Une tétraplégie en cas de lésion, au niveau du cortex cérébral.",
+    "Un déficit moteur bilatéral des membres inferieurs, en cas de lésion au niveau lombaire de la moelle épinière.",
+    "Un déficit moteur homolatéral à la lésion, en cas d’atteinte au niveau du cortex cérébral.",
+    "Une hémiparésie, si atteinte de la moelle épinière au niveau cervicale.",
+    "Une hémiplégie contro-latérale à une lésion du cortex cérébral."
+  ],
+  [
+    "Parmi ces différents types de crise d’épilepsie chez l’enfant, quelles sont celles, dites généralisées ?",
+    "L’épilepsie Rolandique.",
+    "Le petit mal.",
+    "L’épilepsie occipitale.",
+    "Le syndrome de West.",
+    "Les automatismes."
+  ],
+  [
+    "Parmi les signes cliniques suivants, quels sont ceux qui caractérisent les oreillons?",
+    "Une éruption cutanée.",
+    "Une parotidite uni ou bilatérale.",
+    "Une orchite.",
+    "La fièvre",
+    "Des adénopathies."
+  ],
+  [
+    "Vous recevez une femme de 72 ans chez qui vous suspectez une aphasie de Wernicke, quels sont les signes cliniques que vous recherchez ?",
+    "La compréhension est normale.",
+    "Le malade parle peu.",
+    "Le malade parle beaucoup.",
+    "Le patient est conscient de ses troubles.",
+    "La compréhension est perturbée."
+  ],
+  [
+    "Parmi les signes cliniques suivants, lesquels sont évocateurs d'une tuberculose pulmonaire ?",
+    "Une toux chronique.",
+    "Des hémoptysies.",
+    "Des douleurs abdominales.",
+    "Une gynécomastie.",
+    "Une asthénie."
+  ],
+  [
+    "Quelles sont les propositions exactes concernant les troubles du sommeil ?",
+    "L'insomnie est un symptôme de l'apnée du sommeil.",
+    "Le ronflement est toujours un signe de l'apnée du sommeil.",
+    "Les parasomnies comprennent le somnambulisme.",
+    "Le syndrome des jambes sans repos se manifeste uniquement lors du sommeil paradoxal.",
+    "La narcolepsie est caractérisée par une insomnie chronique."
+  ],
+  [
+    "Parmi les propositions suivantes concernant le vaccin contre la grippe saisonnière, lesquelles sont exactes ?",
+    "Le vaccin est recommandé pour les personnes âgées de plus de 65 ans.",
+    "Le vaccin n'est pas efficace contre toutes les souches de virus de la grippe.",
+    "Le vaccin est administré par voie orale.",
+    "Le vaccin est contre-indiqué chez les femmes enceintes.",
+    "Le vaccin doit être renouvelé chaque année."
+  ],
+  [
+    " Parmi les complications suivantes, quelles sont celles imputées à une rubéole congénitale ?",
+    "Une surdité.",
+    "Des malformations pulmonaires.",
+    "Des malformations cardiaques.",
+    "Des malformations digestives.",
+    "Une cataracte."
+  ],
+  [
+    "Quels sont parmi les critères suivants, ceux qui témoignent de la maturité neurologique, chez un nouveau-né à terme ?",
+    "Le reflexe de succion présent.",
+    "Le cartilage de l’oreille présent.",
+    "La taille du mamelon à 7 mm.",
+    "Le maintient de la nuque.",
+    "Une hypotonie des quatre membres."
+  ],
+  [
+    "Concernant le retard de croissance intra-utérine, quelles sont les affirmations vraies ?",
+    "Elle peut avoir des conséquences neurologiques à long terme.",
+    "Le diagnostic de certitude se fait grâce à l’amniocentèse.",
+    "Le périmètre crânien est toujours normal",
+    "La taille est le critère de gravité le plus important.",
+    "Une malformation de l’utérus peut en être la cause."
+  ],
+  [
+    "Parmi les affirmations suivantes, quelles sont celles qui définissent l’HTA ?",
+    "La pression diastolique est supérieure à 95 mm Hg.",
+    "La pression systolique est supérieure à 145 mm Hg.",
+    "Parmi les signes cliniques révélateurs d’une HTA on retrouve l’épistaxis.",
+    "L’HTA maligne est caractérisées par, une PA systolique supérieure à 145 mm Hg.",
+    "La PA systolique détermine la gravité de l’hypertension."
+  ],
+  [
+    "Quels sont, parmi les signes cliniques suivants, ceux qui caractérisent le syndrome extra-pyramidal ?",
+    "Une hypotonie.",
+    "Une akinésie.",
+    "Une anémie.",
+    "Une marche à petits pas.",
+    "Une hypertonie."
+  ],
+  [
+    "Quelles sont parmi les affirmations suivantes, celles qui caractérisent la déshydratation aigue du nourrisson ?",
+    "C’est l’urgence pédiatrique la plus fréquente.",
+    "Sa gravité est proportionnelle à la perte de poids.",
+    "Le pli cutané impose l’hospitalisation.",
+    "Sa gravité est proportionnelle à la fièvre.",
+    "Le principal signe clinique est la perte de poids."
+  ],
+  [
+    "Concernant les dyskinésies aigues, quelles sont les affirmations vraies ?",
+    "Elles sont induites par un traitement aux benzodiazépines.",
+    "Elles sont induites par un traitement aux neuroleptiques.",
+    "Elles imposent l’arrêt du traitement.",
+    "Le tremblement en est le principal signe clinique.",
+    "Elles sont réversibles sous traitement."
+  ],
+  [
+    "Vous recevez une femme de 38 ans pour suspicion de syndrome cérébelleux, quels sont les signes, que vous allez rechercher à l’examen clinique ?",
+    "Un nystagmus",
+    "Des troubles de l’équilibre.",
+    "Une hypertonie.",
+    "Des troubles de la parole.",
+    "Une hypermétrie doigt nez."
+  ],
+  [
+    "Parmi les germes suivants, quels sont ceux responsables d’une infection néonatale ?",
+    "Le streptocoque.",
+    "La rubéole.",
+    "L’Escherichia Coli.",
+    "La toxoplasmose.",
+    "La listéria."
+  ],
+  [
+    "Monsieur Dupont âgé de 62 ans, vous consulte avec sa femme car il présente depuis environ 1 an des troubles mnésiques évocateurs de la maladie d’Alzheimer ; quels sont les examens complémentaires à réaliser pour orienter votre diagnostic ?",
+    "Un scanner cérébral.",
+    "Une sérologie VIH.",
+    "Un Mini-mental score.",
+    "Une sérologie de la syphilis.",
+    "Une IRM cérébrale."
+  ],
+  [
+    "Concernant la rougeole, quelles affirmations sont vraies ?",
+    "Elle est due à une bactérie.",
+    "Elle est responsable d’orchites.",
+    "Elle peut entrainer des leuco-encéphalites.",
+    "Le signe de Koplick aide au diagnostic.",
+    "Elle est responsable d’une forte mortalité dans le tiers monde."
+  ],
+  [
+    "Parmi les propositions suivantes, quelles sont celles qui caractérisent l’angine de poitrine ou l’angor d’effort ?",
+    "C’est une manifestation de l’insuffisance coronaire chronique.",
+    "La douleur peut-être écourtée par un traitement.",
+    "C’est une manifestation liée au stress.",
+    "Le diagnostic repose essentiellement sur l’interrogatoire.",
+    "L’examen complémentaire à réaliser est l’ECG d’effort."
+  ],
+  [
+    "Quelles sont, parmi les affirmations suivantes, celles qui ne concernent pas la Dépakine© ?",
+    "La Dépakine© est un anti-dépresseur.",
+    "La Dépakine© est un anti-épileptique.",
+    "La Dépakine© est un Neuroleptique.",
+    "Elle est responsable d’insuffisance rénale.",
+    "Elle est responsable d’une hépato-toxicité."
+  ],
+  [
+    "Quels sont, parmi les signes cliniques suivants, ceux évocateurs de l’anémie.",
+    "Une perte de poids.",
+    "Un essoufflement à l’effort.",
+    "Une pâleur.",
+    "Une asthénie.",
+    "Une fièvre."
+  ],
+  [
+    "Vous mettez une patiente âgée de 33 ans sous régulateur de l’humeur, quelles sont les précautions à respecter ?",
+    "Avant la mise en route du traitement, il faut réaliser un bilan rénal.",
+    "Avant la mise en route du traitement, il faut réaliser un bilan hépatique.",
+    "La surveillance du traitement nécessite un bilan thyroïdien.",
+    "Le palier thérapeutique est déterminé par la dépakinémie.",
+    "Ce traitement peut entraîner un tremblement fin des doigts."
+  ],
+  [
+    "le syndrome de West, quelles sont les affirmations vraies ?",
+    "C’est une complication de l’asthme.",
+    "C’est une complication des Neuroleptiques.",
+    "C’est une forme d’épilepsie.",
+    "Il est responsable de séquelles neurologiques graves.",
+    "Il est responsable de séquelles respiratoires graves."
+  ],
+  [
+    "Vous recevez une femme de 55 ans dont la mammographie et la biopsie révèlent la présence d’une tumeur maligne du sein gauche, parmi les affirmations suivantes, quelle sont celles que vous retenez comme exactes ?",
+    "Avant toute décision thérapeutique, il faut réaliser un scanner thoraco-abdominal.",
+    "Son traitement repose dans un premier temps sur la chirurgie.",
+    "Les ganglions témoignent d’une diffusion loco-régionale.",
+    "Il faut tout de suite et d’emblée commencer la chimiothérapie.",
+    "On la rassure ce n’est pas grave."
+  ],
+  [
+    "Vous suivez en consultation un jeune homme de 24 ans qui découvre sa séropositivité, quels renseignements sur la maladie lui donnez-vous ?",
+    "Le virus est présent dans les liquides biologiques et dans ses urines",
+    "La cible du VIH est la molécule CD4 dont le taux normal est de 500/mm3",
+    "Il faudra lui faire une sérologie toxoplasmose",
+    "On l’oriente tout de suite vers l’hôpital pour le mettre sous trithérapie",
+    "L’évolution de la maladie est surveillée par le dosage des lymphocytes T4."
+  ],
+
+ /// 2018 ///
+ [
+    "Quels sont les signes cliniques évocateurs d’une altération de l’état général?",
+    "Non réponse",
+    "Anémie",
+    "Asthénie",
+    "Apraxie",
+    "Anorexie"
+  ],
+  [
+    "Vous recevez en consultation une femme de 73 ans qui consulte pour une douleur thoracique récurante depuis 3-4 mois. Quels sont les signes cliniques à rechercher pour poser le diagnostic d’angor d’effort?",
+    "Non réponse",
+    "La douleur est spontanée et disparaît toute seule",
+    "La douleur est angoissante",
+    "La douleur apparaît lorsque cette femme fait un effort, ses courses par exemple",
+    "La douleur disparaît très rapidement avec un traitement"
+  ],
+  [
+    "Quels sont les signes cliniques évocateurs d’une méningite?",
+    "Non réponse",
+    "Céphalées intenses",
+    "Troubles de l’humeur",
+    "Photophobies",
+    "Depression des fontanelles"
+  ],
+  [
+    "Quels sont les effets du vieillissement sur l’organisme?",
+    "Non réponse",
+    "Il est responsable d’une diminution de la sécrétion de mélatonine",
+    "Il entraine une augmentation l’élasticité des muscles de la vessie",
+    "Il entraine une augmentation de la compliance pulmonaire",
+    "Il entraine une diminution du péristaltisme intestinal"
+  ],
+  [
+    "Quels sont les chiffres d’une hypertension artérielle?",
+    "Non réponse",
+    "Une Pression artérielle diastolique supérieure ou égale à 160 mmHg",
+    "Une pression artérielle diastolique supérieure ou égale à 95 mmHg",
+    "Une pression artérielle systolique supérieure ou égale à 160mmHg",
+    "Une pression artérielle systolique supérieure ou égale à 95 mmHg"
+  ],
+  [
+    "Quels sont les germes responsables d’une infection néonatale?",
+    "Non réponse",
+    "Le staphylocoque",
+    "Le streptocoque",
+    "La listeria",
+    "La rubéole"
+  ],
+  [
+    "Quelles sont les caractéristiques du syndrome de West?",
+    "Non réponse",
+    "C’est une complication liée aux neuroleptiques",
+    "Il est responsable d’une élévation centrale de la température",
+    "Il est responsable de séquelles neurologiques graves",
+    "C’est une forme d’épilepsie"
+  ],
+  [
+    "Quels sont les signes cliniques d’un syndrome cérébelleux?",
+    "Non réponse",
+    "Un nystagmus",
+    "Une hypermétrie doigt-nez",
+    "Une hypotonie",
+    "Des troubles de la parole"
+  ],
+  [
+    "Quels sont les critères morphologiques d’un nouveau-né à terme?",
+    "Non réponse",
+    "La taille de l’ombilic",
+    "Les plis palmaires",
+    "Les plis plantaires",
+    "La présence du cartilage de l’oreille"
+  ],
+  [
+    "Nous recevons en consultation Mr Durand âgé de 67 ans, il a passé une colposcopie avec biopsie d’une masse tumorale qui révèle la présence d’un cancer du colon. Quelles explications lui donnez-vous quant à sa prise en charge?",
+    "Non réponse",
+    "Il faut réaliser un scanner abdominal à la recherche de ganglions",
+    "On attend de voir comment la masse évolue avec une surveillance par colposcopie",
+    "On lui prescrit un régime alimentaire pour faire diminuer la masse",
+    "Il faut faire un pet-scan à la recherche de métastases"
+  ],
+  [
+    "Quelles sont les affirmations qui ne relèvent pas de la rougeole?",
+    "Non réponse",
+    "Elle peut entrainer des leuco-encéphalites et le décès",
+    "Le signe de Koplick aide au diagnostic",
+    "Elle est responsable de parotidites",
+    "Elle est due à une bactérie"
+  ],
+  [
+    "On décide de mettre un patient âgé de 55 ans sous anxiolytique de type benzodiazépine, quelles sont les précautions à prendre?",
+    "Non réponse",
+    "La prescription n’excédera pas 12 semaines",
+    "Il faut éliminer une insuffisance rénale",
+    "La surveillance du traitement nécessite un bilan thyroïdien",
+    "Il faut revoir le patient régulièrement pour évaluer l’efficacité du traitement"
+  ],
+  [
+    "Quels sont les signes cliniques du syndrome extra-pyramidal?",
+    "Non réponse",
+    "Une apraxie",
+    "Une amimie",
+    "Une rigidité",
+    "Une hypotonie"
+  ],
+  [
+    "Vous recevez en consultation Emma âgée de 2 ans accompagnée de ses parents, depuis hier soir elle est fébrile 38°6 et présente une toux sifflante. Vous pensez tout de suite à une bronchiolite ! Quels sont les conseils thérapeutiques à donner aux parents.",
+    "Non réponse",
+    "La bronchiolite est virale, il n’y a rien à faire",
+    "Vous conseillez de fractionner les repas",
+    "Il faut humidifier la chambre",
+    "Vous prescrivez 10 séances de Kinésithérapie respiratoire"
+  ],
+  [
+    "Le VIH est un virus présent dans les liquides biologiques du malade, quels sont ceux contaminants?",
+    "Non réponse",
+    "Le sperme",
+    "Les sécrétions vaginales",
+    "Les urines",
+    "La salive"
+  ],
+  [
+    "On met un jeune âgé de 21 ans souffrant de psychose sous traitement par Neuroleptique. Quels sont les effets indésirables redoutés?",
+    "Non réponse",
+    "Des dyskinésies aiguës",
+    "Une perte de poids de plusieurs kilos",
+    "Un syndrome pyramidal",
+    "Une élévation sous corticale de la température imposant l’arrêt du traitement"
+  ],
+  [
+    "Quelles sont les complications d’une rubéole congénitale?",
+    "Non réponse",
+    "La maladie des membranes hyalines",
+    "Une surdité",
+    "Une cataracte",
+    "Une malformation renale"
+  ],
+  [
+    "Théo âgé de 12 ans consulte pour une suspicion de diabète de type I. Quels sont les signes cliniques à rechercher?",
+    "Non réponse",
+    "Une polyphagie",
+    "Une anorexie",
+    "Une prise de poids",
+    "Une polydipsie"
+  ],
+  [
+    "Madame Dupont âgée de 59 ans, consulte accompagnée de son mari pour troubles mnésiques s’aggravant depuis 6 mois. Quels sont les examens complémentaires à réaliser pour poser le diagnostic de maladie d’Alzheimer?",
+    "Non réponse",
+    "Une sérologie de la toxoplasmose",
+    "Un Minimental score",
+    "Un scanner cerebral",
+    "Des tests neuro-psychologiques"
+  ],
+  [
+    "Quelles affirmations concernent l’évolution de l’hépatite B?",
+    "Non réponse",
+    "80% des patients sont asymptomatiques",
+    "L’hépatite fulminante est une forme chronique de l’hépatite B",
+    "Un porteur chronique sain peut transmettre le virus de l’hépatite B",
+    "Une hépatite chronique active peut évoluer vers une cirrhose"
+  ]
+
+    /// 2019 ///
+
+    /// 2019 ///
+  [
+    "Parmi les symptômes suivant, quels sont ceux qui appartiennent au syndrome cérébelleux?",
+    "Des troubles de la parole à type de dysarthrie.",
+    "D’une démarche en fauchant.",
+    "Des mouvements involontaires, rythmiques et conjugués des yeux.",
+    "Une micrographie."
+  ],
+  [
+    "Quelles sont les caractéristiques de la douleur aiguë?",
+    "Elle est déstructrice sur le plan physique.",
+    "Elle entraine une démarche diagnostique.",
+    "Sa prise en charge thérapeutique a pour objectif sa disparition complète.",
+    "C’est un signal d’alarme destiné à protéger l’organisme."
+  ],
+  [
+    "Quels types de lésions histologiques caractérisent la maladie d’Alzheimer?",
+    "Des lésions neurofibrillaires intracellulaires.",
+    "Une inflammation à meningocoque.",
+    "Une démyélinisation axonale.",
+    "Des lésions extra-cellulaire à type de plaques dans le cortex cérébral."
+  ],
+  [
+    "Parmi les signes cliniques suivants, quels sont ceux de l’hypoglycémie?",
+    "Difficultés respiratoires.",
+    "Polyurie.",
+    "Sensation de faim.",
+    "Sueurs profuses."
+  ],
+  [
+    "Quelles affirmations définissent la prématurité?",
+    "On parle de prématurité sévère pour des enfants nés avant la 32ème SA.",
+    "On parle de prématurité extrême pour les naissances avant la 24ème SA.",
+    "La limite de viabilité est fixée à 22SA et/ou 500 grs.",
+    "Les trois réponses sont justes."
+  ],
+  [
+    "Concernant la rougeole, quelles affirmations sont vraies?",
+    "Elle peut entrainer des leuco-encéphalites et le décès.",
+    "Le signe de Köplick aide au diagnostic.",
+    "Elle est responsable de parotidites.",
+    "Elle est due à une bactérie."
+  ],
+  [
+    "Parmi les causes suivantes, quelles sont celles à rechercher en cas de retard de croissance intra-utérin?",
+    "Malformation utérine.",
+    "Carence alimentaire sévère.",
+    "Un retard de croissance idiopathique.",
+    "Les trois réponses sont fausses."
+  ],
+  [
+    "Quelles sont les causes possibles d’une diarrhée chronique chez le nourrisson?",
+    "Une infection virale.",
+    "Une allergie aux protéines de lait de vache.",
+    "La mucoviscidose.",
+    "Une otite."
+  ],
+  [
+    "Quelles peuvent être les modes de transmission du toxoplasma gondii responsable de la toxoplasmose?",
+    "Le poisson.",
+    "Les fruits.",
+    "La viande.",
+    "Les légumes."
+  ],
+  [
+    "Quels sont les signes cliniques à rechercher dans l’aphasie de Broca?",
+    "Langage abondant.",
+    "Compréhension orale et écrite conservée.",
+    "L’écriture est perturbée.",
+    "Anosognosie des troubles par le patient."
+  ],
+  [
+    "Les enveloppes méningées sont:",
+    "La pie-mère.",
+    "La dure-mère.",
+    "La plèvre.",
+    "Les réponses A, B, C sont fausses."
+  ],
+  [
+    "Les propriétés communes aux benzodiazepines sont:",
+    "Anticonvulsivantes.",
+    "Hypnotiques.",
+    "Myorelaxantes.",
+    "Amnésiantes.",
+    "Les réponses A, B, C, D sont fausses."
+  ],
+  [
+    "Quelles sont les évolutions possibles de l’hépatite B?",
+    "L’hépatite fulminante est une forme clinique très grave de l’hépatite B.",
+    "Une hépatite chronique active peut évoluer vers une cirrhose du foie.",
+    "20% des patients sont asymptomatiques.",
+    "Un porteur chronique sain du virus peut le transmettre."
+  ],
+  [
+    "Quels sont les signes de gravité d’une crise d’asthme?",
+    "Un débit expiratoire de pointe > 600 l/min.",
+    "Une fréquence respiratoire > 30/min.",
+    "Le sujet ne peut plus parler.",
+    "Tachycardie."
+  ],
+  [
+    "Quelles sont les complications d’une rubéole congénitale?",
+    "Une malformation cardiaque.",
+    "Une malformation de l’oreille.",
+    "La triade de Gregg.",
+    "Une malformation cerebrale."
+  ],
+  [
+    "Quels sont les germes responsables d’une infection néonatale?",
+    "Le staphylocoque.",
+    "Le pneumocoque.",
+    "La listeria.",
+    "Le VIH."
+  ],
+  [
+    "Quels sont les signes cliniques évocateurs d’une altération de l’état général?",
+    "Amaigrissement.",
+    "Amnésie.",
+    "Asthénie.",
+    "Amimie."
+  ],
+  [
+    "Quelles sont les caractéristiques du syndrome extra-pyramidal?",
+    "Un tremblement durant le sommeil.",
+    "Les mouvements sont rares et lents.",
+    "Une micrographie.",
+    "Les trois réponses sont justes."
+  ],
+  [
+    "Quels sont les effets du vieillissement sur l’organisme?",
+    "Il entraine une augmentation de la compliance pulmonaire.",
+    "On observe une réduction de la sensation de soif.",
+    "On observe une altération du cartilage articulaire.",
+    "Il entraine une augmentation du péristaltisme intestinal."
+  ]
+
+
+    /// 2020 ///
+    ["Le toxoplasma gondii est:", "Un virus.", "Toujours asymptomatique chez l’adulte sans pathologie particulière.", "Responsable de cardiopathie chez l’embryon s’il y a un passage trans-placentaire.", "A l’origine de l’immunisation d’environ 80% de la population."],
+  ["Parmi les symptômes suivant, quels sont ceux qui n’évoquent pas un syndrome cérébelleux ?", "Un élargissement du polygone de sustentation.", "D’une démarche en fauchant.", "Une macrographie.", "Un nystagmus."],
+  ["Parmi les signes cliniques suivants, quels sont qui vous font penser à une hypoglycémie ?", "Polypnée.", "Polyurie.", "Sensation de faim.", "Sueurs profuses."],
+  ["Concernant les infections nosocomiales, quelles sont les affirmations fausses ?", "L’infection doit être absente au moment de l’admission et doit apparaitre après un délai de 24 heures.", "La réanimation est le service le plus touché.", "L’immunodepression est un facteur favorisant la contamination.", "Le streptocoque est le germe le plus fréquent."],
+  ["Parmi les causes suivantes, quelles sont celles à rechercher en cas de retard de croissance intra-utérin?", "Malformation utérine.", "Carence alimentaire sévère.", "Un retard de croissance idiopathique.", "Les trois réponses sont justes."],
+  ["Parmi les différents types d’épilepsie, quelles sont celles dites généralisées?", "Le grand mal.", "L’épilepsie de type cognitif.", "Le petit mal.", "L’épilepsie Rolandique."],
+  ["Quelle(s) est/ sont le(s) bactérie(s) responsable(s) d'une infection bactérienne précoce du nouveau né?", "Le staphylocoque.", "La listeria.", "Le pneumocoque.", "L’E coli."],
+  ["Quels sont les effets du vieillissement sur l’organisme ?", "Il entraine une augmentation du péristaltisme intestinal.", "Il entraine une diminution de la compliance pulmonaire.", "On observe une réduction de la sensation de soif.", "On observe une altération du cartilage articulaire."],
+  ["Le syndrome extra-pyramidal se caractérise par :", "Un tremblement pouvant être unilatérale.", "Des mouvements rares et lents.", "Un faciès figé.", "Les réponses A, B, C sont fausses."],
+  ["Amandine âgée de 14 ans consulte pour une suspicion de diabète de type I. Quels sont les signes clinique à rechercher ?", "Une polyphagie.", "Une anorexie.", "Une prise de poids.", "Une polydipsie."],
+  ["Vous suspectez une méningite chez un jeune de 20 ans, quel(s) signe(s) clinique(s) recherchez-vous?", "Céphalées intenses.", "Troubles de l’humeur.", "Photophobies.", "Vomissements."],
+  [
+    "Lors de l’examen clinique, on peut ausculter :",
+    "Les poumons.",
+    "Le foie.",
+    "Le coeur.",
+    "Les ganglions."
+  ],
+  [
+    "La Listeria se transmet pas :",
+    "Les charcuteries.",
+    "Les crustacés.",
+    "Le fromage.",
+    "Les réponses A, B, C sont fausses."
+  ],
+  [
+    "Quels sont les chiffres qui permettent de poser le diagnostic d’hypertension artérielle ?",
+    "Une pression artérielle diastolique supérieure ou égale à 95 mmHg.",
+    "Une pression artérielle systolique supérieure ou égale à 160mmHg.",
+    "Une pression artérielle systolique supérieure ou égale à 95 mmHg.",
+    "Une pression artérielle diastolique supérieure ou égale à 160 mmHg."
+  ],
+  [
+    "Parmi les signes suivants, quels sont ceux qui permettent le diagnostic de la rougeole ?",
+    "Le signe de Koplick aide au diagnostic précoce.",
+    "Elle est responsable de parotidites.",
+    "Elle est due à une bactérie.",
+    "Elle peut entraîner des leuco-encéphalites et le décès."
+  ],
+  [
+    "Comment peut évoluer l’hépatite B ?",
+    "80% des patients sont asymptomatiques.",
+    "L’hépatite fulminante est une forme chronique de l’hépatite B.",
+    "Un porteur chronique sain peut transmettre le virus de l’hépatite B.",
+    "Une hépatite chronique active peut évoluer vers une cirrhose."
+  ],
+  [
+    "Vous recevez en consultation Emma âgée de 9 mois accompagnée de ses parents, depuis hier soir elle est fébrile 38°6 et présente une toux sifflante. Vous pensez tout de suite à une bronchiolite. Quels sont les signes de gravité à rechercher ?",
+    "Une cyanose autour de la bouche.",
+    "Une rhino-pharyngite.",
+    "Une fréquence respiratoire > à 60/min.",
+    "Toutes les réponses sont justes."
+  ],
+  [
+    "Quels sont les conseils thérapeutiques à leur donner ?",
+    "On discutera la prescription de bronchodilatateurs et d’antibiotiques en fonction de l’évolution.",
+    "La bronchiolite est virale, il n’y a rien à faire.",
+    "Vous conseillez aux parents d’Emma de fractionner ses repas.",
+    "Il faut humidifier la chambre."
+  ],
+  [
+    "Quelles sont les caractéristiques du syndrome de West ?",
+    "Il est responsable d’une élévation centrale de la température.",
+    "Il est responsable de séquelles neurologiques graves.",
+    "C’est une forme d’épilepsie.",
+    "C’est une complication liée aux neuroleptiques."
+  ],
+  [
+    "On décide de prescrire des benzodiazépines à une femme de 35 ans souffrant depuis quelques semaines d’anxiété excessive. Quelles sont les règles de prescription à respecter ?",
+    "La durée est limitée à 12 semaines.",
+    "Il faut éliminer une insuffisance hépatique avant.",
+    "Leur arrêt brutal expose à un risque de convulsion.",
+    "J’alerte la patiente qu’elles peuvent être amnésiantes."
+  ],
+  [
+    "Vous recevez en consultation un homme de 78 ans, pour une douleur thoracique récurrente depuis 3-4 mois. Quels sont les signes cliniques à rechercher pour poser le diagnostic d’angor d’effort ?",
+    "La douleur est spontanée.",
+    "La douleur irradie dans les mâchoires.",
+    "La douleur apparaît lorsque cet homme fait un effort, ses courses par exemple.",
+    "La douleur disparaît très rapidement avec un traitement."
+  ],
+  [
+    "Quels sont les signes de gravité d’une crise d’asthme ?",
+    "Un débit expiratoire de pointe > 600 l/min.",
+    "Une fréquence respiratoire > 30/min.",
+    "Le sujet ne peut plus parler.",
+    "Tachycardie."
+  ],
+  [
+    "Les dérogations obligatoires du secret médical sont ?",
+    "Le certificat d’hospitalisation d’office.",
+    "Le certificat de décès.",
+    "La révélation de la séropositivité d’un patient à son employeur.",
+    "Une agression sexuelle sur une femme majeure."
+  ],
+  [
+    "Quels sont parmi les signes suivants, ceux évocateurs des oreillons ?",
+    "Une éruption cutanée qui commence derrière les oreilles pour s’étendre sur tout le corps.",
+    "Une parotidite uni ou bilatérale.",
+    "Un nystagmus.",
+    "Une orchite chez les adolescents."
+  ],
+  [
+    "Nous recevons en consultation une jeune femme de 26 ans à 7 semaines d’aménorrhées. Quels sont les examens à lui prescrire?",
+    "Une sérologie toxoplasmose.",
+    "Une sérologie VIH.",
+    "Une amniocentèse.",
+    "Les 3 examens sont à prescrire en début de grossesse."
+  ],
+  [
+    "Sa sérologie toxoplasmose est négative, quels sont les conseils que vous lui donner ?",
+    "C’est super ! Vous ne risquez rien.",
+    "Il faut refaire la sérologie dans un mois.",
+    "Évitez tous contacts avec son chien.",
+    "Ne pas manger de viande crue."
+  ],
+  [
+    "Nous sommes au 6ème mois de sa grossesse sa sérologie toxoplasmose est devenue positive, que faut-il faire ?",
+    "On met en urgence la mère sous antibiotiques.",
+    "Une IRM pour détecter les anomalies cérébrales du foetus.",
+    "Une amniocenthèse à la recherche du toxoplasma gondii.",
+    "Les trois réponses sont fausses."
+  ],
+  [
+    "Vous recevez Léa âgée de 14 mois, qui présente depuis hier une fièvre à 39°4, quelles sont les complications redoutées ?",
+    "Un oedème généralisé.",
+    "Des convulsions.",
+    "L’apparition d’un pli cutanée.",
+    "Une déshydratation aiguë."
+  ],
+  [
+    "Quels sont parmi les critères suivants, ceux qui témoignent de la maturité neurologique d’un nouveau-né à terme ?",
+    "Une hypotonie des quatre membres.",
+    "Le réflexe de succion.",
+    "En position assise la tête se redresse.",
+    "Le coude dépasse la ligne mamelonnaire hétérolatérale."
+  ],
+  [
+    "Le syndrome pyramidal se caractérise par ?",
+    "Un déficit moteur homolatéral à la lésion en cas d’atteinte au niveau du cortex cérébral.",
+    "Une hypertonie qui touche les fléchisseurs au niveau des membres supérieurs.",
+    "Une hypertonie qui touche les fléchisseurs au niveau des membres inférieurs.",
+    "Au début des troubles, les réflexes ostéo-tendineux sont abolis."
+  ],
+  [
+    "Parmi les différents types de diagnostics suivants, quels sont ceux qui existent ?",
+    "Le diagnostic négatif",
+    "Le diagnostic différentiel.",
+    "Le diagnostic étiologique.",
+    "Le diagnostic sémiologique."
+  ],
+  [
+    "Quels sont les signes cliniques évocateurs d’une anémie ?",
+    "Un essoufflement à l’effort.",
+    "Un amaigrissement.",
+    "Une asthénie.",
+    "Les trois réponses sont justes."
+  ],
+  [
+    "Parmi les propriétés des neuroleptiques suivantes, quelles sont celles qui sont fausses ?",
+    "Ils peuvent entraîner un syndrome pyramidal.",
+    "Ils peuvent entraîner des effets sous corticaux.",
+    "Ils peuvent entraîner un syndrome de West.",
+    "Ils sont antiémétisants."
+  ],
+  [
+    "Parmi les signes suivants, quels sont ceux évocateurs de la maladie d’Alzheimer ?",
+    "L’ataxie.",
+    "L’apraxie.",
+    "L’amimie.",
+    "L’aphasie."
+  ],
+  [
+    "Quels sont les signes cliniques évocateurs d’une altération de l’état général?",
+    "Anémie.",
+    "Asthénie.",
+    "Apraxie.",
+    "Anorexie."
+  ],
+  [
+    "Vous recevez un patient âgé de 65 ans qui se plaint de douleurs du genou gauche, quelles sont les affirmations qui vous font penser à de l’arthrose ?",
+    "Les douleurs sont diurnes.",
+    "La douleur impose l’arrêt de l’effort.",
+    "Son genou est douloureux la nuit.",
+    "Pour faire le diagnostic, vous lui prescrivez une radio."
+  ],
+  [
+    "Quels sont les signes cliniques à rechercher devant une aphasie de Broca?",
+    "Langage abondant.",
+    "Compréhension orale et écrite conservée.",
+    "L’écriture est perturbée.",
+    "Une anosognosie des troubles par le patient."
+  ],
+  [
+    "Quelles sont les complications d’une rubéole congénitale ?",
+    "La maladie des membranes hyalines.",
+    "Une surdité.",
+    "Une cataracte.",
+    "Une malformation rénale."
+  ],
+  [
+    "Après diagnostic d’une maladie bipolaire, on met une patient de 25 ans sous traitement par sel de lithium, quel(s) est/sont le(s) examen(s) complémentaire(s) à effectuer lors du suivi du traitement ?",
+    "Une lithiémie.",
+    "Un bilan hépatique.",
+    "Un bilan thyroïdien.",
+    "Un bilan cardiaque."
+  ]
+  
+  /// 2021 ///
+  [
+    "On parle de prématurité sévère pour une naissance au terme de :",
+    "40 semaines d'aménorrhée",
+    "< à 27 SA",
+    "entre 27 et 32 SA",
+    "Toutes les réponses sont fausses"
+  ],
+  [
+    "Le syndrome pyramidal se caractérise par :",
+    "Un tremblement de repos",
+    "Une phase hypotonique suivie d'une phase hypertonique",
+    "Une hypermétrie talon-genou",
+    "Une démarche en fauchant"
+  ],
+  [
+    "Dans l'expression 'mise en place d'un PPS', que veut dire PPS ?",
+    "Projet personnalisé de scolarisation",
+    "Protocole personnel de soins",
+    "Permet la mise en place d'un accompagnement par une tierce personne pour les enfants en situation de handicap",
+    "Autorise la délivrance de médicaments sans ordonnance"
+  ],
+  [
+    "L'hypertension arterielle se definit par:",
+    "Une pression systolique supérieure ou égale à 160 mm de mercure et une pression diastolique supérieure à 95 mm de mercure",
+    "Une pression diastolique supérieure ou égale à 160 mm de mercure et une pression diastolique supérieure à 95 mm de mercure",
+    "Une pression systolique supérieure ou égales à 180 mm de mercure et une pression diastolique supérieure à 100 mm de mercure"
+  ],
+  [
+    "Le VIH se transmet par voie :",
+    "Sexuelle",
+    "Aérienne",
+    "Cutanée",
+    "Sanguine"
+  ],
+  [
+    "Un patient prend des benzodiazépines depuis 3 mois environ ; quelles sont les propriétés de cette classe de médicament?",
+    "Elles peuvent entraîner un goître thyroîdien",
+    "Elles sont anxiolytiques",
+    "Elles sont hypnotiques à forte dose",
+    "Les trois propositions sont bonnes"
+  ],
+  [
+    "La rubéole est une maladie:",
+    "Parasitaire dangereuse pour l'embryon",
+    "Dont le traitement repose sur l'antibiothérapie",
+    "Bénigne chez l'enfant",
+    "Dont le traitement est avant tout préventif par la vaccination"
+  ],
+  [
+    "Pour quelles localisations de cancer, un dépistage est recommandé en population générale?",
+    "Cancer de l'ovaire",
+    "Cancer du sein",
+    "Cancer du corps de l'utérus",
+    "Cancer colo-rectal"
+  ],
+  [
+    "Quel(s) spécialiste(s) compose(nt) une équipe du centre pluridisciplinaire prénatal (CPDPN) aidant à la prise de décision en cas d'atteint grave du foetus ?",
+    "Un(e) généticien(ne)",
+    "Un(e) radiologue spécialiste en échographie foetale",
+    "Un(e) anesthésiste",
+    "Un(e) psychomotricien(ne)"
+  ],
+  [
+    "Une substance Neuroleptique peut s'identifier par le(s) effet(s) suivant(s):",
+    "Antidépresseur",
+    "Hypothérmie",
+    "Antihallucinatoire",
+    "Dyskinésies bucco-linguo-faciales"
+  ],
+  [
+    "Lors d'une hépatite virale aigue le patient peut présenter:",
+    "Des urines foncées",
+    "Un syndrome pseudo-grippal",
+    "Des selles décolorées",
+    "Les 3 réponses sont justes"
+  ],
+  [
+    "La dépression peut-être traitée par des:",
+    "Anti-hypertenseurs",
+    "Antibiotiques",
+    "Antidépresseurs",
+    "Stimulants de l'appétit"
+  ],
+  [
+    "Le syndrome cérébelleux comporte:",
+    "Elargissement du polygone de sustentation",
+    "Une hypotonie",
+    "Une dysarthrie",
+    "Les 3 réponses sont fausses"
+  ],
+  [
+    "Quels sont les principaux facteurs de risques cardiovasculaires ?",
+    "Tabagisme, hypertension artérielle, hypercholestérolémie, diabète, obésité, régime alimentaire riche en matières grasses, âge, sexe, antécédents familiaux",
+    "Tabagisme, hypertension artérielle, hypercholestérolémie, diabète, obésité, régime alimentaire riche en fibres, âge, sexe, antécédents familiaux.",
+    "Tabagisme, hypotension artérielle, hypercholestérolémie, diabète, obésité, régime alimentaire riche en matières grasses, âge, sexe, antécédents familiaux, angine de poitrine."
+  ],
+  [
+    "Le diabète de type 1 est:",
+    "Lié à une glycémie élevée",
+    "Précoce",
+    "Dès la naissance",
+    "Du à une anomalie au niveau du foie"
+  ],
+  [
+    "A propos de la maladie d'Alzheimer :",
+    "Elle est la cause la plus fréquente des démences en France",
+    "Les lésions histologiques spécifiques de la maladie d'Alzheimer sont de deux types: des plaques séniles ou amyloîdes et une dégénérescence neuro-fibrillaire",
+    "L'hypothalamus est la structure cérébrale responsable de la mémoire",
+    "L'aphasie est une altération de la capacité à réaliser une fonction motrice",
+    "L'ESA ou équipe spécialisée Alzheimer est une équipe pluri-disciplinaire"
+  ],
+  [
+    "Toujours à propos de la maladie d'Alzheimer :",
+    "L'anosognosie est un déni des troubles",
+    "MMS signifie, mini-mental statue",
+    "L'atrophie globale du cortex cérébral et surtout de l'hippocampe sont les signes caractéristiques de la malade à l'IRM",
+    "Le score maximal du MMS est de 20",
+    "Le dosage de la protéine TAU dans la ponction lombaire aide au diagnostic"
+  ]
+
+];
+
+const rep = [
+    /// 2016 ///
+  "01110",
+  "10110",
+  "10010",
+  "10110",
+  "01010",
+  "11100",
+  "10101",
+  "10100",
+  "10101",
+  "01011",
+  "01010",
+  "01010",
+  "11100",
+  "10101",
+  "10100",
+  "01001",
+  "10100",
+  "11110",
+  "01100",
+  "10010",
+  "10111",
+  "00011",
+  "10101",
+  "00111",
+  "01100",
+  
+  /// 2017 ///
+  "01101",
+  "11001",
+  "01010",
+  "01011",
+  "00111",
+  "01001",
+  "01010",
+  "01111",
+  "00101",
+  "01111",
+  "01101",
+  "01001",
+  "00101",
+  "10010",
+  "10001",
+  "10100",
+  "01011",
+  "11101",
+  "01001",
+  "11011",
+  "00101",
+  "10111",
+  "00111",
+  "11011",
+  "10110",
+  "01110",
+  "10101",
+  "00110",
+  "11100",
+  "01101",
+
+  /// 2018 ///
+  "01010",
+  "01111",
+  "10100",
+  "1001",
+  "0110",
+  "01100",
+  "00110",
+  "11010",
+  "00110",
+  "10010",
+  "00110",
+  "10010",
+  "01100",
+  "01110",
+  "11000",
+  "10010",
+  "01100",
+  "10010",
+  "01110",
+  "10110",
+
+  /// 2019 ///
+  "10100",
+  "01110",
+  "10010",
+  "00110",
+  "10100",
+  "11000",
+  "11100",
+  "01100",
+  "01110",
+  "01100",
+  "11000",
+  "11110",
+  "11010",
+  "01110",
+  "11100",
+  "10100",
+  "10100",
+  "01100",
+  "01100",
+
+  /// 2020 ///
+   "01010",
+   "01100",
+   "00110",
+   "10010",
+   "00010",
+   "10100",
+   "01010",
+   "01110",
+   "11100",
+   "10010",
+   "10110",
+   "10100",
+   "11100",
+   "11000",
+   "10010",
+   "10110",
+   "10100",
+   "10110",
+   "01100",
+   "10110",
+   "01110",
+   "01110",
+   "11000",
+   "01010",
+   "11000",
+   "01010",
+   "01100",
+   "01110",
+   "01100",
+   "01010",
+   "01100",
+   "10100",
+   "10100",
+   "01010",
+   "01010",
+   "11010",
+   "01100",
+   "01100",
+   "10100", 
+
+   /// 2021 ///
+   "00100",
+   "11010",
+   "10100",
+   "10000",
+   "10010",
+   "01100",
+   "00110",
+   "01010",
+   "11000",
+   "00110",
+   "00010",
+   "00100",
+   "10100",
+   "10000",
+   "11000",
+   "11001",
+   "10101",
+];
+var num_question=1;
+
+</script>
+<script>
+    var score =0;
+function rep1_select(){
+    if (document.getElementById('reponse_1').style.backgroundColor == "white"){
+        document.getElementById('reponse_1').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_1').style.backgroundColor = "white"
+    }
+}
+
+function rep2_select(){
+    if (document.getElementById('reponse_2').style.backgroundColor == "white"){
+        document.getElementById('reponse_2').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_2').style.backgroundColor = "white"
+    }
+}
+
+function rep3_select(){
+    if (document.getElementById('reponse_3').style.backgroundColor == "white"){
+        document.getElementById('reponse_3').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_3').style.backgroundColor = "white"
+    }
+}
+
+function rep4_select(){
+    if (document.getElementById('reponse_4').style.backgroundColor == "white"){
+        document.getElementById('reponse_4').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_4').style.backgroundColor = "white"
+    }
+}
+
+function rep5_select(){
+    if (document.getElementById('reponse_5').style.backgroundColor == "white"){
+        document.getElementById('reponse_5').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_5').style.backgroundColor = "white"
+    }
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function q_suivante(){
+
+    if((document.getElementById('reponse_1').style.backgroundColor !="yellow" && document.getElementById('reponse_1').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_2').style.backgroundColor !="yellow" && document.getElementById('reponse_2').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_3').style.backgroundColor !="yellow" && document.getElementById('reponse_3').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_4').style.backgroundColor !="yellow" && document.getElementById('reponse_4').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_5').style.backgroundColor !="yellow" && document.getElementById('reponse_5').style.backgroundColor !="red")
+    &&(
+        document.getElementById('reponse_1').style.backgroundColor =="green" ||
+        document.getElementById('reponse_2').style.backgroundColor =="green" ||
+        document.getElementById('reponse_3').style.backgroundColor =="green" ||
+        document.getElementById('reponse_4').style.backgroundColor =="green" ||
+        document.getElementById('reponse_5').style.backgroundColor =="green" 
+    )){
+        score++; 
+    }
+    else 
+    {
+        score =0;
+    }
+
+    num_question=getRandomInt(data.length)
+    document.getElementById("question").textContent = data[num_question][0] 
+    document.getElementById("reponse_1").textContent = data[num_question][1] 
+    document.getElementById("reponse_2").textContent = data[num_question][2] 
+    document.getElementById("reponse_3").textContent = data[num_question][3] 
+    document.getElementById("reponse_4").textContent = data[num_question][4] 
+    document.getElementById("reponse_5").textContent = data[num_question][5] 
+
+    document.getElementById('reponse_1').style.backgroundColor = "white"
+    document.getElementById('reponse_2').style.backgroundColor = "white"
+    document.getElementById('reponse_3').style.backgroundColor = "white"
+    document.getElementById('reponse_4').style.backgroundColor = "white"
+    document.getElementById('reponse_5').style.backgroundColor = "white"
+
+    document.getElementById('score').innerHTML = "score : " + score;
+}
+
+function valider(){
+    chars = rep[num_question].split('');
+    if (document.getElementById('reponse_1').style.backgroundColor =="grey" && chars[0] == "1" ){
+        document.getElementById('reponse_1').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_1').style.backgroundColor =="grey" && chars[0] == "0" ){
+        document.getElementById('reponse_1').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_1').style.backgroundColor =="white" && chars[0] == "1" ){
+        document.getElementById('reponse_1').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_2').style.backgroundColor =="grey" && chars[1] == "1" ){
+        document.getElementById('reponse_2').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_2').style.backgroundColor =="grey" && chars[1] == "0" ){
+        document.getElementById('reponse_2').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_2').style.backgroundColor =="white" && chars[1] == "1" ){
+        document.getElementById('reponse_2').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_3').style.backgroundColor =="grey" && chars[2] == "1" ){
+        document.getElementById('reponse_3').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_3').style.backgroundColor =="grey" && chars[2] == "0" ){
+        document.getElementById('reponse_3').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_3').style.backgroundColor =="white" && chars[2] == "1" ){
+        document.getElementById('reponse_3').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_4').style.backgroundColor =="grey" && chars[3] == "1" ){
+        document.getElementById('reponse_4').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_4').style.backgroundColor =="grey" && chars[3] == "0" ){
+        document.getElementById('reponse_4').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_4').style.backgroundColor =="white" && chars[3] == "1" ){
+        document.getElementById('reponse_4').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_5').style.backgroundColor =="grey" && chars[4] == "1" ){
+        document.getElementById('reponse_5').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_5').style.backgroundColor =="grey" && chars[4] == "0" ){
+        document.getElementById('reponse_5').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_5').style.backgroundColor =="white" && chars[4] == "1" ){
+        document.getElementById('reponse_5').style.backgroundColor ="yellow"
+    }
+
+   
+}
+
+
+</script>
+
+
+<body>
+  <!-- Contenu de la page -->
+  
+  <!-- En-tête de la page -->
+  <header>
+    <!-- Logo, menu, etc. -->
+  </header>
+
+  <!-- Corps de la page -->
+  <main >
+    <p id="top"><a id="score">score : 0</a><a href="index.html" id="menu">Menu</a></p>
+    <p id="question">Appuyez sur "Q suivante" </p>
+    <section id="checkbox">
+        <p style="background-color:white" onclick="rep1_select()" id="reponse_1">Réponse 1</p>
+        <p style="background-color:white" onclick="rep2_select()" id="reponse_2">Réponse 2</p>
+        <p style="background-color:white" onclick="rep3_select()" id="reponse_3">Réponse 3</p>
+        <p style="background-color:white" onclick="rep4_select()" id="reponse_4">Réponse 4</p>
+        <p style="background-color:white" onclick="rep5_select()" id="reponse_5">Réponse 5</p>
+    </section> 
+    <section id="bouton">
+    <input id="valider" type="button" value="Valider" onclick="valider()">
+    <input id="q_suivante" type="button" value="Q suivante" onclick="q_suivante()">
+    </section>
+  </main>
+
+
+</body>
+</html>
+<script>q_suivante();</script>

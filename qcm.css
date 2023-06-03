@@ -14,7 +14,7 @@
 }
 
 #checkbox p{
-    height: 18%;
+   min-height: 18%;
 }
 
 #bouton{

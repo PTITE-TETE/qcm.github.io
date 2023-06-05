@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phatologie Médicale</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- Lien vers votre fichier CSS externe -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="qcm.css">
+</head>
+<script >
+const data = [
+    /// 2020 ///
+  [
+    "À quel étage rachidien trouve-t-on des foramens transversaires ?",
+    "Aucun",
+    "Rachis thoracique",
+    "Rachis lombaire",
+    "Tous les étages",
+    "Rachis cervical"
+  ],
+  [
+    "Quelle est l’orientation des surfaces articulaires des masses latérales de l’atlas ?",
+    "Obliques en bas et en dedans",
+    "Obliques en bas et en dehors",
+    "Obliques en haut et en dedans",
+    "Obliques en haut et en dehors",
+    "Verticales vers le haut"
+  ],
+  [
+    "Quels sont les ligaments que l’on trouve sur l’odontoïde ?",
+    "Les ligaments orler",
+    "Les ligaments alaires",
+    "Les ligaments en l’air",
+    "Les ligaments parterre",
+    "Les ligaments grand air"
+  ],
+  [
+    "Que trouve-t-on à la jonction de la face postérieure et des faces latérales d’une vertèbre thoracique ?",
+    "Des saillies osseuses",
+    "Des foramens vertébraux",
+    "Des surfaces articulaires",
+    "Des ligaments",
+    "Des muscles"
+  ],
+  [
+    "Comment nomme-t-on la courbure du rachis lombaire et du rachis cervical ?",
+    "La scoliose",
+    "La lordose",
+    "La cyphose",
+    "La tuberculose",
+    "Le saccharose"
+  ],
+  [
+    "A quelle fusion osseuse correspond la crête sacrale intermédiaire de la face postérieure du sacrum ?",
+    "Fusion des processus épineux",
+    "Fusion des lames vertébrales",
+    "Fusion des pédicules",
+    "Fusion des corps vertébraux",
+    "Fusion des processus articulaires postérieurs"
+  ],
+  [
+    "Les fausses côtes s’articulent avec quel cartilage costal ?",
+    "Aucun",
+    "Le 5ème cartilage costal",
+    "Le 6ème cartilage costal",
+    "Le 7ème cartilage costal",
+    "Le 8ème cartilage costal"
+  ],
+  [
+    "Comment se nomme la courbure des côtes selon les bords ?",
+    "Le cisaillement",
+    "La vrille",
+    "La torsion",
+    "Le cintrage",
+    "L’enroulement"
+  ],
+  [
+    "Quel muscle s’insère sur la face interne de la côte ?",
+    "Il n’y en a pas",
+    "Le muscle intercostal externe",
+    "Le muscle intercostal interne",
+    "Le muscle intercostal intime",
+    "Le muscle paracostal inférieur"
+  ],
+  [
+    "Quels sont les trois parties qui composent l’extrémité postérieure d’une côte d’arrière en avant ?",
+    "Col-tête-tubercule costal",
+    "Tête-col-tubercule costal",
+    "Tubercule costal-tête-col",
+    "Tubercule costal-col-tête",
+    "Tête-corps costal-tubercule costal"
+  ],
+  [
+    "Quel est le ligament qui ne s’insère pas sur le col costal ?",
+    "Le ligament costo-transversaire supérieur",
+    "Le ligament costo-lamellaire",
+    "Le ligament costo-transversaire (interosseux)",
+    "Le ligament costo-transversaire latéral"
+  ],
+  [
+    "De quelles articulations parle-t-on quand on nomme les articulations intervertébrales ?",
+    "Articulations corporelles",
+    "Articulations interfacettaires antérieures",
+    "Articulations interfacettaires postérieures",
+    "Articulations intercorporéales et interfacettaires postérieures",
+    "Articulations boréales et interfacettaires antérieures"
+  ],
+  [
+    "Quelle est la composition du ligament cruciforme du complexe articulaire occiput-atlas-axis ?",
+    "Ligament transverse et ligament longitudinal (faisceau supérieur et inférieur)",
+    "Ligament transverse et faisceau supérieur du ligament longitudinal",
+    "Ligament transverse et faisceau inférieur du ligament longitudinal",
+    "Ligament transverse et membrana tectoria",
+    "Ligament transverse et ligament de l’apex"
+  ],
+  [
+    "Où se situe l’os éthmoïde ?",
+    "En avant de l’os frontal et en arrière de l’os occipital",
+    "En avant de l’os sphénoïde et en arrière de l’os frontal",
+    "Entre les os pariétaux",
+    "En arrière de l’os sphénoïde et en avant de l’os occipital",
+    "En arrière de l’os frontal et en arrière de l’os sphénoïde"
+  ],
+  [
+    "Quels sont les trois parties qui composent l’os temporal ?",
+    "L’écaille, la caudale, la latérale",
+    "L’écaille, la latérale, la principale",
+    "L’écaille, la variable, l’optimale",
+    "L’écaille, le rocher, la mastoïde",
+    "L’écaille, le crochet, le myéloïde"
+  ],
+  [
+    "Quelle est l’origine du muscle long de la tête ?",
+    "Tubercule antérieur du processus transverse de C6 à C3",
+    "Processus épineux de T6 à T3",
+    "Tubercule antérieur du processus mamillaire de L3 à L5",
+    "Tubercule antérieur du processus accessoire de L3 à L5",
+    "Tubercule costal"
+  ],
+  [
+    "Quelle est l’origine du muscle scalène antérieur ?",
+    "Tubercule du scalène antérieur de la 5ème côte",
+    "Tubercule du scalène antérieur de la 4ème côte",
+    "Tubercule du scalène antérieur de la 3ème côte",
+    "Tubercule du scalène antérieur de la 2ème côte",
+    "Tubercule du scalène antérieur de la 1ère côte"
+  ],
+  [
+    "Quelle le rôle du muscle transverse du thorax ?",
+    "Flexion thoracique",
+    "Extension thoracique",
+    "Stabilise la partie antéro-inférieur du thorax",
+    "Expiration",
+    "Inspiration"
+  ],
+  [
+    "Parmi les origines du muscle diaphragme, laquelle est fausse ?",
+    "Pilier principal droit, corps vertébraux de L1, L2, L3",
+    "Face postérieure du manubrium sternal",
+    "Pilier accessoire sur L2",
+    "Arcades fibreuses médiale L2-L1",
+    "Appendice xiphoïde"
+  ],
+  [
+    "Quelle est la terminaison des faisceaux costo-transversaire et ilio-transversaire du muscle carré des lombes ?",
+    "Sommet des processus transverse de T12 à L1",
+    "Sommet des processus transverse de L1 à L3",
+    "Sommet des processus transverse de C1 à C5",
+    "Sommet des processus transverse de L1 à L5",
+    "Sommet des processus transverse de T1 à T5"
+  ],
+
+    /// 2021 ///
+  ["A quel étage rachidien trouve-t-on un foramen vertébral ?", "aucun", "exclusivement au rachis lombaire", "exclusivement au rachis thoracique", "à tous les étages rachidiens"],
+  ["Que trouve-t-on sur la face médiale des masses latérales de C1?", "l'insertion du ligament masséter", "l'insertion du ligament transverse", "l'insertion du ligament vertébral", "l'insertion du ligament intervertébral"],
+  ["Quel ligament se trouve au sommet de l'odontoïde?", "le ligament odontoïdal", "le ligement parodontal", "le ligament néandertal", "le ligament de l'apex"],
+  ["Que trouve-t-on à la jonction de la face postérieure et de la face latérale d'une vertèbre type?", "des pédicules", "des lames", "des processus transverses", "des processus apophysaires postérieurs"],
+  ["Comment nomme-t-on la courbure du rachis thoracique?", "la scoliose", "la lordose", "la cyphose", "la concavité postérieure"],
+  ["A quelle fusion osseuse correspond la crête sacrale médiale de la face postérieure du sacrum?", "fusion des processus épineux", "fusion des lames vertébrales", "fusion des pédicules", "fusion des corps vertébraux"],
+  ["Combien dénombre-t-on de paires de côte?", "7", "10", "12", "24"],
+  ["Comment se nomme la courbure des côtes selon l'axe?", "le cisaillement", "la vrille", "l'enroulement", "la torsion"],
+  ["Quelle est la forme des surfaces articulaires des masses latérales de l’atlas?", "forme de virgule", "forme de point", "forme lunaire", "forme d'empreinte de pas"],
+  ["Quels muscles s'insèrent sur le bord supérieur d'une côte?", "muscle intercostal externe", "muscle intercostal interne", "muscle intime", "il n'y en a pas"],
+  ["De quoi se compose le disque intervertèbral?", "du nucleus pulposus", "du nucleus fibrosus", "de l'annulus pulposus", "de l'annulus fibrosus"],
+  ["Parmi ces moyens d'union de l'articulation interfacettaire postérieur, lequel est faux?", "les ligaments intertransversaires", "les ligaments jaunes", "le ligament interépineux", "le ligament longitudinal antérieur"],
+  ["Quelle est la forme de l'articulation sacro-iliaque?", "formle de H inversé", "forme de L inversé", "forme de J inversé", "forme de I inversé"],
+  ["Quels sont les ligaments de l'articulation costo-transversaires?", "ligement costo-transversaire latéral", "ligament costo-transversaire ventral", "ligament costo-transversaire dorsal", "ligament costo-transversaire supérieur"],
+  ["Quels sont les articulations sternales?", "l'articulation sterno-palpébrale", "l'articulation manubrio-sternale", "l'articulation sterno-xiphoïdienne", "l'articulation manubrio-palpébrale"],
+  ["Quel est le rôle du muscle grand pectoral?", "adduction-rotation médiale de l'humérus", "adduction rotation latérale de l'humérus", "inspirateur accessoire", "expirateur accessoire"],
+  ["Quelle est l'origine du muscle petit pectoral?", "bord antérieur de la clavicule", "bord supérieur de l'épine de la scapula", "processus coracoïde de la scapula", "face antérieure de la scapula"],
+  ["Quels sont les fonctions du muscle dentelé antérieur?", "abducteur et propulseur de la scapula", "adducteur et antépulseur de la scapula", "abducteur et antépulseur de la scapula", "adducteur et propulseur de la scapula"],
+  ["Quelle est l'origine sternale du muscle diaphragme?", "il n'en a pas", "sur le manubrium sternal", "sur le corps sternal", "sur l'appendice xiphoïde"],
+  ["Parmi ces affirmations concernant les muscles intercostaux, laquelle est fausse?", "leur rôle est de maintenir la cage thoracique", "le muscle intercostal interne est expirateur accessoire", "le muscle intercostal externe est expiratoire accessoire", "le muscle intime est expirateur accessoire"],
+  ["Quelle est l'origine du muscle épineux du thorax?", "de la 3ème cervicale à la 11ème thoracique", "de la 3ème thoracique à la 11ème thoracique", "de la 3ème lombaire à la 11ème thoracique", "de la 3ème cervicale à la 11ème lombaire"],
+  ["Quelle est la terminaison céphalique du muscle longissimus?", "os pariétal", "os temporal", "os nasal", "os occipital"],
+  ["Quelle est la terminaison cervicale du muscle longissimus?", "de la 1ère cervicale à la 5ème cervicale", "de la 2ème cervicale à la 6ème cervicale", "de la 2ème cervicale à la 7ème cervicale", "de la 1ère cervicale à la 7ème cervicale"],
+  ["Quelle est l'origine du muscle splénius de la tête?", "de la 3ème cervicale à la 3ème thoracique", "de la 4ème cervicale à la 3ème thoracique", "de la 5ème cervicale à la 3ème thoracique", "de la 6ème cervicale à la 3ème thoracique"]
+];
+
+const rep = [
+
+/// 2020 ///
+    "00001",
+    "00100",
+    "01000",
+    "00100",
+    "01000",
+    "00001",
+    "00010",
+    "10000",
+    "00010",
+    "01000",
+    "00010",
+    "00010",
+    "10000",
+    "01000",
+    "00010",
+    "10000",
+    "00001",
+    "00100",
+    "01000",
+    "00010",
+
+    /// 2021 ///
+    "00010",
+    "01000",
+    "00010",
+    "10000",
+    "00100",
+    "10000",
+    "00100",
+    "00010",
+    "00010",
+    "11100",
+    "10010",
+    "00010",
+    "01000",
+    "10010",
+    "01100",
+    "10100",
+    "00100",
+    "10000",
+    "00010",
+    "00100",
+    "00100",
+    "01000",
+    "00100",
+    "01000"
+
+];
+
+var num_question=0;
+</script>
+<script>
+    var score =0;
+function rep1_select(){
+    if (document.getElementById('reponse_1').style.backgroundColor == "white"){
+        document.getElementById('reponse_1').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_1').style.backgroundColor = "white"
+    }
+}
+
+function rep2_select(){
+    if (document.getElementById('reponse_2').style.backgroundColor == "white"){
+        document.getElementById('reponse_2').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_2').style.backgroundColor = "white"
+    }
+}
+
+function rep3_select(){
+    if (document.getElementById('reponse_3').style.backgroundColor == "white"){
+        document.getElementById('reponse_3').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_3').style.backgroundColor = "white"
+    }
+}
+
+function rep4_select(){
+    if (document.getElementById('reponse_4').style.backgroundColor == "white"){
+        document.getElementById('reponse_4').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_4').style.backgroundColor = "white"
+    }
+}
+
+function rep5_select(){
+    if (document.getElementById('reponse_5').style.backgroundColor == "white"){
+        document.getElementById('reponse_5').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_5').style.backgroundColor = "white"
+    }
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function q_suivante(){
+
+    if((document.getElementById('reponse_1').style.backgroundColor !="yellow" && document.getElementById('reponse_1').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_2').style.backgroundColor !="yellow" && document.getElementById('reponse_2').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_3').style.backgroundColor !="yellow" && document.getElementById('reponse_3').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_4').style.backgroundColor !="yellow" && document.getElementById('reponse_4').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_5').style.backgroundColor !="yellow" && document.getElementById('reponse_5').style.backgroundColor !="red")
+    &&(
+        document.getElementById('reponse_1').style.backgroundColor =="green" ||
+        document.getElementById('reponse_2').style.backgroundColor =="green" ||
+        document.getElementById('reponse_3').style.backgroundColor =="green" ||
+        document.getElementById('reponse_4').style.backgroundColor =="green" ||
+        document.getElementById('reponse_5').style.backgroundColor =="green" 
+    )){
+        score++; 
+    }
+    else 
+    {
+        score =0;
+    }
+
+    num_question=getRandomInt(data.length);
+    document.getElementById("question").textContent = data[num_question][0] ;
+    document.getElementById("reponse_1").textContent = data[num_question][1] 
+    document.getElementById("reponse_2").textContent = data[num_question][2] 
+    document.getElementById("reponse_3").textContent = data[num_question][3] 
+    document.getElementById("reponse_4").textContent = data[num_question][4] 
+    document.getElementById("reponse_5").textContent = data[num_question][5] 
+
+    document.getElementById('reponse_1').style.backgroundColor = "white"
+    document.getElementById('reponse_2').style.backgroundColor = "white"
+    document.getElementById('reponse_3').style.backgroundColor = "white"
+    document.getElementById('reponse_4').style.backgroundColor = "white"
+    document.getElementById('reponse_5').style.backgroundColor = "white"
+
+    document.getElementById('score').innerHTML = "score : " + score;
+}
+
+function valider(){
+    chars = rep[num_question].split('');
+    if (document.getElementById('reponse_1').style.backgroundColor =="grey" && chars[0] == "1" ){
+        document.getElementById('reponse_1').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_1').style.backgroundColor =="grey" && chars[0] == "0" ){
+        document.getElementById('reponse_1').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_1').style.backgroundColor =="white" && chars[0] == "1" ){
+        document.getElementById('reponse_1').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_2').style.backgroundColor =="grey" && chars[1] == "1" ){
+        document.getElementById('reponse_2').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_2').style.backgroundColor =="grey" && chars[1] == "0" ){
+        document.getElementById('reponse_2').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_2').style.backgroundColor =="white" && chars[1] == "1" ){
+        document.getElementById('reponse_2').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_3').style.backgroundColor =="grey" && chars[2] == "1" ){
+        document.getElementById('reponse_3').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_3').style.backgroundColor =="grey" && chars[2] == "0" ){
+        document.getElementById('reponse_3').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_3').style.backgroundColor =="white" && chars[2] == "1" ){
+        document.getElementById('reponse_3').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_4').style.backgroundColor =="grey" && chars[3] == "1" ){
+        document.getElementById('reponse_4').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_4').style.backgroundColor =="grey" && chars[3] == "0" ){
+        document.getElementById('reponse_4').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_4').style.backgroundColor =="white" && chars[3] == "1" ){
+        document.getElementById('reponse_4').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_5').style.backgroundColor =="grey" && chars[4] == "1" ){
+        document.getElementById('reponse_5').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_5').style.backgroundColor =="grey" && chars[4] == "0" ){
+        document.getElementById('reponse_5').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_5').style.backgroundColor =="white" && chars[4] == "1" ){
+        document.getElementById('reponse_5').style.backgroundColor ="yellow"
+    }
+
+   
+}
+
+
+</script>
+
+
+<body>
+  <!-- Contenu de la page -->
+  
+  <!-- En-tête de la page -->
+  <header>
+    <!-- Logo, menu, etc. -->
+  </header>
+
+  <!-- Corps de la page -->
+  <main>
+    <p id="top"><a id="score">score : 0</a><a href="index.html" id="menu">Menu</a></p>
+    <p id="question">Appuyez sur "Q suivante" </p>
+    <section id="checkbox">
+        <p style="background-color:white" onclick="rep1_select()" id="reponse_1">Réponse 1</p>
+        <p style="background-color:white" onclick="rep2_select()" id="reponse_2">Réponse 2</p>
+        <p style="background-color:white" onclick="rep3_select()" id="reponse_3">Réponse 3</p>
+        <p style="background-color:white" onclick="rep4_select()" id="reponse_4">Réponse 4</p>
+        <p style="background-color:white" onclick="rep5_select()" id="reponse_5">Réponse 5</p>
+    </section> 
+    <section id="bouton">
+    <input id="valider" type="button" value="Valider" onclick="valider()">
+    <input id="q_suivante" type="button" value="Q suivante" onclick="q_suivante()">
+    </section>
+  </main>
+
+
+</body>
+</html>

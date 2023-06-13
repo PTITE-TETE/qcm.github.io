@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phatologie Médicale</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- Lien vers votre fichier CSS externe -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="qcm.css">
+</head>
+<script >
+const data = [
+["Au niveau de la face antérieure du bulbe, on peut observer:", "Les neurones des noyaux olivaires", "Les pyramides bulbaires", "Les pédoncules cérébraux", "Des sillons latéraux"],
+  ["La valvule de Vieussens se trouve:", "En position ventrale par rapport au cervelet", "Entre les pédoncules cérébelleux", "Entre les pédoncules cérébraux", "En position dorsale par rapport au cervelet"],
+  ["Les trous de Luschka :", "Sont au niveau de l’aqueduc de Sylvius", "Sont au niveau du V3", "Sont au niveau du V4", "N’existent pas"],
+  ["Ma tête tourne suite à un flash lumineux et mes yeux suivent, merci:", "Aux tubercules quadrijumeaux supérieurs", "Aux tubercules quadrijumeaux inférieurs", "Au raphé", "Au noyau rouge"],
+  ["Le faisceau longitudinal médial:", "Est un faisceau d'association télencéphalique", "Est un faisceau d'association du tronc cérébral", "Implique le nerf crânien n°4", "Permet une coordination motrice de l’activité buccale"],
+  ["La voie vestibulospinale:", "Est un puissant système antigravitaire", "Présente deux faisceaux", "Démarre du tronc cérébral", "Démarre de la moelle épinière"],
+  ["Dans le pédoncule cérébral, le faisceau géniculé occupe :", "Le 1/5", "Les 3/5", "Les 4/5", "Aucune place puisque n’y passant pas !"],
+  ["La formation réticulée latérale :", "A une fonction sensorielle", "A une fonction motrice", "A une fonction sensorielle et motrice", "Reçoit des projections du noyau trigéminé"],
+  ["Le nerf crânien IV est le :", "Oculaire commun", "Abducens", "Trochléaire", "Principal nerf mésencéphalique"],
+  ["Le nerf crânien VII est:", "L'hypoglosse", "Moteur pur", "Sensitif pur", "Mixte"],
+  ["Dans les comas, la réponse aux stimuli nociceptifs est présente au :", "Stade 1", "Stade 2", "Stade 3", "Stade 4"],
+  ["Les fibres grimpantes cérébelleuses contactent:", "Les noyaux cérébelleux", "Les cellules granulaires", "Les cellules de Purkinje", "Les cellules étoilées"],
+  ["Le volume du cervelet représente environ :", "1/5 du volume de SN", "1/10 du volume de SN", "2/10 du volume de SN", "1/4 du volume de SN"],
+  ["Les fibres moussues cérébelleuses proviennent :", "Des noyaux vestibulaires", "Des noyaux olivaires", "De la réticulée", "Aucune des réponses précédentes"],
+  ["Le cervelet est une structure :","Mésencéphalique", "Métencéphalique", "Rhombencéphalique", "MultilobéeV"],
+  ["Le lobe flocculonodulaire :", "Contient un flocculus et deux nodules","Contient un nodule et deux flocculus","Est de l'archéocerebellum", "Est du paléocérébellum"],
+  ["La couche interne du cortex cérébelleux est formée par les cellules :", "Etoilées","Granulaires", "De Purkinje", "De Golgi"],
+  ["Chassez l’intrus :", "Globulus", "Pallidus", "Embolus","Fastigial"],
+  ["La marche ébrieuse est consécutive à une atteinte du :", "Archéocervelet", "Paléocervelet","Néocervelet","Polygone de sustentation"],
+  ["L'habénula est un noyau :","Pair","Diencéphalique","Traitant d'information olfactives","En relation avec la réticulée","Les réponses A, B, C, D sont fausses"],
+  ["Quelles sont les noyaux thalamiques non spécifiques ?","Noyau réticulaire", "Noyau latéral dorsal", "Noyau centromédian", "Pulvinar"],
+  ["Chassez l’intrus :", "Corps genouillé latéral", "Corps genouillé médial", "Noyau ventro-antérieur","Noyau ventro-postérieur"],
+  ["Dans l'hypothalamus postérieur, on trouve :", "Le noyau dorsomédian", "Le noyau arqué","Le noyau mamillaires","Le noyau postérieur"],
+  ["Lequel de ces noyaux sécrète l’hormone antidiurétique ?", "Noyau paraventriculaire","Noyau suprachiasmatique", "Aire préoptique", "Noyau supra-optique"],
+  ["L'hypophyse glandulaire correspond à :", "L'hypophyse antérieure","L'hypophyse postérieure", "L'adénophyse","Toutes les réponses précédentes sont fausses"],
+  ["Dans la face latérale du lobe frontal, on trouve :", "Les sillon supérieur","Le sillon moyen","Le sillon inférieur","Le sillon postcentral"],
+  ["Laquelle de ces régions est la plus postérieure ?", "Pars orbitalis", "Pars opercularis", "Pars triangularis","Pars compacta"],
+  ["Chassez l’intrus :", "Gyrus supramarginal", "Gyrus P2", "Gyrus P1", "Gyrus angulaire"],
+  ["Le lobe de l’insula contient", "3 gyri longs", "2 gyri courts", "5 gyri","6 gyri"],
+  ["Le cuneus correspond à :","03", "O4", "O5", "O6"],
+  ["Les noyaux lenticulaires correspondent aux :", "Caudé","Putamen","Paléostratium", "Néostriatum"],
+  ["Le paléocortex peut contenir", "3 couches cellulaires","4 couches cellulaires", "5 couches cellulaires", "6 couches cellulaires"],
+  ["Le forceps minor :", "Est en position frontale","Est en position occipitale", "Est associé à une commissure intrahémisphérique","Aucune des réponses précédentes"],
+  ["La commissure antérieure est une commissure :", "Hippocampique", "Visuelle", "Encéphalique","Médullaire"],
+  ["L’uncus est :", "Une région du rhinencéphale", "Est dans le lobe pariétal","Est dans le lobe temporal","Est un faisceau de substance blanche encéphallique"],
+  ["Le sillon intrapariétal délimite :", "La CPA du gyrus P1","La CA du gyrus P2","Le gyrus P1 du gyrus P2","Le gyrus P2 du gyrus angulaire"],
+  ["Le système limbique comprend :","Les amygdales", "Le noyau accumbens","Le septum lucidum", "L’hippocampe"],
+  ["Le circuit de la récompense comprend :", "L'aire tegmentale ventrale","La substance grise périaqueducale", "L’aire septale", "Des noyaux de l’hypothalamus"],
+  ["La voie pyramidale traverse :", "La capsule interne", "La capsule extrême","La capsule extrême"],
+  ["Le faisceau hippocampo-mamillaire :", "Est aussi nommé fornix","Est aussi nommé trigone", "Est un faisceau purement intrahémisphérique","Est un faisceau purement interhémisphérique"],
+
+    /// 2018 ///
+    ["L'observation des voies somesthésiques nous indique", "un protoneurone central", "un deutoneurone médullaire", "une position postérieure des fibres", "des vitesses de conduction pas très rapides"],
+  ["les cornes médullaires apparaissent plus développées au niveau", "sacré", "lombaire", "thoracique", "cervical"],
+  ["le système extralemniscal", "représente un système algique", "montre toujours une absence de myéline", "possède un relais médullaire", "est en lien avec l'etéroception"],
+  ["Si je dois chercher des neurones du SNV alors je dois observer", "les cornes dorsales", "les cornes latérales", "les cornes ventrales", "la région péri-épendymaire"],
+  ["Les colonnes internes médullaires", "représentent les muscles axiaux", "représentent les muscles distaux", "correspondent à la lamination VII", "correspondent à la lamination VIII"],
+  ["le faisceau spinocérébelleux croisé", "est en position dorsale", "est en position ventrale", "est observé au-dessus de T6", "est observé en dessous de T6"],
+  ["La voie pyramidale montre", "une décussation bulbaire", "une décussation médullaire", "une position latérale", "une origine au niveau des pyramides bulbaires"],
+  ["Les fibres des ONTG se projettent sur la lamination", "IV", "V", "VI", "VII"],
+  ["Le faisceau tectospinal", "intègre des informations d'origine visuelles", "intègre des informations d'origine audtives", "fait partie du système extralemniscal", "toutes les propositions sont fausses"],
+  ["Les faisceaux d'association médullaires", "sont présents au niveau dorsal", "sont présents au niveau ventral", "participent à des coordinations motrices", "permettent la communication entre 4 métamères au maximum"],
+  ["Au niveau de la face postérieure du bulbe, on peut observer", "les pyramides bulbaires", "les olives bulbaires", "les pédoncules cérébraux", "la poursuite des cordons dorsaux médullaires"],
+  ["La valvule de Vieussens", "se trouve en position dorsale par rapport au cervelet", "est nommée voile médullaire inférieur", "est nommée voile médullaire supérieur", "s'insèrent entre les tubercules quadrijumeaux supérieurs"],
+  ["Ma tête tourne suite à une onde sonore et mes globes oculaires suivent, on enregistre une augmentation de l'activité au niveau", "des tubercules quadrijumeaux supérieurs", "des tubercules quadrijumeaux inférieurs", "de la substance noire", "de la moelle épinière"],
+  ["Les trous de Pétruscka", "sont au niveau du V3", "sont au niveau du V4", "sont au niveau de l'aqueduc de Sylvius", "n'existent pas"],
+  ["Q15 Le faisceau longitudinal médial", "n'est pas un faisceau d'association hémisphérique", "n'est pas un faisceau d'association du tronc cérébral", "implique des noyaux oculo-moteurs", "ne permet pas une coordination motrice de la face"],
+  ["Q16 La voie vestibulospinale", "est un puissant système pro-gravitaire", "démarre du mésencéphale", "présente deux faisceaux distincts", "finit dans le noyau vestibulaire"],
+  ["Q17 Dans le pédoncule cérébral, le faisceau corticopontique occupe", "le 1/5 de l'épaisseur", "les 3/5 de l'épaisseur", "les 2/5 de l'épaisseur", "les 4/5 de l'épaisseur"],
+  ["Q18 La formation réticulée médiale", "a une fonction sensorielle", "a une fonction motrice", "a une fonction sensorielle et motrice", "démarre de la substance grise péri-aqueducale"],
+  ["Q19 Le nerf crânien VI est le", "oculaire commun", "abducens", "trochléaire", "facial"],
+  ["Q20 Les nerfs crâniens mixtes sont les", "V", "VII", "VIII", "IX"],
+  ["Q21 Le réflexe d'éternuement fait intervenir le noyau du", "V", "VII", "VI", "du X"],
+  ["Q22 La membrana tectoria", "est associée à la valvule de Vieussens", "est associée à la valvule de Tarin", "est localisée dans le triangle pontique", "est localisée dans le triangle bulbaire"],
+  ["Q23 Au niveau du tronc cérébral, on peut observer des pexus choroïdes", "vrai", "faux", "cela dépend des individus", "vrai mais uniquement à l'âge adulte"],
+  ["Q24 Le volume du cervelet représente environ", "1/10 du volume du SN", "50% des neurones du SN", "1/4 des neurones du SN", "1/5 du volume du SN"],
+  ["Q25 Les fibres grimpantes cérébelleuses", "proviennent de la substance réticulée", "se projettent sur les cellules granulaires", "proviennent de l'olive bulbaire", "sont de types inhibitrices"],
+  ["Q26 Le cervelet est une structure", "située au-dessus du mésencéphale", "d'origine rhombencéphalique", "ne traitant que des informations motrices", "dont la lésion provoque des ataxies"],
+  ["Q27 Les fibres moussues cérébelleuses", "sont gabaergiques", "contactent les cellules de Purkinje", "contactent les cellules granulaires", "contactent les cellules d'association inhibitrices"],
+  ["Le vermis cérébelleux", "est en position médiane", "est en position latérale", "participe au lobe flocculonodulaire", "participe au lobe antérieur"],
+  ["La couche interne du cortex cérébelleux ne contient pas les cellules", "étoilées", "granulaires", "de cellules inhibitrices", "de Purkinje"],
+  ["Le noyau fastigial fait partie de", "l'archéocérébellum", "du paléocérébellum", "du néocérébellum", "des noyaux interposés"],
+  ["Quels sont les symptomes possibles d'une atteinte cérébelleuse", "asynergie", "hypermétrie", "dysarthrie", "toutes les réponses précédentes sont fausses"],
+  ["Quelles sont les structures formant le striatum?", "le caudé", "l'épithalamus", "le putamen", "l'habénula"],
+  ["Sont des relais thalamiques moteurs", "le noyau antérieur", "le noyau ventro-antérieur", "le noyau ventropostérieur", "le noyau ventrolatéral"],
+  ["Dans quelle(s) structure(s) peut-on voir une somatotopie?", "dans le corps genouillé latéral", "dans le corps genouillé médial", "dans le noyau ventropostérieur latéral", "dans le noyau médiodorsal"],
+  ["Le noyau suprachiasmatique est situé dans", "l'hypothalamus médial", "l'hypothalamus latéral", "l'hypothalamus antérieur", "l'hypothalamus tubérien"],
+  ["La régulation de la prise alimentaire fait intervenir", "le noyau antérieur hypothalamique", "le noyau arqué", "le noyau dorsomédian", "le noyau postérieur"],
+  ["La structure nommée hypophyse", "a une origine non nerveuse", "a une origine nerveuse", "peut être dissociée en lobes", "provient en partie d'une invagination"],
+  ["Dans la face médiale du lobe frontal on peut trouver", "le sillon précentral", "le sillon calcarin", "le sillon cingulaire", "le sillon rhinal"],
+  ["Laquelle de ces régions est en position intermédiaire?", "pars orbitalis", "pars réticulata", "pars triangularis", "pars opercularis"],
+  ["Les gyrus courts du lobe de l'insula sont au nombre", "2", "3", "4", "5"],
+  ["La disposition dans l'ordre correct des gyrus suivants est", "gyrus postcentral-gyrus angulaire-gyrus supramarginal", "gyrus postcentral-gyrus supramarginal-gyrus angulaire", "gyrus supramarginal-gyrus angulaire-gyrus postcentral", "aucune de ces dispositions n'est la bonne"],
+  ["Le circuit de la récompense ne comprend pas", "des noyaux de l'hypothalamus", "l'aire tegmentale ventrale", "la substance périventriculaire", "l'aire du septum"],
+  ["Le précuneus correspond à", "P1", "P2", "O5", "O6"],
+  ["Le néocortex peut contenir", "3 couches cellulaires", "4 couches cellulaires", "5 couches cellulaires", "6 couches cellulaires"],
+  ["Une commissure postérieure peut être", "hippocampique", "télencéphalique", "mésencéphalique", "médullaire"],
+  ["Le cortex auditif est", "pariétal", "temporal", "frontal", "cingulaire"],
+  ["Le forceps major", "est en position frontal", "est en position occipital", "fait partie d'un faisceau intrahémisphérique", "est unilatéral"],
+  ["Font partie du système limbique", "l'amygdale", "l'aire septale", "le noyau accumbens", "le myélencéphale"],
+  ["Le gyrus rectus est", "frontal", "pariétal", "temporal", "occipital"],
+  ["Le noyau en position la plus dorsale est le", "caudé", "putamen", "pallidum", "claustrum"],
+
+  /// 2019 ///
+  [
+    "Au niveau de la face antérieure du bulbe, on peut observer",
+    "Les neurones des noyaux olivaires",
+    "Les pyramides bulbaires",
+    "Les pédoncules bulbaires",
+    "Des sillons latéraux",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Le voile médullaire supérieur se trouve",
+    "En position ventrale par rapport au cervelet",
+    "Entre les pédoncules cérébelleux",
+    "Entre les pédoncules cérébraux",
+    "En position dorsale par rapport au cervelet",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Les trous de Luschka",
+    "Sont au niveau de l’aqueduc de Sylvius",
+    "Sont entre les VL et le V3",
+    "Sont au niveau du V4",
+    "N’existent pas",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Ma tête tourne suite à un bruit et mes yeux suivent, merci:",
+    "Aux tubercules quadrijumeaux supérieurs",
+    "Aux tubercules quadrijumeaux inférieurs",
+    "Au raphé",
+    "Au noyau rouge",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Le faisceau longitudinal médial",
+    "Est un faisceau d'association télencéphalique",
+    "Est un faisceau d'association cérébral",
+    "Implique le nerf crânien n°6",
+    "Permet une coordination motrice de l’activité linguale",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "La voie vestibulospinale",
+    "Est un puissant système antigravitaire",
+    "Présente deux faisceaux",
+    "Démarre de l'oreille interne",
+    "Démarre de la moelle épinière",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "La formation réticulée latérale",
+    "A une fonction sensorielle",
+    "A une fonction motrice",
+    "A une fonction sensorielle et motrice",
+    "Reçoit des projections du noyau vestibulaire",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Le nerf crânien IV est le :",
+    "Oculaire commun",
+    "Abducens",
+    "Trochléaire",
+    "Nerf naissant de la face dorsale mésencéphalique",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Le nerf crânien III est:",
+    "L'hypoglosse",
+    "Moteur",
+    "Sensitif",
+    "Végétatif",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Une adiadococinésie",
+    "Est une erreur de direction motrice",
+    "Est une décomposition du mouvement qui n’est plus fluide",
+    "Est une difficulté à enchainer des mouvements rapides",
+    "Est une initiation retardée du mouvement",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Les fibres grimpantes cérébelleuses contactent",
+    "Les noyaux cérébelleux",
+    "Les cellules granulaires",
+    "Les cellules de Purkinje",
+    "Les noyaux olivaires",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Le volume du cervelet représente environ",
+    "1/5 du volume de SN",
+    "1/10 du volume de SN",
+    "2/10 du volume de SN",
+    "1/4 du volume de SN",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Les fibres moussues cérébelleuses proviennent",
+    "Des noyaux réticulaires",
+    "Des noyaux cérébelleux",
+    "De la moelle épinière",
+    "Les réponses A, B, C sont fausses"
+  ],
+  [
+    "Le cervelet est une structure",
+    "Proencéphalique",
+    "Métencéphalique",
+    "Rhombencéphaliqe",
+    "Multilobée",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Le lobe flocculonodulaire",
+    "Contient un flocculus et un nodule",
+    "Contient un nodule et deux flocculus",
+    "Est de l’archéocerebellum",
+    "Est du vestibulocérébellum",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "La couche interne du cortex cérébelleux est formée par les",
+    "cellules",
+    "Granulaires",
+    "En corbeille",
+    "De Golgi",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Chassez l’intrus",
+    "Globulus",
+    "Pallidus",
+    "Embolus",
+    "Dentelé",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "La marche ébrieuse est consécutive à une atteinte du",
+    "Vestibulocervelet",
+    "Spinocervelet",
+    "Néocervelet",
+    "Polygone de sustentation",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "L'habénula est un noyau",
+    "Relais",
+    "Thalamique",
+    "Traitant d’informations olfactives",
+    "En relation avec la réticulée",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Quelles sont les noyaux thalamiques spécifiques ?",
+    "Noyau réticulaire",
+    "Noyau latéral dorsal",
+    "Noyau centromédian",
+    "Pulvinar",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Chassez l’intrus",
+    "Corps genouillé latéral",
+    "Corps genouillé médial",
+    "Noyau ventro-latéral",
+    "Noyau ventro-postérieur"
+  ],
+  [
+    "Dans l'hypothalamus moyen, on trouve",
+    "Le noyau dorsomédian",
+    "Le noyau arqué",
+    "Les corps mamillaires",
+    "Le noyau postérieur",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [ "Lequel de ces noyaux participe à la diurèse",
+    "Noyau paraventriculaire",
+    "Noyau suprachiasmatique",
+    "Aire préoptique",
+    "Noyau supra-optique",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "L'hypophyse neuroendocrine correspond à",
+    "L'hypophyse antérieure",
+    "L'hypophyse postérieure",
+    "L'adénophyse",
+    "Les réponses A, B, C sont fausses"
+  ],
+  [
+    "Dans la face latérale du lobe frontal, on ne trouve pas",
+    "Le sillon supérieur",
+    "Le sillon moyen",
+    "Le sillon inférieur",
+    "Le sillon postcentral",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Laquelle de ces régions est intermédiaire?",
+    "Pars orbitalis",
+    "Pars opercularis",
+    "Pars triangularis",
+    "Pars compacta",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Chassez l’intrus",
+    "Gyrus pariétal inférieur",
+    "Gyrus P2",
+    "Gyrus P1",
+    "Gyrus angulaire"
+  ],
+  [
+    "Le lobe de l’insula contient",
+    "2 gyri longs",
+    "2 gyri courts",
+    "5 gyri",
+    "6 gyri",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Le cuneus correspond à du",
+    "Frontal",
+    "Pariétal",
+    "Occipital",
+    "Temporal",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Les noyaux lenticulaires correspondent au(x)",
+    "Caudé",
+    "Pallidum",
+    "Paléostriatum",
+    "Ganglions de la base",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Le paléocortex peut contenir",
+    "2 couches cellulaires",
+    "3 couches cellulaires",
+    "5 couches cellulaires",
+    "6 couches cellulaires",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  ["Le forceps major",
+    "Est en position frontale",
+    "Est en position occipitale",
+    "Est associé à une commissure intrahémisphérique",
+    "Les réponses A, B, C sont fausses"
+  ],
+  [
+    "La commissure antérieure est une commissure",
+    "Hippocampique",
+    "Visuelle",
+    "Mésencéphalique",
+    "Olfactive",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "L’uncus est",
+    "Une région de l'hippocampe",
+    "Est dans le lobe pariétal",
+    "Est dans le lobe temporal",
+    "Est un faisceau de substance blanche encéphalique",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Le sillon pariétal vertical délimite",
+    "La CPA du gyrus P1",
+    "La CPA du gyrus P2",
+    "Le gyrus P1 du gyrus P2",
+    "Le gyrus P2 du gyrus angulaire",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Le système limbique ne comprend pas",
+    "Les amygdales",
+    "Le noyau accumbens",
+    "Le septum lucidum",
+    "L’hippocampe",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Le circuit de la récompense comprend",
+    "L’aire tectale ventrale",
+    "La substance grise périaqueducale",
+    "L’aire septale",
+    "Le noyau ventromédian",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "La voie pyramidale traverse",
+    "La capsule interne",
+    "La capsule externe",
+    "La capsule extrême",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+  [
+    "Le fornix",
+    "Est aussi nommé faisceau hippocampo-mamillaire",
+    "Est aussi nommé trigone",
+    "Est un faisceau purement intrahémisphérique",
+    "Est un faisceau purement interhémisphérique",
+    "Les réponses A, B, C, D sont fausses"
+  ],
+
+  /// 2020 ///
+  [
+    "Au niveau de la face antérieure du bulbe, on peut observer",
+    "Les neurones des noyaux olivaires",
+    "Les pyramides bulbaires",
+    "Les pédoncules bulbaires",
+    "Des sillons centraux"
+  ],
+  [
+    "Le voile médullaire inférieur se trouve",
+    "En position ventrale par rapport au cervelet",
+    "Entre les pédoncules cérébelleux",
+    "Entre les pédoncules cérébraux",
+    "En position dorsale par rapport au cervelet"
+  ],
+  [
+    "Les trous de Luschka",
+    "Sont au niveau du diencéphale",
+    "Sont entre le V3 et le V4",
+    "Sont au niveau du V4",
+    "N’existent pas"
+  ],
+  [
+    "Ma tête tourne suite à un bruit et mes yeux suivent, merci:",
+    "Aux tubercules quadrijumeaux supérieurs",
+    "Aux tubercules quadrijumeaux inférieurs",
+    "Au cortex moteur primaire",
+    "Au noyau rouge"
+  ],
+  [
+    "Le faisceau longitudinal médial",
+    "Est un faisceau d'association diencéphalique",
+    "Est un faisceau d'association médullaire",
+    "Implique le nerf crânien n°4",
+    "Permet une coordination motrice de l’activité linguale"
+  ],
+  [
+    "La voie vestibulospinale",
+    "Est un puissant système gravitaire",
+    "Présente deux faisceaux",
+    "Démarre de l'oreille interne",
+    "Démarre de la moelle épinière"
+  ],
+  [
+    "Dans le pédoncule cérébral, le faisceau géniculé occupe",
+    "Le 1/5",
+    "Les 3/5",
+    "Les 4/5",
+    "Aucune place puisque n’y passant pas !"
+  ],
+  [
+    "La formation réticulée latérale",
+    "A une fonction sensorielle",
+    "A une fonction motrice",
+    "A une fonction antalgique",
+    "Reçoit des projections du noyau vestibulaire"
+  ],
+  [
+    "Le nerf crânien III est le :",
+    "Oculaire commun",
+    "Abducens",
+    "Trochléaire",
+    "Nerf naissant de la face dorsale mésencéphalique"
+  ],
+  [
+    "Le nerf crânien X est:",
+    "L'hypoglosse",
+    "Moteur",
+    "Sensitif",
+    "Végétatif"
+  ],
+  [
+    "Une adiadococinésie",
+    "Est une erreur de chronologie motrice",
+    "Est une décomposition du mouvement qui n’est plus fluide",
+    "Est une difficulté à enchainer des mouvements rapides",
+    "Est une initiation anticipée du mouvement"
+  ],
+  [
+    "Les fibres grimpantes cérébelleuses contactent",
+    "Les noyaux cérébelleux",
+    "Les cellules granulaires",
+    "Les cellules de Purkinje",
+    "Les noyaux olivaires"
+  ],
+  [
+    "Le volume du cervelet représente environ",
+    "1/5 du volume de SN",
+    "1/10 du volume de SN",
+    "5/10 du volume de SN",
+    "1/4 du volume de SN"
+  ],
+  [
+    "Les fibres grimpantes cérébelleuses proviennent",
+    "Des noyaux réticulaires",
+    "Des noyaux cérébelleux",
+    "De la moelle épinière",
+    "Aucune des réponses précédentes"
+  ],
+  [
+    "Le cervelet est une structure",
+    "Proencéphalique",
+    "Mésencéphalique",
+    "Rhombencéphaliqe",
+    "Du tectum"
+  ],
+  [
+    "Le lobe flocculonodulaire",
+    "Contient un flocculus et un nodule",
+    "Est en charge de la motricité fine",
+    "Est de l’archéocerebellum",
+    "Est du vestibulocérébellum"
+  ],
+  [
+    "La couche interne du cortex cérébelleux ne contient pas les cellules",
+    "Etoilées",
+    "Granulaires",
+    "En corbeille",
+    "De Golgi"
+  ],
+  [
+    "Quels noyaux sont associés à un groupe nucléaire?",
+    "Globulus",
+    "Pallidus",
+    "Embolus",
+    "Dentelé"
+  ],
+  [
+    "La marche ébrieuse est consécutive à une atteinte du",
+    "Vestibulocervelet",
+    "Spinocervelet",
+    "Néocervelet",
+    "Polygone de sustentation"
+  ],
+  [
+    "L'habénula est un noyau",
+    "Dorsal",
+    "Ventral",
+    "Traitant d’informations olfactives",
+    "En relation avec la réticulée"
+  ],
+  [
+    "Quelles sont les noyaux thalamiques spécifiques ?",
+    "Noyau ventropostérieur",
+    "Noyau médiodorsal",
+    "Noyau centromédian",
+    "Pulvinar"
+  ],
+  [
+    "Chassez l’intrus",
+    "Corps genouillé latéral",
+    "Corps genouillé médial",
+    "Noyau ventro-antérieur",
+    "Noyau ventro-postérieur"
+  ],
+  [
+    "Dans l'hypothalamus moyen, on trouve",
+    "Le noyau dorsomédian",
+    "Le noyau arqué",
+    "Les corps mamillaires",
+    "Le noyau postérieur"
+  ],
+  [
+    "Lequel de ces noyaux participe au rythme biologique?",
+    "Noyau paraventriculaire",
+    "Noyau suprachiasmatique",
+    "Aire préoptique",
+    "Noyau supra-optique"
+  ],
+  [
+    "L'hypophyse endocrine correspond à",
+    "L'hypophyse antérieure",
+    "L'hypophyse postérieure",
+    "L'adénophyse",
+    "Toutes les réponses précédentes sont fausses"
+  ],
+  [
+    "Dans la face latérale du lobe frontal, on trouve",
+    "Le sillon supérieur",
+    "Le sillon moyen",
+    "Le sillon inférieur",
+    "Le sillon postcentral"
+  ],
+  [
+    "Laquelle de ces régions est caudale ?",
+    "Pars orbitalis",
+    "Pars opercularis",
+    "Pars triangularis",
+    "Pars compacta"
+  ],
+  [
+    "Chassez l’intrus",
+    "Gyrus pariétal inférieur",
+    "Gyrus P2",
+    "Gyrus P1",
+    "Gyrus supramarginal"
+  ],
+  [
+    "Le lobe de l’insula contient",
+    "2 gyri longs",
+    "2 gyri courts",
+    "4 gyri",
+    "6 gyri"
+  ],
+  [
+    "Le precuneus correspond à du",
+    "Frontal",
+    "Pariétal",
+    "Occipital",
+    "Temporal"
+  ],
+  [
+    "Les noyaux lenticulaires correspondent au(x)",
+    "Caudé",
+    "Pallidum",
+    "Paléostriatum",
+    "Claustrum"
+  ],
+  [
+    "L'archicortex contient",
+    "2 couches cellulaires",
+    "3 couches cellulaires",
+    "4 couches cellulaires",
+    "5 couches cellulaires"
+  ],
+  [
+    "Le forceps major",
+    "Est en position frontale",
+    "Est en position médiane",
+    "Est associé à une commissure intrahémisphérique",
+    "Aucune des réponses précédentes"
+  ],
+  [
+    "La commissure antérieure est une commissure",
+    "Hippocampique",
+    "Visuelle",
+    "Mésencéphalique",
+    "Olfactive"
+  ],
+  [
+    "L’uncus est",
+    "Une région de l'hippocampe",
+    "Est proche de l'amygdale",
+    "Est dans le lobe temporal",
+    "Est un faisceau de substance blanche télencéphalique"
+  ],
+  [
+    "Le sillon pariétal vertical délimite",
+    "La CPA du gyrus P1",
+    "La CPA du gyrus P2",
+    "Le gyrus P1 du gyrus P2",
+    "Le gyrus P2 du gyrus angulaire"
+  ],
+  [
+    "Le système limbique ne comprend pas",
+    "Les gyri orbitaires",
+    "Les noyaux accumbens",
+    "Le septum lucidum",
+    "Le rhinencéphale"
+  ],
+  [
+    "Le circuit de la récompense comprend",
+    "L’aire tectale dorsale",
+    "La substance grise périaqueducale",
+    "L’aire septale",
+    "Le thalamus"
+  ],
+  [
+    "La voie pyramidale traverse",
+    "La capsule interne",
+    "La capsule externe",
+    "La capsule extrême",
+    "les pédoncules cérébraux"
+  ],
+  [
+    "Le fornix",
+    "Est aussi nommé faisceau hippocampo-mamillaire",
+    "Est aussi nommé trigone",
+    "Est un faisceau purement intrahémisphérique",
+    "Est un faisceau purement interhémisphérique"
+  ],
+
+  ///2021///
+
+  [
+    "Le cervelet est une structure",
+    "Proencéphalique",
+    "Mésencéphalique",
+    "Rhombencéphalique",
+    "Du tectum"
+  ],
+  [
+    "L’uncus est",
+    "Une région de l'hippocampe",
+    "Est proche de l'amygdale",
+    "Est dans le lobe temporal",
+    "Est un faisceau de substance blanche télencéphalique"
+  ],
+  [
+    "La voie vestibulospinale",
+    "Est un puissant système gravitaire",
+    "Présente deux faisceaux",
+    "Démarre de l'oreille interne",
+    "Démarre de la moelle épinière"
+  ],
+  [
+    "Au niveau de la face antérieure du bulbe, on peut observer",
+    "Les neurones des noyaux olivaires",
+    "Les pyramides bulbaires",
+    "Les pédoncules bulbaires",
+    "Des sillons centraux"
+  ],
+  [
+    "Le voile médullaire inférieur se trouve",
+    "En position ventrale par rapport au cervelet",
+    "Entre les pédoncules cérébelleux",
+    "Entre les pédoncules cérébraux",
+    "En position dorsale par rapport au cervelet"
+  ],
+  [
+    "Ma tête tourne suite à un bruit, merci:",
+    "Aux tubercules quadrijumeaux supérieurs",
+    "Aux tubercules quadrijumeaux inférieurs",
+    "Au cortex moteur primaire",
+    "Au noyau rouge"
+  ],
+  [
+    "Le faisceau longitudinal médial",
+    "Est un faisceau d'association diencéphalique",
+    "Est un faisceau d'association médullaire",
+    "Implique le nerf crânien n°4",
+    "Permet une coordination motrice de l’activité linguale"
+  ],
+  [
+    "Dans le pédoncule cérébral, le faisceau géniculé occupe",
+    "Le 1/5",
+    "Les 3/5",
+    "Les 4/5",
+    "Aucune place puisque n’y passant pas !"
+  ],
+  [
+    "La formation réticulée latérale",
+    "A une fonction sensorielle",
+    "A une fonction motrice",
+    "A une fonction antalgique",
+    "Reçoit des projections du noyau vestibulaire"
+  ],
+  [
+    "Le système limbique ne comprend pas",
+    "Les gyri orbitaires",
+    "Les noyaux accumbens",
+    "Le septum lucidum",
+    "Le rhinencéphale"
+  ],
+  [
+    "Le nerf crânien III est le :",
+    "Oculaire commun",
+    "Abducens",
+    "Trochléaire",
+    "Nerf naissant de la face dorsale mésencéphalique"
+  ],
+  [
+    "Une adiadococinésie",
+    "Est une erreur de chronologie motrice",
+    "Est une décomposition du mouvement qui n’est plus fluide",
+    "Est une difficulté à enchainer des mouvements rapides",
+    "Est une initiation anticipée du mouvement"
+  ],
+  [
+    "Les fibres grimpantes cérébelleuses contactent",
+    "Les noyaux cérébelleux",
+    "Les cellules granulaires",
+    "Les cellules de Purkinje",
+    "Les noyaux olivaires"
+  ],
+  [
+    "Quelles sont les noyaux thalamiques spécifiques ?",
+    "Noyau ventropostérieur",
+    "Noyau médiodorsal",
+    "Noyau centromédian",
+    "Pulvinar"
+  ],
+  [
+    "Lequel de ces noyaux participe au rythme biologique?",
+    "Noyau paraventriculaire",
+    "Noyau suprachiasmatique",
+    "Aire préoptique",
+    "Noyau supra-optique"
+  ],
+  [
+    "Le volume du cervelet représente environ",
+    "1/5 du volume de SN",
+    "1/10 du volume de SN",
+    "5/10 du volume de SN",
+    "1/4 du volume de SN"
+  ],
+  [
+    "Le lobe flocculonodulaire",
+    "Contient un flocculus et un nodule",
+    "Est en charge de la motricité fine",
+    "Est de l’archéocerebellum",
+    "Est du vestibulocérébellum"
+  ],
+  [
+    "Dans l'hypothalamus moyen, on trouve",
+    "Le noyau dorsomédian",
+    "Le noyau arqué",
+    "Les corps mamillaires",
+    "Le noyau postérieur"
+  ],
+  [
+    "La couche interne du cortex cérébelleux ne contient pas les cellules",
+    "Etoilées",
+    "Granulaires",
+    "En corbeille",
+    "De Golgi"
+  ],
+  [
+    "Quels noyaux sont associés dans un groupe nucléaire ?",
+    "Globulus",
+    "Pallidus",
+    "Embolus",
+    "Dentelé"
+  ],
+  [
+    "Les trous de Luschka",
+    "Sont au niveau du diencéphale",
+    "Sont entre le V3 et le V4",
+    "Sont au niveau du V4",
+    "N’existent pas"
+  ],
+  [
+    "L'habénula est un noyau",
+    "Dorsal",
+    "Ventral",
+    "Traitant d’informations olfactives",
+    "En relation avec la réticulée"
+  ],
+  [
+    "Chassez l’intrus",
+    "Corps genouillé latéral",
+    "Corps genouillé médial",
+    "Noyau ventro-antérieur",
+    "Noyau ventro-postérieur"
+  ],
+  [
+    "L'hypophyse endocrine correspond à",
+    "L'hypophyse antérieure",
+    "L'hypophyse postérieure",
+    "L'adénophyse",
+    "Toutes les réponses sont fausses"
+  ],
+  [
+    "Dans la face latérale du lobe frontal, on trouve",
+    "Le sillon supérieur",
+    "Le sillon moyen",
+    "Le sillon inférieur",
+    "Le sillon postcentral"
+  ],
+  [
+    "Laquelle de ces régions est caudale ?",
+    "Pars orbitalis",
+    "Pars opercularis",
+    "Pars triangularis",
+    "Pars compacta"
+  ],
+  [
+    "Chassez l’intrus",
+    "Gyrus pariétal inférieur",
+    "Gyrus P2",
+    "Gyrus P1",
+    "Gyrus supramarginal"
+  ],
+  [
+    "Le lobe de l’insula contient",
+    "2 gyri longs",
+    "2 gyri courts",
+    "4 gyri",
+    "6 gyri"
+  ],
+  [
+    "Le precuneus correspond à du",
+    "Frontal",
+    "Pariétal",
+    "Occipital",
+    "Temporal"
+  ],
+  [
+    "Les noyaux lenticulaires correspondent au(x)",
+    "Caudé",
+    "Pallidum",
+    "Paléostriatum",
+    "Claustrum"
+  ],
+  [
+    "L'archicortex contient",
+    "2 couches cellulaires",
+    "3 couches cellulaires",
+    "4 couches cellulaires",
+    "5 couches cellulaires"
+  ],
+  [
+    "Le forceps major",
+    "Est en position frontale",
+    "Est en position médiane",
+    "Est associé à une commissure intrahémisphérique",
+    "Aucune des réponses"
+  ],
+  [
+    "La commissure antérieure est une commissure",
+    "Hippocampique",
+    "Visuelle",
+    "Mésencéphalique",
+    "Olfactive"
+  ],
+  [
+    "Le sillon pariétal vertical délimite",
+    "La CPA du gyrus P1",
+    "La CPA du gyrus P2",
+    "Le gyrus P1 du gyrus P2",
+    "Le gyrus P2 du gyrus angulaire"
+  ],
+  [
+    "Le circuit de la récompense comprend",
+    "L’aire tectale dorsale",
+    "La substance grise périaqueducale",
+    "L’aire septale",
+    "Le thalamus"
+  ],
+  [
+    "Les fibres grimpantes cérébelleuses proviennent",
+    "Des noyaux réticulaires",
+    "Des noyaux cérébelleux",
+    "De la moelle épinière",
+    "Aucune des réponses"
+  ],
+  [
+    "La voie pyramidale traverse",
+    "La capsule interne",
+    "La capsule externe",
+    "La capsule extrême",
+    "Les pédoncules cérébraux"
+  ],
+  [
+    "Le fornix",
+    "Est aussi nommé faisceau hippocampo-mamillaire",
+    "Est aussi nommé trigone",
+    "Est un faisceau purement intrahémisphérique",
+    "Est un faisceau purement interhémisphérique"
+  ],
+  [
+    "La marche ébrieuse est consécutive à une atteinte du",
+    "Vestibulocervelet",
+    "Spinocervelet",
+    "Néocervelet",
+    "Polygone de sustentation"
+  ],
+  [
+    "Le nerf crânien X est:",
+    "L'hypoglosse",
+    "Moteur",
+    "Sensitif",
+    "Végétatif"
+  ]
+
+
+];
+
+const rep = [
+    "01010",
+    "11000",
+    "00100",
+    "10000",
+    "01100",
+    "11100",
+    "10000",
+    "10010",
+    "00100",
+    "00010",
+    "11000",
+    "00100",
+    "01000",
+    "10100",
+    "01110",
+    "01100",
+    "01000",
+    "01000",
+    "11000",
+    "11110",
+    "10100",
+    "00100",
+    "00110",
+    "00010",
+    "10100",
+    "10100",
+    "01000",
+    "00100",
+    "00100",
+    "00010",
+    "01110",
+    "01110",
+    "10000",
+    "00110",
+    "10100",
+    "00100",
+    "11010",
+    "10110",
+    "10000",
+    "10100",
+
+    /// 2018 ///
+    "00100",
+    "01010",
+    "10110",
+    "01010",
+    "10010",
+    "01110",
+    "11100",
+    "00100",
+    "11000",
+    "11100",
+    "00010",
+    "00100",
+    "01010",
+    "00010",
+    "10110",
+    "00100",
+    "10000",
+    "01000",
+    "01000",
+    "11010",
+    "10000",
+    "00010",
+    "10000",
+    "11000",
+    "00100",
+    "01010",
+    "00110",
+    "10110",
+    "10010",
+    "10000",
+    "11100",
+    "10100",
+    "01010",
+    "00100",
+    "10100",
+    "01100",
+    "11100",
+    "10100",
+    "00100",
+    "01000",
+    "01000",
+    "00100",
+    "01000",
+    "00010",
+    "01010",
+    "01000",
+    "01000",
+    "11100",
+    "10000",
+    "10000",
+
+    /// 2019 ///
+    "01000",
+    "11000",
+    "00100",
+    "01000",
+    "00100",
+    "11000",
+    "10010",
+    "00100",
+    "01000",
+    "00100",
+    "00100",
+    "01000",
+    "10100",
+    "01110",
+    "01100",
+    "01010",
+    "01000",
+    "11000",
+    "11110",
+    "01010",
+    "00100",
+    "11000",
+    "00010",
+    "01000",
+    "01010",
+    "00100",
+    "00100",
+    "10100",
+    "00100",
+    "01100",
+    "00110",
+    "01000",
+    "00010",
+    "00100",
+    "11000",
+    "00100",
+    "00100",
+    "10000",
+    "10100",
+    
+    /// 2020 ///
+    "01000",
+    "11000",
+    "00100",
+    "01000",
+    "00100",
+    "01000",
+    "10000",
+    "10010",
+    "10000",
+    "01110",
+    "00100",
+    "00100",
+    "01000",
+    "00010",
+    "00100",
+    "00110",
+    "10100",
+    "10110",
+    "11000",
+    "10110",
+    "01010",
+    "00100",
+    "11000",
+    "01000",
+    "11100",
+    "10100",
+    "01000",
+    "00100",
+    "10000",
+    "01000",
+    "01100",
+    "01000",
+    "00010",
+    "00010",
+    "01100",
+    "11000",
+    "00100",
+    "00110",
+    "10010",
+    "10000",
+    /// 2021 ///
+
+    "00100",
+    "01100",
+    "01000",
+    "01000",
+    "11000",
+    "01000",
+    "00100",
+    "10000",
+    "10010",
+    "00100",
+    "10000",
+    "00100",
+    "00100",
+    "01010",
+    "01000",
+    "01000",
+    "00110",
+    "11000",
+    "10100",
+    "10110",
+    "00100",
+    "10110",
+    "00100",
+    "11100",
+    "10100",
+    "01000",
+    "00100",
+    "10000",
+    "01000",
+    "01100",
+    "01000",
+    "00010",
+    "00010",
+    "11000",
+    "00110",
+    "00010",
+    "10010",
+    "10000",
+    "11000",
+    "01110"
+   
+    ]
+
+var num_question=-1;
+</script>
+<script>
+    var score =0;
+function rep1_select(){
+    if (document.getElementById('reponse_1').style.backgroundColor == "white"){
+        document.getElementById('reponse_1').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_1').style.backgroundColor = "white"
+    }
+}
+
+function rep2_select(){
+    if (document.getElementById('reponse_2').style.backgroundColor == "white"){
+        document.getElementById('reponse_2').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_2').style.backgroundColor = "white"
+    }
+}
+
+function rep3_select(){
+    if (document.getElementById('reponse_3').style.backgroundColor == "white"){
+        document.getElementById('reponse_3').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_3').style.backgroundColor = "white"
+    }
+}
+
+function rep4_select(){
+    if (document.getElementById('reponse_4').style.backgroundColor == "white"){
+        document.getElementById('reponse_4').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_4').style.backgroundColor = "white"
+    }
+}
+
+function rep5_select(){
+    if (document.getElementById('reponse_5').style.backgroundColor == "white"){
+        document.getElementById('reponse_5').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_5').style.backgroundColor = "white"
+    }
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function q_suivante(){
+
+    if((document.getElementById('reponse_1').style.backgroundColor !="yellow" && document.getElementById('reponse_1').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_2').style.backgroundColor !="yellow" && document.getElementById('reponse_2').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_3').style.backgroundColor !="yellow" && document.getElementById('reponse_3').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_4').style.backgroundColor !="yellow" && document.getElementById('reponse_4').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_5').style.backgroundColor !="yellow" && document.getElementById('reponse_5').style.backgroundColor !="red")
+    &&(
+        document.getElementById('reponse_1').style.backgroundColor =="green" ||
+        document.getElementById('reponse_2').style.backgroundColor =="green" ||
+        document.getElementById('reponse_3').style.backgroundColor =="green" ||
+        document.getElementById('reponse_4').style.backgroundColor =="green" ||
+        document.getElementById('reponse_5').style.backgroundColor =="green" 
+    )){
+        score++; 
+    }
+    else 
+    {
+        score =0;
+    }
+
+    num_question++;
+    ///=getRandomInt(data.length)
+    document.getElementById("question").textContent = data[num_question][0] 
+    document.getElementById("reponse_1").textContent = data[num_question][1] 
+    document.getElementById("reponse_2").textContent = data[num_question][2] 
+    document.getElementById("reponse_3").textContent = data[num_question][3] 
+    document.getElementById("reponse_4").textContent = data[num_question][4] 
+    document.getElementById("reponse_5").textContent = data[num_question][5] 
+
+    document.getElementById('reponse_1').style.backgroundColor = "white"
+    document.getElementById('reponse_2').style.backgroundColor = "white"
+    document.getElementById('reponse_3').style.backgroundColor = "white"
+    document.getElementById('reponse_4').style.backgroundColor = "white"
+    document.getElementById('reponse_5').style.backgroundColor = "white"
+
+    document.getElementById('score').innerHTML = "score : " + score;
+}
+
+function valider(){
+    chars = rep[num_question].split('');
+    if (document.getElementById('reponse_1').style.backgroundColor =="grey" && chars[0] == "1" ){
+        document.getElementById('reponse_1').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_1').style.backgroundColor =="grey" && chars[0] == "0" ){
+        document.getElementById('reponse_1').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_1').style.backgroundColor =="white" && chars[0] == "1" ){
+        document.getElementById('reponse_1').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_2').style.backgroundColor =="grey" && chars[1] == "1" ){
+        document.getElementById('reponse_2').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_2').style.backgroundColor =="grey" && chars[1] == "0" ){
+        document.getElementById('reponse_2').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_2').style.backgroundColor =="white" && chars[1] == "1" ){
+        document.getElementById('reponse_2').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_3').style.backgroundColor =="grey" && chars[2] == "1" ){
+        document.getElementById('reponse_3').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_3').style.backgroundColor =="grey" && chars[2] == "0" ){
+        document.getElementById('reponse_3').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_3').style.backgroundColor =="white" && chars[2] == "1" ){
+        document.getElementById('reponse_3').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_4').style.backgroundColor =="grey" && chars[3] == "1" ){
+        document.getElementById('reponse_4').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_4').style.backgroundColor =="grey" && chars[3] == "0" ){
+        document.getElementById('reponse_4').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_4').style.backgroundColor =="white" && chars[3] == "1" ){
+        document.getElementById('reponse_4').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_5').style.backgroundColor =="grey" && chars[4] == "1" ){
+        document.getElementById('reponse_5').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_5').style.backgroundColor =="grey" && chars[4] == "0" ){
+        document.getElementById('reponse_5').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_5').style.backgroundColor =="white" && chars[4] == "1" ){
+        document.getElementById('reponse_5').style.backgroundColor ="yellow"
+    }
+
+   
+}
+
+
+</script>
+
+
+<body>
+  <!-- Contenu de la page -->
+  
+  <!-- En-tête de la page -->
+  <header>
+    <!-- Logo, menu, etc. -->
+  </header>
+
+  <!-- Corps de la page -->
+  <main>
+    <p id="top"><a id="score">score : 0</a><a href="index.html" id="menu">Menu</a></p>
+    <p id="question">Appuyez sur "Q suivante" </p>
+    <section id="checkbox">
+        <p style="background-color:white" onclick="rep1_select()" id="reponse_1">Réponse 1</p>
+        <p style="background-color:white" onclick="rep2_select()" id="reponse_2">Réponse 2</p>
+        <p style="background-color:white" onclick="rep3_select()" id="reponse_3">Réponse 3</p>
+        <p style="background-color:white" onclick="rep4_select()" id="reponse_4">Réponse 4</p>
+        <p style="background-color:white" onclick="rep5_select()" id="reponse_5">Réponse 5</p>
+    </section> 
+    <section id="bouton">
+    <input id="valider" type="button" value="Valider" onclick="valider()">
+    <input id="q_suivante" type="button" value="Q suivante" onclick="q_suivante()">
+    </section>
+  </main>
+
+
+</body>
+</html>

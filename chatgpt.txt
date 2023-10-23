@@ -1,0 +1,1 @@
+fait un tableau javascript avec la syntaxe suivante [[question,reponse1,reponse2,reponse3,....],...] a partir du questionnaire suivant   et je ne veux pas voir de "...", de "a)" ni de numero de question mais toute les questions/reponses du questionnaire :  

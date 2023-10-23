@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physiologie</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- Lien vers votre fichier CSS externe -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../qcm.css">
+</head>
+<script >
+const data = [
+    ///2016///
+["Concernant la physiologie :", "la théorie cellulaire de Schwann date du XVIe siècle", "ce que l'on appelle l'anabolisme correspond à des réactions de déconstruction", "l'homéostasie est un mécanisme passif qui ne nécessite pas de consommation d'énergie", "les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "il est correct de dire que l'humain vit dans un écosystème", "la matière organique est uniquement constituée de quatre types d'atomes : le carbone, l'hydrogène, l'oxygène et l'azote", "l'histologie est une discipline qui étudie les tissus biologiques", "les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "les triacyglycérols sont des glucides", "un triacyglycérols est constitué par une molécule de glycérol, deux acides gras et un groupement phosphate", "des structures glucidiques peuvent s'associer aux membranes cellulaires", "les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "une protéine peut avoir une activité enzymatique", "un feuillet bêta est un arrangement tridimensionnel particulier qui peut s'observer dans une protéine", "les acides nucléiques sont uniquement constitués par des protéines", "les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "un épithélium est dit simple quand il est constitué d'une seule assise cellulaire", "le tissu conjonctif n'est jamais vascularisé", "la peau participe à la synthèse de la vitamine D", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "le psoas sépare la cavité thoracique de la cavité abdomino-pelvienne", "le médiastin se trouve dans la région abdominale", "il arrive, qu'au lieu de se trouver plutôt sur le côté gauche du corps, le cœur se trouve sur le côté droit du corps", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "le feuillet pariétal du péricarde séreux s'appelle également épicarde et est en contact avec le muscle cardiaque", "une inflammation de l'endocarde est appelée endocardite", "les veines pulmonaires se situent entre le ventricule droit et les poumons", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "les valves situées entre les vaisseaux qui amènent le sang aux oreillettes et les oreillettes se nomment valves sigmoïdes", "il est correct de dire que ce que l'on appelle parfois le « cœur gauche » est la pompe de la circulation systémique", "chez l’adulte, il existe une voie de communication sanguine entre les deux oreillettes", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "les coronaires irriguent le myocarde", "les plaques d'athérome ne se constituent pas dans la paroi même des artères, mais se collent simplement à leur paroi interne", "le tabagisme est un des principaux facteurs de risque évitable de l'athérosclérose", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "un pontage est une intervention chirurgicale permettant d'écraser les plaques d'athérome des artères", "les myocytes cardiaques sont comparables en tout point aux myocytes des muscles striés squelettiques", "un potentiel d'action d'un myocyte cardiaque présente un plateau de dépolarisation", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "la contraction des cellules cardionectrices du cœur permet le pompage du sang", "un stimulateur cardiaque est un dispositif qui s'implante toujours dans la partie gauche de l'abdomen", "l'onde P d'un électrocardiogramme est une onde dite ascendante", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "il est correct de considérer que la durée d'un cycle cardiaque au repos est de 18 secondes", "le volume télédiastolique est le plus petit volume de sang que le cœur peut contenir", "le bruit dit « B1 » du cœur est lié à la fermeture des valves auriculo-ventriculaires", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "un souffle cardiaque peut être dû à une insuffisance valvulaire", "il est correct de dire que le débit cardiaque correspond au volume de sang ventriculaire éjecté en une minute et que le volume de sang éjecté en une minute au repos est à peu près égal au volume sanguin total", "la postcharge correspond au degré d'étirement du cœur avant contraction", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "depuis le centre vers la périphérie, les tuniques des artères sont : l'intima, la média puis l'adventice", "les sinusoïdes sont des valvules veineuses défectueuses qui existent chez un individu présentant des varices", "l'étude des forces de Starling permet de comprendre le phénomène d'écoulement de masse", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "il y a des barorécepteurs au niveau de l'aorte", "l'action de l'adrénaline sur le cœur est toujours la même : elle diminue le volume d'éjection systolique et diminue la fréquence cardiaque", "le facteur natriurétique auriculaire peut modifier la résistance vasculaire en entraînant une vasodilatation", "les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "le rein est le seul organe du corps qui ne libère pas d'hormones", "les reins occupent une position rétropéritonéale", "une néphroptose est une inflammation des reins d'origine bactérienne", "les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "un lobe rénal se situe en dehors du parenchyme rénal", "il est correct de dire que l'artériole glomérulaire afférente joue le rôle d'un vaisseau porte", "la anse du néphron est constituée par les veinules péritubulaires uniquement", "les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "la chambre glomérulaire est un espace situé à l'intérieur de la capsule glomérulaire de Bowman", "la réabsorption et la sécrétion tubulaires constituent ce que l'on nomme la sélection tubulaire", "le débit de filtration glomérulaire correspond à la quantité de filtrat produit chaque minute dans les corpuscules rénaux des deux reins", "les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "l'aldostérone peut augmenter la réabsorption en sodium des reins", "l'hormone anti-diurétique ou ADH peut diminuer la perméabilité du tube contourné distal et diminuer ainsi la réabsorption de l'eau", "un examen cytobactériologique des urines ou ECBU peut permettre d'identifier les bactéries impliquées dans une infection urinaire et peut aussi permettre d'identifier l'antibiotique le plus adapté pour combattre l'infection", "les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "une pyurie désigne la présence de sang dans les urines", "les urètres sont pairs, ils relient les reins à la vessie", "la phase de réplétion de la vessie désigne la phase de remplissage de la vessie", "les réponses A, B and C sont fausses"],
+
+///2017///
+["Concernant la physiologie :", "« eucaryote » est synonyme de « bactérie »", "la théorie cellulaire a été formulée dans la seconde moitié du XXe siècle", "il est correct de comprendre le mot « homéostasie » comme signifiant « équilibre dynamique »", "les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "par « anabolisme », on entend l’ensemble des réactions chimiques de construction et de déconstruction qui prennent place chez un organisme", "il est admis que les principaux atomes qui constituent la matière organique sont les atomes de : carbone, hydrogène, oxygène, azote", "l’histologie est une discipline qui étudie les tissus biologiques", "les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "il est correct de dire qu’un polymère est un assemblage de monomères", "les lipides sont tous solubles dans l’eau", "un lipide peut assurer un rôle dans la protection thermique", "les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "les membranes cellulaires sont toutes constituées uniquement de glucides, on parle de double couche phospho-glucidique", "ce que l’on appelle des trioses, pentoses ou encore hexoses sont des glucides", "les protéines sont toutes symétriques sur le plan moléculaire", "les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "dans une protéine, il est possible d’identifier une structure secondaire de type hélice alpha, cependant certaines protéines ne présentent pas de structure alpha", "un carbone alpha porte : un hydrogène ; un résidu ; un groupement aminé ; un groupement carboxylique", "la guanine est un acide aminé", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "il est correct de dire que les deux principales cavités du tronc sont la cavité thoraco-pelvienne et la cavité abdos-minables", "le cœur se localise dans le médiastin", "chez absolument tous les êtres humains, sans exception, le cœur est localisé dans le côté gauche du corps", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "le péricarde séreux se situe uniquement au niveau des ventricules du cœur", "l’endocarde est la partie musculaire du cœur", "une péricardite est une inflammation du péricarde", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "la veine cave supérieure ramène du sang au niveau de l’oreillette droite du cœur tandis que la veine cave inférieure ramène du sang au niveau de l’oreillette gauche cœur", "le tronc pulmonaire est une grosse artère", "le tronc pulmonaire est en continuité avec le ventricule droit", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "les artères coronaires sont en continuité avec le ventricule droit", "en observant une coupe transversale de cœur passant au niveau des ventricules, on peut facilement constater que le ventricule gauche a une paroi plus épaisse que le ventricule droit", "les valves aortico-ventriculaires se situent entre l’oreillette et le ventricule voisin", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "la valve mitrale est aussi appelée valve bicuspide", "la circulation pulmonaire peut aussi être qualifiée de petite circulation", "les coronaires sont des artères qui irriguent la paroi du cœur", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "un des principaux facteurs de risque de l’athérosclérose est le tabagisme", "une embolie est un rétrécissement d’une artère", "une angioplastie est une coronaropathie", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "il n’y a pas de mitochondries dans les cardiomyocytes contractiles", "les potentiels d’action des cardiomyocytes contractiles présentent un plateau", "la myoglobine des cardiomyocytes contractiles peut lier des molécules de dioxygène", "les réponses A, B and C are fausses"],
+  ["Concernant le système cardio-vasculaire :", "les cellules cardionectrices constituent le tissu nodal du cœur", "dans un électrocardiogramme, ce que l’on nomme « onde P » est une onde dite descendante", "il est correct de dire que, dans un électrocardiogramme, l’onde T précède la relaxation ventriculaire", "les réponses A, B and C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "un souffle cardiaque systolique est contemporain du pouls", "pour calculer la fréquence cardiaque maximale d’un individu en bonne santé, il suffit de soustraire l’âge de l’individu à la fréquence de 440 battements par minute", "on peut définir la précharge comme correspondant au degré d’étirement du cœur avant une contraction", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "la tunique interne d’une artère peut être appelée « intima »", "les forces de Starling s’expliquent par l’existence de gradients de pression hydrostatique et osmotique entre les compartiments interstitiel et sanguin", "le facteur natriurétique auriculaire peut faire diminuer la pression artérielle", "les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "il est correct de dire que les reins contribuent à l’équilibre acido-basique du sang", "on peut situer, dans la médulla rénale des pyramides rénales", "lors de son déplacement naturel, l’urine passe du bassinet vers le calice mineur", "les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "ce que l’on appelle le glomérule est constitué uniquement par des vaisseaux lymphatiques", "le feuillet viscéral de la capsule glomérulaire est un épithélium simple à podocytes", "le processus appelé « sélection tubulaire » regroupe deux phénomènes : la réabsorption tubulaire et la sécrétion tubulaire", "les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "les cellules mésangiales peuvent faire varier la surface de filtration glomérulaire", "chaque jour, chez la femme, les corpuscules rénaux des deux reins produisent une quantité de filtrat glomérulaire qui est de 0.5l", "l’angiotensine II et l’aldostérone peuvent augmenter la réabsorption d’ions sodium et d’eau au niveau des tubules contournés des néphrons", "les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "une augmentation de la production d’ADH ou hormone antidiurétique est à l’origine d’un diabète insipide", "une cystite est une infection qui se limite exclusivement aux reins", "un ECBU ou examen cytobactériologique des urines peut être pratiqué pour identifier les pathogènes responsables d’une infection urinaire et pour cibler les antibiotiques efficaces pour lutter contre ces pathogènes", "les réponses A, B and C are fausses"],
+  ["Concernant la physiologie de l'excrétion :", "les valves qui existent entre les uretères et la vessie sont appelées valves vésicales", "le muscle détrusor ou muscle vésical se trouve dans la paroi de la vessie", "il y a, sur l’urètre, trois sphincters : l’interne, le moyen et l’externe", "les réponses A, B and C are fausses"],
+
+  ///2018///
+  ["Concernant la physiologie :", "il est correct de dire que les lipides sont hydrophobes", "les triacylglycérols sont constitués d’une molécule de glycérol et de trois peptides", "les lipides servent uniquement à la régulation thermique", "les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "une protéine présente deux extrémités différentes, une extrémité dite N-terminale et une extrémité dite C-terminale", "les protéines sont constituées d'acides aminés", "une protéine peut s’associer à une autre molécule, un sucre par exemple", "les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "la reproduction s'inscrit dans la survie de l'espèce", "il est correct de dire que les réactions chimiques de l'anabolisme sont impliquées dans la construction de molécules", "un épithélium est dit simple quand il est constitué d'une seule assise cellulaire", "les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "il est correct de dire que le système tégumentaire participe à la thermorégulation", "il est correct de comprendre le mot « homéostasie » comme signifiant « équilibre dynamique »", "les membranes cellulaires sont toutes constituées uniquement de glucides, on parle de double couche phospho-glucidique", "les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "les desmosomes sont des organites impliqués uniquement dans la fabrication des protéines", "deux cellules peuvent échanger des substances l'une avec l'autre grâce à des ponts de cytoplasme appelés jonction étanches", "il est correct de dire qu'un tissu est uniquement constitué de cellules", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "le péricarde séreux est constitué d’un feuillet viscéral et d’un feuillet pariétal", "une inflammation de la tunique la plus interne du cœur est appelée épicardite", "le myocarde est en contact avec le sang", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "l’oreillette droite reçoit du sang de la part du tronc pulmonaire", "L’aorte émerge du ventricule gauche", "les oreillettes sont séparées l’une de l’autre par le septum inter-ventriculaire", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "il existe une valve dite tricuspide entre l’oreillette droite et le ventricule droit", "les valves sigmoïdes se trouvent entre un ventricule et sa veine", "Les valves s’ouvrent et se ferment sous l’effet de variations de pression", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "la circulation systémique a pour pompe le cœur gauche", "le tronc pulmonaire est une veine qui ramène au cœur du sang qui a été oxygéné au niveau des poumons", "les coronaires sont des vaisseaux sanguins qui émergent du tronc pulmonaire", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "les cardiomyocytes contractiles renferment en général une ou deux mitochondries, rarement plus, qui sont de grande taille", "il existe des jonctions communicantes entre les myocytes cardiaques", "les potentiels d’action des myocytes cardiaques ont la particularité de présenter un plateau d’hyperpolarisation", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "les cellules cardionectrices du cœur peuvent se contracter", "les cellules cardionectrices du cœur forment le tissu nodal", "en l’absence du nœud sinusal, le cœur ne peut pas battre", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "dans un électrocardiogramme, on note toujours que l’onde P fait suite à la contraction auriculaire", "l’onde T annonce la contraction ventriculaire", "l’onde T est une onde ascendante", "les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "la diastole ventriculaire entraîne la fermeture des valves sigmoïdes", "Le volume télédiastolique correspond au volume télésystolique auquel on a additionné le volume d'éjection systolique", "un défaut d’ouverture d’une valve cardiaque peut être à l’origine d’un souffle cardiaque", "les réponses A, B and C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "la postcharge correspond au degré d'étirement du cœur avant contraction, lorsqu'elle augmente, la force de contraction du cœur augmente", "une stimulation orthosympathique est en général à l'origine d'une augmentation de la fréquence cardiaque laquelle peut entraîner une augmentation du débit cardiaque", "des hormones thyroïdiennes peuvent accroître la fréquence cardiaque", "les réponses A, B and C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "la média d'une artère contient du tissu musculaire", "il y a des barorécepteurs au niveau de l'aorte", "le facteur natriurétique auriculaire peut modifier la résistance vasculaire en entraînant une vasodilatation", "les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "il est correct de dire que les reins contribuent à la régulation du pH sanguin", "les reins ne produisent pas d’hormones", "les reins sont en position rétropéritonéale", "les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "un rein renferme une structure appelée « bassinet » avec laquelle l'uretère est en continuité", "plusieurs couches de tissus enveloppent les reins et contribuent, entre autres, au maintien de sa forme et à sa protection", "la zone d'un rein appelée « médulla rénale » comprend des structures appelées « pyramides rénales »", "les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :","la chambre glomérulaire est un espace de la capsule glomérulaire où l'on peut trouver de l'urine primitive","l'appareil juxtaglomérulaire peut libérer de l'angiotensine II","les cellules mésangiales peuvent moduler l'étendue de la surface de filtration glomérulaire","les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "l'aldostérone peut augmenter la réabsorption en sodium des reins", "l'hormone anti-diurétique ou ADH peut diminuer la réabsorption de l'eau en agissant exclusivement au niveau du tubule contourné proximal", "la clairance d'une substance filtrée, réabsorbée et non sécrétée sera inférieure au débit de filtration glomérulaire", "les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "un ECBU ou examen cytobactériologique des urines est un examen au cours duquel on injecte des antibiotiques chez le patient afin de supprimer des bactéries qui sont à l’origine d’une infection urinaire", "le détrusor correspond à la musculeuse de la vessie", "une pyélonéphrite est une inflammation du sphincter interne de l’urètre", "les réponses A, B and C sont fausses"],
+
+///2019///
+["Concernant la physiologie :", "L’homéostasie est une théorie qui a été proposée par Schwann au 18e siècle", "Le terme anabolisme est uniquement utilisé pour désigner les réactions métaboliques de construction des protéines", "L’histologie est une discipline qui s’intéresse uniquement aux structures macroscopiques des organismes, c’est à dire, aux structures qui peuvent s’observer à l’œil nu", "Les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "Les triacylglycérols sont constitués d’une molécule de glycérol et de trois phospholipides", "Dans une protéine, les monomères sont des oses et sont reliés les uns aux autres par des liaisons peptidiques", "L’ARN contient des monomères constitués d’eux-mêmes de désoxyribose", "Les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "Les lipides sont des molécules hydrophiles", "La matière organique est uniquement constituée de carbone, hydrogène, oxygène et azote", "Les sucres sont les constituants de l’information génétique", "Les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "Les acides nucléiques sont des protéines", "Il est possible de décrire une structure quaternaire sur toutes les protéines", "Un lipide peut avoir une fonction de réserve d’énergie", "Les réponses A, B et C sont fausses"],
+  ["Concernant la physiologie :", "Un tissu épithélial peut être constitué d’une seule assise cellulaire ou de plusieurs", "Il est correct de dire qu’il existe plusieurs niveaux d’organisation chez un mammifère", "La peau est une membrane épithéliale", "Les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "L’aorte part du ventricule droit", "Le tronc pulmonaire part du ventricule gauche", "Les veines pulmonaires amènent le sang dans l’oreillette gauche", "Les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "Le terme « thrombose » est synonyme de « nécrose »", "Les plaques d’athérome s’observent uniquement dans les veines", "Une plaque d’athérome contient des lipides", "Les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "Le péricarde est la tunique du cœur la plus profonde, elle est d’ailleurs en contact avec le sang", "La cavité péricardique contient une petite quantité de liquide appelée sérosité péricardique", "Le péricarde fibreux adhère au myocarde", "Les réponses A, B et C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "La pompe de la petite circulation est le cœur gauche", "La petite circulation comprend les capillaires pulmonaires", "La petite circulation fonctionne avec la même efficacité chez l’adulte et chez le foetus", "Les réponses A, B and C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "Le nœud septal est situé dans l’oreillette droite", "Le faisceau de His se situe dans la cloison inter-auriculaire", "Les cellules cardionectrices constituent le tissu nodal", "Les réponses A, B and C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "Les cardiomyocytes contractiles produisent eux-mêmes leurs propres potentiels d’action", "Il est correct de dire que le potentiel d’action d’un cardiomyocyte contractile présente un plateau", "La phase de dépolarisation d’un cardiomyocyte contractile est due à l’ouverture de canaux chimio-dépendants au calcium", "Les réponses A, B and C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "Les cardiomyocytes contractiles sont des cellules musculaires volumineuses qui sont beaucoup plus grandes que les cellules musculaires des muscles striés squelettiques", "L’onde P fait immédiatement suite au complexe QRS", "L’onde T correspond à la dépolarisation ventriculaire", "Les réponses A, B and C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "L’ouverture des valves auriculo-ventriculaires est provoquée par la contraction des oreillettes", "Le volume d’éjection systolique est un volume sanguin qui est éjecté par les oreillettes en direction des ventricules", "Le premier bruit du cœur, bruit B1, correspond à la fermeture des valves auriculo-ventriculaires", "Les réponses A, B and C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "Le débit cardiaque correspond au volume de sang ventriculaire éjecté en une minute", "Le terme « inotropisme » est synonyme de « fréquence cardiaque »", "Le tabagisme augmente les risques de développer des maladies cardio-vasculaires", "Les réponses A, B and C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "Une vasoconstriction est une diminution du diamètre des vaisseaux sanguins", "Les capillaires sanguins sont les vaisseaux sanguins au niveau desquels des échanges entre le sang et les tissus peuvent se faire", "Une artériole est en continuité directe avec une artère à l’une de ses extrémités et avec une veine à son autre extrémité", "Les réponses A, B and C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "En cours, pour vous expliquer simplement les pressions hydrostatique et osmotique, est-il vrai que je vous ai dit que l’on peut se dire que : « la pression hydrostatique pousse » tandis que « la pression osmotique attire »", "L'étude des forces de Starling permet de comprendre le phénomène d'écoulement de masse", "Tous les barorécepteurs du système cardio-vasculaire se situent dans les veines, il n’y en a pas dans les artères", "Les réponses A, B and C sont fausses"],
+  ["Concernant le système cardio-vasculaire :", "L’hormone anti-diurétique a les mêmes effets, sur les vaisseaux sanguins, que le facteur natriurétique auriculaire", "Le facteur natriurétique auriculaire est uniquement produit par les cellules cardionectrices des ventricules", "L'angiotensine II peut augmenter la pression artérielle", "Les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "Il est correct de dire que, pour l’anatomie rénale, la séquence : calice-bassinet-uretère-vessie-urètre est exacte", "Il est correct de dire que, pour l’anatomie rénale, la séquence : glomérule - tube contourné proximal - tube collecteur - tube contourné distal - anse de Henlé, est exacte", "Les reins reçoivent du sang de la part des veines rénales", "Les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "Dans le rein, la capsule glomérulaire ou capsule de Bowman est la partie filtrante du néphron", "La capsule glomérulaire est un amas de vaisseaux sanguins", "Les capsules glomérulaires ou capsules de Bowman des néphrons se situent toutes au niveau du hile rénal", "Les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "La filtration glomérulaire dépend notamment des forces de Starling", "La sélection tubulaire correspond à deux phénomènes qui sont : la filtration glomérulaire et la réabsorption tubulaire", "La filtration glomérulaire est réalisée par les tubes collecteurs", "Les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "Les reins sont en position rétropéritonéale", "Un système porte artériel existe au niveau des reins", "Une pyélonéphrite est une inflammation du détrusor", "Les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "La sécrétion tubulaire est sous contrôle d’une unique hormone qui est l’insuline", "La réabsorption tubulaire s’effectue uniquement au niveau du tube collecteur", "La réabsorption tubulaire est toujours totale pour l’urée", "Les réponses A, B and C sont fausses"],
+  ["Concernant la physiologie de l'excrétion :", "Le terme « clairance rénale » est synonyme de « examen cytobactériologique des urines »", "Le facteur natriurétique auriculaire ne module que la réabsorption des ions calcium au niveau des reins", "Le débit de filtration glomérulaire doit être stable, sous peine, soit de conserver des déchets, soit de perdre trop de substances", "Les réponses A, B and C sont fausses"],
+
+///2020///
+[
+    "Concernant la physiologie :",
+    "La théorie cellulaire a été proposée par Pasteur",
+    "Classiquement, on peut identifier deux types de réactions chimiques qui constituent le métabolisme : les réactions du catabolisme et celles de l’anabolisme",
+    "L’homéostasie est un équilibre complètement stable, cet équilibre est d’ailleurs tellement fixé que le corps n’a pas besoin de le réguler",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant la physiologie :",
+    "Les termes « atome » et « molécule » sont synonymes",
+    "Les acides nucléiques correspondent à de la matière inorganique",
+    "Les lipides sont insolubles dans l’eau",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant la physiologie :",
+    "Les termes « triacylglycérols » et « triglycérides » sont synonymes",
+    "Un acide gras peut être saturé ou insaturé",
+    "Contrairement à ce que son nom peut laisser supposer, un phospholipide n’est pas un lipide",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant la physiologie :",
+    "Toutes les protéines présentent une structure quaternaire, sans aucune exception",
+    "La structure primaire d’une protéine se nomme aussi séquence",
+    "Les termes « jonction serrée » et « jonction ouverte » sont synonymes",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant la physiologie :",
+    "Dans une cellule eucaryote, on identifie classiquement trois représentants du cytosquelette : les microtubules, les filaments intermédiaires et les microfilaments",
+    "Dans un tissu épithélial, les cellules sont orientées, on peut notamment identifier un pôle basal et un pôle apical",
+    "La peau contribue à la synthèse de la vitamine D",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant le système cardio-vasculaire :",
+    "Le diaphragme est un repère anatomique permettant de délimiter deux espaces : l’espace abdominal et l’espace pelvien",
+    "Le péricarde est une séreuse",
+    "Une inflammation aiguë du péricarde est appelée péricardose",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant le système cardio-vasculaire :",
+    "La veine cave supérieure débouche dans l’oreillette droite",
+    "Le tronc pulmonaire débouche dans l’oreillette droite",
+    "Les veines pulmonaires contiennent du sang oxygéné",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant le système cardio-vasculaire :",
+    "Le myocarde du ventricule droit est plus épais que le myocarde du ventricule gauche",
+    "Les valves sigmoïdes se situent entre l’oreillette et le vaisseau sanguin qui arrive à l’oreillette",
+    "La valve bicuspide est aussi appelée valve mitrale",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant le système cardio-vasculaire :",
+    "La circulation systémique est aussi appelée grande circulation",
+    "Chez le fœtus, les deux oreillettes communiquent via le foramen ovale",
+    "La circulation coronarienne correspond aux vaisseaux sanguins qui irriguent le cœur",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant le système cardio-vasculaire :",
+    "Le tabagisme est un facteur de risque évitable de l’athérosclérose",
+    "Un pontage désigne une greffe de cœur",
+    "Les cardiomyocytes contractiles sont des cellules musculaires comparables en tous points aux cellules musculaires des muscles striés squelettiques",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant le système cardio-vasculaire :",
+    "Le potentiel d’action d’un cardiomyocyte contractile présente un plateau de dépolarisation",
+    "La phase de dépolarisation du potentiel d’action d’un cardiomyocyte contractile s’explique par une entrée d’ions sodium",
+    "La durée du potentiel d’action d’un cardiomyocyte contractile est la même que celle du potentiel d’action d’un muscle strié squelettique",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant le système cardio-vasculaire :",
+    "Les cellules cardionectrices constituent le tissu nodal",
+    "Les cellules cardionectrices étant auto-excitatrices, elles ont un rôle de pacemaker",
+    "Le nœud sinusal est une exception au sein du tissu nodal car il n’est pas constitué par des cellules cardionectrices",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant le système cardio-vasculaire :",
+    "La phase de dépolarisation rapide du potentiel d’action d’une cellule cardionectrice est due à l’entrée d’ions calcium",
+    "Dans un électrocardiogramme, on identifie classiquement trois ondes appelées, dans leur ordre d’apparition : onde P, complexe QRS et onde T",
+    "Pour réaliser un électrocardiogramme, on n’utilise qu’une seule électrode placée sur le sommet du crâne",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant le système cardio-vasculaire :",
+    "Il est correct de dire que, lors d’un cycle cardiaque, les phénomènes électriques précèdent les phénomènes mécaniques qui précèdent eux-mêmes les phénomènes hémodynamiques",
+    "La contraction des oreillettes est appelée systole auriculaire",
+    "Lors du cycle cardiaque, c’est la contraction des oreillettes qui entraîne l’ouverture des valves auriculo-ventriculaires",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant le système cardio-vasculaire :",
+    "En diastole et après la systole auriculaire, le ventricule contient un volume de sang appelé volume d’éjection systolique",
+    "Le premier bruit du cœur correspond à la fermeture des valves auriculo-ventriculaires",
+    "Un souffle cardiaque correspond à l’entente, lors de l’auscultation du cœur, d’un bruit à la place d’un silence",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant le système cardio-vasculaire :",
+    "Il est correct de dire que le débit cardiaque peut varier lorsque la fréquence cardiaque varie",
+    "Un agent inotrope négatif est un agent qui peut diminuer la contractilité des cardiomyocytes contractiles",
+    "La postcharge est la résistance à l’éjection ventriculaire",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant le système cardio-vasculaire :",
+    "Les artères ont une paroi à trois tuniques",
+    "Un stéthoscope seul permet de mesurer la pression artérielle",
+    "L’angiotensine II peut augmenter la pression artérielle moyenne en entraînant une vasodilatation générale des artères",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant la physiologie de l'excrétion :",
+    "Le médiastin correspond à l’espace situé entre les deux reins",
+    "Il est incorrect de dire que les reins contribuent à la régulation de l’équilibre acido-basique",
+    "Les reins peuvent libérer des hormones",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant la physiologie de l'excrétion :",
+    "Les reins sont en position rétropéritonéale",
+    "Un lobe rénal est constitué par une pyramide rénale, le cortex adjacent à la pyramide et la moitié de chaque colonne rénale entourant la pyramide",
+    "Le bassinet d’un rein est aussi appelé pyélon",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant la physiologie de l'excrétion :",
+    "Le glomérule correspond à un réseau de capillaires",
+    "Les veines rénales peuvent déverser le sang qu’elles contiennent dans la veine cave inférieure",
+    "Il existe un système porte veineux au niveau des reins",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant la physiologie de l'excrétion :",
+    "Le corpuscule rénal comprend le glomérule et la capsule glomérulaire",
+    "L’appareil juxtaglomérulaire est une zone de production d’hormone, cette structure ne contribue pas à la régulation de la pression artérielle rénale",
+    "La filtration glomérulaire dépend, entre autres, des forces de Starling",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant la physiologie de l'excrétion :",
+    "La sécrétion désigne le transfert de substances du sang vers le fluide tubulaire",
+    "L’ADH ou hormone anti-diurétique peut contribuer à augmenter la réabsorption d’eau au niveau des reins",
+    "L’urine n’est constitué qu’à 5 % d’eau",
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Concernant la physiologie de l'excrétion :",
+    "ECBU signifie examen cytobactériologique des urines",
+    "Une pyélonéphrite peut être qualifiée d’infection urinaire haute dans la mesure où elle concerne les reins",
+    "La musculeuse de la vessie constitue le détrusor",
+    "Les réponses A, B et C sont fausses"
+  ],
+
+  ///2022///
+  [
+    "Q1 Concernant la physiologie :",
+    "la théorie cellulaire a été proposée par Pasteur dans la dernière moitié du XXe siècle",
+    "selon la théorie cellulaire, tous les organismes vivants sont composés de cellules",
+    "l’homéostasie peut être vue comme un équilibre dynamique",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q2 Concernant la physiologie :",
+    "le catabolisme correspond à une partie du métabolisme",
+    "les réactions chimiques du catabolisme peuvent être qualifiées de réactions chimiques de déconstruction",
+    "le terme « catabolisme » est synonyme du terme « anabolisme »",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q3 Concernant la physiologie :",
+    "les molécules classées dans le groupe des lipides sont des molécules hydrophobes",
+    "les triacylglycérols sont constitués par une molécule de glycérol associée à trois acides aminés",
+    "les phospholipides sont amphiphiles",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q4 Concernant la physiologie :",
+    "le glucose est un polysaccharide",
+    "les protéines sont des chaînes d’acides aminés qui peuvent être qualifiées d’orientées car leurs extrémités sont différentes : une des extrémités est dite C-terminale et l’autre N-terminale",
+    "un nucléotide est constitué par l’assemblage de trois monomères qui sont : un pentose, un groupement phosphate, une base azotée",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q5 Concernant la physiologie :",
+    "les cellules qui constituent le tissu épithélial sont dites orientées, elles présentent une face apicale, une face basale et des faces latérales",
+    "dans un tissu conjonctif, toutes les cellules sont jointives ; les liens entre les cellules sont constitués par des jonctions étanches, des jonctions adhérentes et des desmosomes",
+    "une membrane épithéliale est constituée par un épithélium et du tissu conjonctif sous-jacent",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q6 Concernant le système cardio-vasculaire :",
+    "le médiastin correspond à une région située au niveau de l’abdomen uniquement",
+    "le feuillet pariétal du péricarde adhère au cœur lui-même et est qualifié d’épicarde",
+    "les trois tuniques du cœur sont, depuis la surface externe vers la surface interne : l’épicarde, l’endocarde et le myocarde",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q7 Concernant le système cardio-vasculaire :",
+    "le septum interauriculaire se trouve entre l’oreillette droite et l’oreillette gauche",
+    "la veine cave supérieure s’abouche à l’oreillette droite",
+    "les quatre veines pulmonaires s’abouchent à l’oreillette gauche",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q8 Concernant le système cardio-vasculaire :",
+    "la valve auriculo-ventriculaire gauche est appelée valve sigmoïde tandis que la valve auriculo-ventriculaire droite est appelée valve bicuspide",
+    "vu en coupe transversale, le myocarde du ventricule gauche est plus épais que celui du ventricule droit",
+    "la présence des valves cardiaques contraint le sang à circuler dans un seul sens au niveau du cœur",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q9 Concernant le système cardio-vasculaire :",
+    "les valves cardiaques s’ouvrent et se ferment sous l’effet de variations de pression",
+    "la valve pulmonaire se situe entre le ventricule droit et la veine cave inférieure",
+    "la circulation systémique est aussi appelée grande circulation",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q10 Concernant le système cardio-vasculaire :",
+    "chez le fœtus, le sang peut circuler d’une oreillette à l’autre",
+    "le tissu cardiaque n’est pas vascularisé, le sang qui circule dans les cavités cardiaques (oreillettes et ventricules) suffit à l’approvisionnement du tissu cardiaque en dioxygène et autres substances",
+    "les termes « athérosclérose » et « artériosclérose » sont strictement synonymes",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q11 Concernant le système cardio-vasculaire :",
+    "parmi les facteurs de risques évitables de l’athérosclérose, il est correct de citer, entre autres : le tabagisme et la sédentarité",
+    "une angioplastie peut aussi être qualifiée de pontage",
+    "les cellules musculaires contractiles du cœur, c’est à dire, les cardiomyocytes contractiles, sont, contrairement aux cellules musculaires des muscles striés squelettiques, des cellules musculaires inexcitables",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q12 Concernant le système cardio-vasculaire :",
+    "les cellules musculaires contractiles du cœur, c’est à dire, les cardiomyocytes contractiles, sont dépourvus de mitochondries",
+    "les processus de la respiration cellulaire (voie de la respiration) n’existent pas dans les cellules musculaires contractiles du cœur ou cardiomyocytes contractiles, en effet, ces cellules, pour régénérer leur ATP n’utilisent que la voie de la phosphocréatine et la voie de la fermentation, jamais la voie de la respiration",
+    "les potentiels d’action des cellules musculaires contractiles du cœur ou cardiomyocytes contractiles ont exactement la même allure que les potentiels d’action qui s’observent dans les cellules musculaires striées squelettiques",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q13 Concernant le système cardio-vasculaire :",
+    "toutes les contractions développées par le muscle cardiaque sont en tout point équivalentes aux tétanos qui s’observent sur les muscles striés squelettiques",
+    "dire que les oreillettes sont en systole veut dire qu’elles sont en train de se contracter",
+    "toutes les cellules cardionectrices du cœur se trouvent dans les oreillettes, il n’y a aucune cellule cardionectrice dans les ventricules",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q14 Concernant le système cardio-vasculaire :",
+    "la dépolarisation rapide qui s’observe dans le potentiel d’action d’une cellule cardionectrice s’explique par une entrée d’ions calcium",
+    "les cellules cardionectrices du nœud sinusal ont une activité rythmogène, ce n’est pas le cas des cellules cardionectrices du nœud septal qui n’ont aucune activité rythmogène",
+    "l’onde P qui s’observe sur un électrocardiogramme correspond à la dépolarisation des oreillettes",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q15 Concernant le système cardio-vasculaire :",
+    "dans le cycle cardiaque, la systole auriculaire est le phénomène qui est à l’origine de l’ouverture des valves auriculo-ventriculaires",
+    "lors de la phase de contraction isovolumétrique, les ventricules sont complètement fermés, c’est à dire que les valves auriculo-ventriculaires tout comme les valves sigmoïdes sont fermées",
+    "le remplissage des ventricules a lieu lors de la systole ventriculaire",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q16 Concernant le système cardio-vasculaire :",
+    "le terme « postcharge » fait référence à la résistance que les artères opposent à l’ouverture des valves sigmoïdes et à l’éjection ventriculaire",
+    "la fréquence cardiaque peut être modifiée par l’intervention de différentes hormones, en revanche, le système nerveux autonome ne peut influencer cette fréquence cardiaque",
+    "le terme « angiogenèse » désigne la formation de vaisseaux sanguins",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q17 Concernant le système cardio-vasculaire :",
+    "les capillaires continus sont plus poreux que les capillaires sinusoïdes",
+    "tous les barorécepteurs du système cardio-vasculaire sont situés au niveau du cœur, il n’y a aucun barorécepteur dans les vaisseaux sanguins",
+    "le facteur natriurétique auriculaire est libéré par les oreillettes",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q18 Concernant la physiologie de l'excrétion :",
+    "il est correct de dire que les reins participent à l’excrétion",
+    "il est correct de dire que les reins participent à la régulation de la composition du sang",
+    "il est correct de dire que les reins participent à la régulation du volume sanguin",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q19 Concernant la physiologie de l'excrétion :",
+    "les reins se situent dans le médiastin",
+    "seul le rein droit possède un hile rénal",
+    "il est correct de dire que les reins sont enveloppés par plusieurs couches de tissus",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q20 Concernant la physiologie de l'excrétion :",
+    "il existe dans les reins des structures appelées pyramides",
+    "les termes « pyélon » et « bassinet » sont synonymes",
+    "les néphrons peuvent être considérés comme les unités fonctionnelles des reins",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q21 Concernant la physiologie de l'excrétion :",
+    "les termes « artériole glomérulaire afférente » et « artériole glomérulaire efférente » sont synonymes",
+    "au niveau des reins, il existe des structures appelées « glomérules », ces glomérules sont des capillaires sanguins",
+    "il y a, au niveau des reins, un système porte",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q22 Concernant la physiologie de l'excrétion :",
+    "la partie descendante de la anse du néphron fait suite à une structure nommée tubule contourné distal",
+    "la capsule glomérulaire correspond uniquement à des capillaires sanguins",
+    "le processus de filtration glomérulaire est à l’origine de la production d’un liquide qui peut être qualifié de filtrat glomérulaire",
+    "les réponses A, B et C sont fausses"
+  ],
+  [
+    "Q23 Concernant la physiologie de l'excrétion :",
+    "à eux deux, les processus de réabsorption tubulaire et de sécrétion tubulaire, constituent le processus de sélection tubulaire",
+    "lors du processus de réabsorption tubulaire, des substances présentes dans le néphron peuvent retourner au sang",
+    "lors d’une pyélonéphrite, la fièvre peut être élevée, c’est à dire atteindre 39°C ou plus",
+    "les réponses A, B et C sont fausses"
+  ]
+
+]
+
+const rep = [
+///2016///
+"00010",
+"10100",
+"00100",
+"11000",
+"10100",
+"00100",
+"01000",
+"01000",
+"10100",
+"00100",
+"00100",
+"00100",
+"11000",
+"10100",
+"10100",
+"01000",
+"00010",
+"11100",
+"10100",
+"00100",
+
+///2017///
+
+"00100",
+"01100",
+"10100",
+"01000",
+"11000",
+"01000",
+"00100",
+"01100",
+"01000",
+"11100",
+"10000",
+"01100",
+"10100",
+"10100",
+"11100",
+"11000",
+"01100",
+"10100",
+"00100",
+"01000",
+
+///2018///
+"10000",
+"11100",
+"11100",
+"11000",
+"00010",
+"10000",
+"01000",
+"10100",
+"10000",
+"01000",
+"01000",
+"00100",
+"11100",
+"01100",
+"11100",
+"10100",
+"11100",
+"10100",
+"10100",
+"01000",
+
+///2019///
+
+"00010",
+"00010",
+"00010",
+"00100",
+"11100",
+"00100",
+"00100",
+"01000",
+"01000",
+"00100",
+"01000",
+"00010",
+"00100",
+"10100",
+"11000",
+"11000",
+"00100",
+"10000",
+"10000",
+"10000",
+"11000",
+"00010",
+"00100",
+
+///2020///
+"01000",
+"00100",
+"11000",
+"01000",
+"11100",
+"01000",
+"10100",
+"00100",
+"11100",
+"10000",
+"11000",
+"11000",
+"11000",
+"11000",
+"01100",
+"11100",
+"10000",
+"00100",
+"11100",
+"11000",
+"10100",
+"11000",
+"11100",
+
+///2022///
+"01100",
+"11000",
+"10100",
+"01100",
+"10100",
+"00010",
+"11100",
+"01100",
+"10100",
+"10000",
+"10000",
+"00010",
+"01000",
+"10100",
+"01000",
+"10100",
+"00100",
+"11100",
+"00100",
+"11100",
+"01100",
+"00100",
+"11100"
+
+
+];
+
+var num_question=0;
+</script>
+<script>
+    var score =0;
+function rep1_select(){
+    if (document.getElementById('reponse_1').style.backgroundColor == "white"){
+        document.getElementById('reponse_1').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_1').style.backgroundColor = "white"
+    }
+}
+
+function rep2_select(){
+    if (document.getElementById('reponse_2').style.backgroundColor == "white"){
+        document.getElementById('reponse_2').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_2').style.backgroundColor = "white"
+    }
+}
+
+function rep3_select(){
+    if (document.getElementById('reponse_3').style.backgroundColor == "white"){
+        document.getElementById('reponse_3').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_3').style.backgroundColor = "white"
+    }
+}
+
+function rep4_select(){
+    if (document.getElementById('reponse_4').style.backgroundColor == "white"){
+        document.getElementById('reponse_4').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_4').style.backgroundColor = "white"
+    }
+}
+
+function rep5_select(){
+    if (document.getElementById('reponse_5').style.backgroundColor == "white"){
+        document.getElementById('reponse_5').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_5').style.backgroundColor = "white"
+    }
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function q_suivante(){
+
+    if((document.getElementById('reponse_1').style.backgroundColor !="yellow" && document.getElementById('reponse_1').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_2').style.backgroundColor !="yellow" && document.getElementById('reponse_2').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_3').style.backgroundColor !="yellow" && document.getElementById('reponse_3').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_4').style.backgroundColor !="yellow" && document.getElementById('reponse_4').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_5').style.backgroundColor !="yellow" && document.getElementById('reponse_5').style.backgroundColor !="red")
+    &&(
+        document.getElementById('reponse_1').style.backgroundColor =="green" ||
+        document.getElementById('reponse_2').style.backgroundColor =="green" ||
+        document.getElementById('reponse_3').style.backgroundColor =="green" ||
+        document.getElementById('reponse_4').style.backgroundColor =="green" ||
+        document.getElementById('reponse_5').style.backgroundColor =="green" 
+    )){
+        score++; 
+    }
+    else 
+    {
+        score =0;
+    }
+
+    num_question= getRandomInt(data.length);
+    document.getElementById("question").textContent = data[num_question][0] ;
+    document.getElementById("reponse_1").textContent = data[num_question][1] 
+    document.getElementById("reponse_2").textContent = data[num_question][2] 
+    document.getElementById("reponse_3").textContent = data[num_question][3] 
+    document.getElementById("reponse_4").textContent = data[num_question][4] 
+    document.getElementById("reponse_5").textContent = data[num_question][5] 
+
+    document.getElementById('reponse_1').style.backgroundColor = "white"
+    document.getElementById('reponse_2').style.backgroundColor = "white"
+    document.getElementById('reponse_3').style.backgroundColor = "white"
+    document.getElementById('reponse_4').style.backgroundColor = "white"
+    document.getElementById('reponse_5').style.backgroundColor = "white"
+
+    document.getElementById('score').innerHTML = "score : " + score;
+}
+
+function valider(){
+    chars = rep[num_question].split('');
+    if (document.getElementById('reponse_1').style.backgroundColor =="grey" && chars[0] == "1" ){
+        document.getElementById('reponse_1').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_1').style.backgroundColor =="grey" && chars[0] == "0" ){
+        document.getElementById('reponse_1').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_1').style.backgroundColor =="white" && chars[0] == "1" ){
+        document.getElementById('reponse_1').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_2').style.backgroundColor =="grey" && chars[1] == "1" ){
+        document.getElementById('reponse_2').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_2').style.backgroundColor =="grey" && chars[1] == "0" ){
+        document.getElementById('reponse_2').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_2').style.backgroundColor =="white" && chars[1] == "1" ){
+        document.getElementById('reponse_2').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_3').style.backgroundColor =="grey" && chars[2] == "1" ){
+        document.getElementById('reponse_3').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_3').style.backgroundColor =="grey" && chars[2] == "0" ){
+        document.getElementById('reponse_3').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_3').style.backgroundColor =="white" && chars[2] == "1" ){
+        document.getElementById('reponse_3').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_4').style.backgroundColor =="grey" && chars[3] == "1" ){
+        document.getElementById('reponse_4').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_4').style.backgroundColor =="grey" && chars[3] == "0" ){
+        document.getElementById('reponse_4').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_4').style.backgroundColor =="white" && chars[3] == "1" ){
+        document.getElementById('reponse_4').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_5').style.backgroundColor =="grey" && chars[4] == "1" ){
+        document.getElementById('reponse_5').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_5').style.backgroundColor =="grey" && chars[4] == "0" ){
+        document.getElementById('reponse_5').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_5').style.backgroundColor =="white" && chars[4] == "1" ){
+        document.getElementById('reponse_5').style.backgroundColor ="yellow"
+    }
+
+   
+}
+
+
+</script>
+
+
+<body>
+  <!-- Contenu de la page -->
+  
+  <!-- En-tête de la page -->
+  <header>
+    <!-- Logo, menu, etc. -->
+  </header>
+
+  <!-- Corps de la page -->
+  <main>
+    <p id="top"><a id="score">score : 0</a><a href="../annee_2.html" id="menu">Menu</a></p>
+    <p id="question">Appuyez sur "Q suivante" </p>
+    <section id="checkbox">
+        <p style="background-color:white" onclick="rep1_select()" id="reponse_1">Réponse 1</p>
+        <p style="background-color:white" onclick="rep2_select()" id="reponse_2">Réponse 2</p>
+        <p style="background-color:white" onclick="rep3_select()" id="reponse_3">Réponse 3</p>
+        <p style="background-color:white" onclick="rep4_select()" id="reponse_4">Réponse 4</p>
+        <p style="background-color:white" onclick="rep5_select()" id="reponse_5">Réponse 5</p>
+    </section> 
+    <section id="bouton">
+    <input id="valider" type="button" value="Valider" onclick="valider()">
+    <input id="q_suivante" type="button" value="Q suivante" onclick="q_suivante()">
+    </section>
+  </main>
+
+
+</body>
+</html>
+<script>q_suivante();</script>

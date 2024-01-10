@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physiologie</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- Lien vers votre fichier CSS externe -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../qcm.css">
+</head>
+<script >
+const data = [
+    ///2023///
+["L'origine ectodermique des structures de l’œil concerne", "Le cristallin", "La sclérotique", "La rétine", "L'iris"],
+  ["La tunique fibreuse de l’œil", "Comprend la choroïde", "Est pauvrement vascularisée", "Est de nature élastique", "Comprend le corps ciliaire"],
+  ["L'iris", "Permet l'accommodation à la lumière", "Permet l’accommodation du cristallin", "Est un muscle lisse", "Sécrète l’humeur vitrée"],
+  ["La couche plexiforme rétinienne contient", "Des synapses entre cellules bipolaires et photorécepteurs", "Des synapses entre cellules bipolaires et cellules ganglionnaires", "Des cellules d'association", "Un réseau de renouvellement des pigments"],
+  ["Les cellules de Müller", "Ont un rôle de cohésion", "Ont un rôle de renouvellement", "Sont d’origine neuronale", "Aucune des réponses précédentes"],
+  ["Le nombre de cibles différentes diencéphaliques du nerf optique est de", "1", "2", "4", "6"],
+  ["Les cellules ganglionnaires de type P sont", "Sensibles à 4 longueurs d'onde", "A réponse graduable en amplitude", "Maculaires", "Périphériques"],
+  ["La rhodopsine est", "En quantité faible dans les bâtonnets", "Est une protéine présentant plusieurs formes", "Stockée dans des membranes plasmiques", "Aucunes des réponses précédentes"],
+  ["Les cellules ganglionnaires de type M sont", "A champ récepteur précis", "A champ récepteur limité", "Sensibles au contraste", "Présentes dans la rétine nasale périphérique"],
+  ["La lumière est", "Présente au-delà de 700 nm", "Est réfractée au niveau de la rétine", "Absorbée par les lentilles", "Aucune des réponses précédentes"],
+  ["Les projections rétino-géniculées ipsilatérales", "Proviennent de la rétine nasale", "Finissent dans les couches 1-3-5 du CGL", "Finissent dans les couches 2-4-6 du CGL", "Aucune des réponses précédentes"],
+  ["La moitié gauche du champ monoculaire visuel droit est projetée", "Controlatéralement", "Controlatéralement et homolatéralement", "Ipsilatéralement"],
+  ["Le corps genouillé latéral", "Comprend six couches de cellules ganglionnaires", "Est une structure télencéphalique", "Ne permet pas le rythme biologique", "Comprend deux couches parvocellulaires"],
+  ["L'IRM cérébrale d'un patient montre une destruction du territoire irrigué par l'artère cérébrale postérieure droite. La clinique montrera", "Une hémianopsie homolatérale", "Une hémianopsie controlatérale", "Une atteinte de la rétine nasale gauche", "Une atteinte de la rétine nasale droite"],
+  ["Concernant le réflexe d'accommodation à la lumière qui est ou sont impliqué(s)?", "Le pulvinar", "Le cerveau moyen", "Un muscle lisse", "Le corps genouillé latéral"],
+  ["Le punctum remotum est", "Le point le plus proche", "Le point le plus éloigné", "Le point où l'accommodation est maximale", "Le point où l'accommodation ne se fait plus"],
+  ["Dans le traitement des informations visuelles, le canal P", "Intervient pour le déplacement précis de la personne", "Nécessite, entre autres, la couche 1 du CGL", "Ne traite pas de la cinétique des objets", "Nécessite la couche V corticale"],
+  ["La colonne corticale de tache", "Traite de la couleur", "Traite de l'orientation de l'objet", "Est centrée sur une bande de dominance oculaire", "Aucune des réponses précédentes"],
+  ["L’aire visuelle V4", "Est associée à la forme des objets", "Est associée au mouvement des objets", "Se projette dans des aires pariétales", "Utilise la voie ventrale et dorsale"],
+  ["On peut considérer la perception comme", "Un traitement unitaire", "Une réponse multiassociative", "Une sensation pas totalement intégrée", "Aucune des réponses précédentes"],
+  ["La composante gnosique de l'information concerne", "L'extéroception", "L'interoception", "La proprioception", "Entre autres l'olfaction"],
+  ["Etant une contraction palpébrale, je fais partie de la", "Extéroception", "Proprioception", "Intéroception", "Aucune des réponses précédentes"],
+  ["Le potentiel dépolarisant", "Est faiblement propageable", "Est l'aboutissement de la transduction", "Peut être une sommation", "Est mesuré en fréquence au niveau du SNC"],
+  ["Une faible densité de récepteurs est associée à", "Un codage plutôt précis", "Un codage non spatial", "Une inhibition latérale", "Toutes les réponses précédentes sont fausses"],
+  ["Pour coder l'information vitesse et fréquence de la stimulation, je fais intervenir", "Des récepteurs phasiques", "Des récepteurs toniques", "Des récepteurs dynamiques", "Des récepteurs à adaptation très rapide"],
+  ["Au cours de l'ontogenèse, on observera", "Une maturation rapide des récepteurs par rapport aux centres", "Une mise en place des récepteurs en même temps que des centres", "Une maturation hormono-dépendante des centres", "Une maturation stimolo-dépendante des récepteurs"],
+  ["L’inhibition latérale", "Participe à la gnosie", "Représente une voie directe du traitement d'informations", "Diminue le contraste", "S'observe au niveau des centres corticaux"],
+  ["La chaine pré-vertébrale du système sympathique est constituée", "Des ganglions spinaux végétatifs", "Des ganglions otiques", "Des ganglions cervicaux inférieurs", "Des ganglions mésentériques"],
+  ["Quel est le centre crânien parasympathique innervant le sphincter pylorique?", "Un noyau du nerf III", "Un noyau du nerf VII", "Un noyau du nerf IX", "Un noyau du nerf X"],
+  ["Le système nerveux parasympathique est", "Impliqué dans le tonus de fond", "Cardiomodérateur", "Producteur d’énergie", "Sacré"],
+  ["Dans le système nerveux végétatif, le neurone effecteur est", "A corps cellulaire central", "Pré ou post-ganglionnaire", "A vitesse lente", "De petit calibre", "Aucune des réponses précédentes"],
+  ["Le système sympathique utilise comme second neuromédiateur", "L'acétylcholine", "L'adrénaline", "Les catécholamines", "Le GABA"],
+  ["Le système parasympathique utilise comme second neuromédiateur", "L'acétylcholine", "L'adrénaline", "La noradrénaline", "Le glutamate"],
+  ["Au niveau médullaire, le SNV efférent", "Est absent dans les cornes dorsales", "Est clairement présent dans les cordons latéraux", "Est présent dans la substance grise ventrale", "Est représenté par ses deux composantes"],
+  ["Le rameau communicant blanc est formé par", "Le neurone connecteur", "Le neurone effecteur", "Le neurone somatique", "Le neurone pré-ganglionnaire"],
+  ["La chaine préviscérale est", "Impaire", "Constituée de 21 à 23 paires de ganglions", "Associée à des ganglions cervicaux", "Impliquée dans la motilité duodénale"],
+  ["Le plexus cardiaque fait intervenir", "Le système sympathique", "Les deux systèmes végétatifs", "Un centre crânien", "Un centre thoracique"],
+  ["Les afférences du SNV", "Sont myélinisées", "Sont dans les racines dorsales", "Portent des informations de nature chimique", "Aucune de propositions précédentes"],
+  ["Le maintien de l'homéostasie fait intervenir", "Le système parasympathique", "Le système sympathique", "Le système nerveux conscient", "La notion de muscle strié", "Les réponses précédentes sont fausses"],
+  ["La corticosurrénale", "Participe à la biologie du stress", "Représente un ganglion parasympathique", "Est stimulée par un neurone médullaire", "Aucunes des propositions précédentes"],
+  ["Le marteau est en contact avec", "L'étrier", "La fenêtre ronde", "La fenêtre ovale", "Toutes les réponses précédentes sont fausses"],
+  ["L'organe de Corti", "Contient quatre rangées de CCE", "Est contenu dans le canal cochléaire", "Contient trois rangées de cellules de Deiters", "Repose sur la membrane tectoriale"],
+  ["Les structures impliquées dans le traitement de l'audition sont", "Le noyau olivaire mésencéphalique", "Les colliculi supérieurs", "Les gyrus temporal supérieur", "Le thalamus latéral"],
+  ["L'endolymphe remplit", "Uniquement les CCE", "Uniquement les CCI", "Les deux CC citées", "Toutes les réponses précédentes sont fausses"],
+  ["La transduction de l'onde sonore", "Est bio-électrique puis mécanique", "Suppose un courant natrémique", "Suppose un courant potassique", "Est proportionnelle à l'allongement des stéréocils"],
+  ["Le nombre total de CCI est d'environ:", "3500", "7000", "12500", "Aucune des réponses précédentes"],
+  ["L'électrocochléogramme est", "Un enregistrement au niveau de la fenêtre ronde", "Utilisé pour mesurer l'activité des CCE", "Permet l'exploration du fonctionnement des relais auditifs", "Une forme spécialisée d'audiogramme"],
+  ["Le nerf auditif", "Propage des potentiels évoqués", "Vibre à cause de l'onde sonore", "A pour cible les noyaux cochléaires", "Est un nerf mixte dû aux fibres vestibulaires"],
+  ["Le dernier relais de la voie auditive primaire est", "Le cortex temporal", "Le corps genouillé médian", "Le complexe olivaire", "Le colliculus inférieur"],
+  ["Cochez ce qui est inexact", "Les cellules ciliées externes sont douées d'électromotilité", "Le cortex auditif est au-dessus du gyrus temporal supérieur", "Les cellules ciliées reposent sur le pôle basal des cellules de soutien", "La presbyacousie s’améliore dans les sons graves"],
+
+///2022///
+["L'origine mésodermique des structures de l’œil ne concerne pas", "Le cristallin", "La sclérotique", "La cornée", "L'iris"],
+  ["La tunique non vascularisée de l’œil comprend", "La choroïde", "La sclérotique", "La rétine", "Le corps ciliaire"],
+  ["Le corps ciliaire", "Ne permet pas l'accommodation à la lumière", "Ne permet pas l’accommodation à la distance", "Est un muscle strié à contraction involontaire", "Sécrète l’humeur aqueuse"],
+  ["La couche plexiforme externe contient", "Des synapses entre cellules amacrines et photorécepteurs", "Des synapses entre cellules bipolaires et cellules ganglionnaires", "Des cellules amacrines", "Des cellules d'association"],
+  ["Les cellules dites de Müller", "Ont un rôle de croissance", "Ont un rôle trophique", "Sont d’origine neurectodermique", "Aucunes des réponses précédentes"],
+  ["Le nombre de types différents de messages transportés par le nerf optique est de", "2", "3", "4", "6"],
+  ["Les cellules ganglionnaires de type P ne sont pas", "Présentes dans l'hémirétine dorsale", "Les plus nombreuses", "Les plus périphériques", "Toutes les réponses précédentes sont fausses"],
+  ["La rhodopsine est spécifique", "Des cônes rouges", "Des bâtonnets", "Du spectre des UV", "D'une longueur d'onde"],
+  ["Les cellules ganglionnaires de type M", "Ayant un champ récepteur précis sont centrales", "Ayant un champ récepteur grand sont périphériques", "Sont sensibles au contraste", "Toutes les réponses précédentes sont fausses"],
+  ["La lumière n'est pas", "Visible en deçà de 700 nm", "Captée par la couche interne de la rétine", "Traversée par les lentilles", "Aucunes des réponses précédentes"],
+  ["Si je suis centre bleu ON et périphérie rouge-jaune OFF alors", "Je réponds pour aux cônes rouges", "Je ne réponds pas pour les cônes bleu", "Je suis une cellule de la couche nucléaire interne", "Je suis une cellule de la couche nucléaire externe"],
+  ["L'hémichamp visuel", "Est projeté controlatéralement", "Est projeté homolatéralement", "Controlatéralement et homolatéralement", "Présente un petit scotome"],
+  ["Le corps genouillé latéral", "Montre une tonotopie précise", "Est une structure du cerveau antérieur", "Permet le rythme biologique", "Comprend deux couches parvocellulaires"],
+  ["Une hémianopsie gauche peut être due à une atteinte de la rétine", "Nasale gauche", "Nasale droite", "Temporale gauche", "Temporale droite"],
+  ["Concernant le réflexe pupillaire, qui est ou sont impliqué(s)?", "Le noyau supra-chiasmatique", "Le mésencéphale", "Le colliculus supérieur", "Le pulvinar"],
+  ["Le punctum proximum est", "Le point le moins proche", "Le point le moins éloigné", "Le point où l'accommodation commence", "Plus éloigné chez vous que chez moi"],
+  ["Dans le traitement des informations visuelles, le canal P", "Intervient pour le déplacement des objets", "N'intervient pas pour la forme des objets", "Intervient pour la couleur des objets", "Nécessite la couche III corticale comme réception"],
+  ["Chassez l’intrus de cette liste", "Statique", "Dynamique", "Tonique", "Il n’y a pas d’intrus"],
+  ["L’aire visuelle V4", "N'est pas associée à la forme des objets", "N'est pas associée au mouvement des objets", "Se projette dans des aires pariétales", "Ne se projette pas dans des aires frontales"],
+  ["On peut considérer la perception comme", "Etant un traitement unitaire", "Donnant une réponse de jugement", "Une information pas encore traitée", "Absente en cas de non-réponse d’un organisme fonctionnant normalement"],
+  ["L'évolution du cerveau montre", "Une diminution relative du cerveau associatif", "Une augmentation relative du cerveau sensoriel", "Une diminution du cerveau moteur", "Une augmentation du cerveau plurimodal"],
+  ["Etant une sécrétion lacrimale, je fais partie de la", "Extéroception", "Proprioception", "Intéroception", "Aucune des réponses précédentes"],
+  ["Le potentiel de récepteur peut être", "Propageable", "Une hyperpolarisation", "Créé loin du site transducteur", "Associé au système nerveux central"],
+  ["L'augmentation du nombre de récepteurs peut être associée à", "Une fonction épicritique", "Une stimulation périphérique plus importante", "Un entrainement plus important", "Toutes les réponses précédentes sont fausses"],
+  ["La convergence améliore le codage", "Spatial", "Temporel", "Quantitatif", "Qualitatif"],
+  ["Chassez l’intrus de la liste", "Voie primaire", "Voie secondaire", "Voie spécifique", "Voie de traitement rapide"],
+  ["L’inhibition latérale", "Participe à la topie", "Dégrade l'information par élimination d’information", "Freine la vitesse de propagation de l'information", "Participe au principe de régulation"],
+  ["La chaine para-vertébrale du système sympathique est constituée", "De ganglions pairs cérébraux", "Des ganglion cœliaques", "Des ganglions thoraciques", "Des nombreux ganglions sacrés"],
+  ["Quels sont les centres crâniens du parasympathique ?", "Un noyau du nerf VII", "Un noyau du nerf VI", "Un noyau du nerf X", "Un noyau du nerf XI"],
+  ["Le système nerveux parasympathique est", "Trophotrope", "Cardioaccélérateur afin de correctement irriguer les organes", "Associé à l'augmentation de la motilité gastro-intestinal", "Thoracico-sacré mais pas lombaire"],
+  ["Dans le système nerveux végétatif, le deutoneurone est", "Pré-viscéral", "Post-ganglionnaire", "A vitesse rapide", "Soit court soit long", "Aucune des réponses précédentes"],
+  ["Le système sympathique n'utilise pas comme neuromédiateur", "L'acétylcholine", "L'adrénaline", "Les catécholamines", "Le GABA"],
+  ["Le système parasympathique n'utilise pas comme neuromédiateur", "L'acétylcholine", "L'adrénaline", "Les catécholamines", "Toutes les réponses précédentes sont fausses"],
+  ["Au niveau médullaire, le SNV efférent", "N'est pas présent dans les cordons dorsaux", "Est présent dans les cordons latéraux", "N'est pas présent dans les cordons ventraux", "N'est pas représenté par ses deux composantes"],
+  ["Le rameau communicant gris est formé par", "Le neurone connecteur", "Le neurone effecteur", "Le neurone amyélinique", "Le neurone pré-ganglionnaire"],
+  ["La chaine préviscérale est", "Impaire", "Constituée de quelques ganglions", "Dans l'organe", "Para-médiane"],
+  ["Le plexus myentérique est associé", "Au système parasympathique crânien", "Au système parasympathique sacré", "A un centre de la cage thoracique", "A un centre gastrique"],
+  ["L’étrier est en contact avec", "Le marteau", "La fenêtre ronde", "Le tympan", "Toutes les réponses précédentes sont fausses"],
+  ["L'organe de Corti", "Contient une rangée de CCE", "Contient trois rangées de cellules piliers", "Contient trois rangées de cellules de Deiters", "Repose sur une membrane"],
+  ["Les structures impliquées dans le traitement de l'audition sont", "Le noyau olivaire mésencéphalique", "Les colliculi inférieurs", "Les gyrus transverses", "Les corps genouillés cérébraux"],
+  ["L'endolymphe remplit", "Uniquement la rampe tympanique", "Uniquement la rampe vestibulaire", "Les deux rampes citées", "Toutes les réponses précédentes sont fausses"],
+  ["Les vibrations sonores sont", "Absorbées par les osselets", "Emises par les osselets", "Transmises par les osselets"],
+  ["Les cellules ciliées externes ont une forme", "Sphérique", "Cuboïde", "Ovaloïde", "Cylindrique"],
+  ["La transduction de l'onde sonore", "Est mécano-électrique", "Suppose un courant calcique", "Suppose un courant potassique", "Est proportionnelle à l’étirement des stéréocils"],
+  ["Le nombre total de CCE est d'environ:", "3500", "7000", "12500", "Aucune des réponses précédentes"],
+  ["La zone conversationnelle en décibel se situe plutôt vers", "20", "30", "40", "60"],
+  ["L'électrocochléogramme est", "Un enregistrement au niveau de la fenêtre ovale", "Utilisé dans le contrôle courant de l’audition", "Associé à l’activité des fibres auditives", "Une forme spécialisée d'audiogramme"],
+  ["Le nerf auditif", "Propage des potentiels évoqués", "Propage l'onde sonore", "Se projette aussi en dehors du corps genouillé médial", "Est un nerf mixte car vestibulo-cochléaire"],
+  ["Le troisième relais de la voie auditive primaire est", "Le noyau cochléaire", "Le corps genouillé médian", "Le complexe olivaire", "Le colliculus inférieur"],
+  ["Cochez ce qui est vrai", "Les cellules ciliées internes uniquement se renouvellent jusqu’à 6 ans", "Le gyrus temporal supérieur est au-dessus du cortex auditif", "Les cellules ciliées reposent sur le pôle apical des cellules de soutien", "La presbyacousie s’améliore suite à un entrainement auditif"],
+
+  ///2021///
+  ["L'origine mésodermique des structures de l’œil concerne", "Le cristallin", "La sclérotique", "La rétine", "L'iris"],
+  ["La tunique fibreuse de l’œil", "Comprend la choroïde", "Est richement vascularisée", "Est de nature résistante", "Comprend le corps ciliaire"],
+  ["L'iris", "Permet l'accommodation à la lumière", "Permet l’accommodation à la distance", "Est un muscle lisse", "Sécrète l’humeur aqueuse"],
+  ["La couche plexiforme interne contient", "Des synapses entre cellules bipolaires et photorécepteurs", "Des synapses entre cellules bipolaires et cellules ganglionnaires", "Des cellules d'association", "Un réseau de renouvellement des pigments"],
+  ["Les cellules de Müller", "Ont un rôle de croissance", "Ont un rôle de renouvellement", "Sont d’origine neuronale", "Aucunes des réponses précédentes"],
+  ["Le nombre de cibles différentes du nerf optique est de", "2", "3", "4", "5"],
+  ["Les cellules ganglionnaires de type P sont", "Sensibles à différentes longueurs d'onde", "A réponse tonique", "Maculaires", "Périphériques"],
+  ["La rhodopsine est", "En quantité faible dans les cônes", "Est une protéine présentant plusieurs conformations", "Stockée dans des saccules", "Aucunes des réponses précédentes"],
+  ["Les cellules ganglionnaires de type M sont", "A champ récepteur précis", "A grand champ récepteur", "Insensibles au contraste", "Présentes dans la rétine nasale périphérique"],
+  ["La lumière est", "Présente en deça de 400 nm", "Est réfléchie au niveau de la rétine", "Réfractée par les lentilles", "Aucunes des réponses précédentes"],
+  ["Les projections rétino-géniculées controlatérales", "Proviennent de la rétine nasale", "Finissent dans les couches 1-3-5 du CGL", "Finissent dans les couches 2-4-6 du CGL", "Aucunes des réponses précédentes"],
+  ["La moitié droite de l'hémichamps visuel droit est projetée", "Controlatéralement", "Controlatéralement et homolatéralement", "Ipsilatéralement", "Aucunes des réponses précédentes"],
+  ["Le corps genouillé latéral", "Comprend six couches de cellules ganglionnaires", "Est une structure prosencéphalique", "Permet le rythme biologique", "Comprend deux couches magnocellulaires"],
+  ["L'IRM cérébral d'un patient montre une destruction du territoire irrigué par l'artère cérébrale postérieure droite. La clinique montrera", "Une hémianopsie homolatérale", "Une hémianopsie controlatérale", "Une atteinte de la rétine nasale gauche", "Une atteinte de la rétine nasale droite"],
+  ["Concernant le réflexe pupillaire, qui est ou sont impliqué(s)?", "Le noyau supra-chiasmatique", "Le cerveau moyen", "Le cortex visuel", "Le corps genouillé latéral"],
+  ["Le punctum proximum est", "Le point le plus proche", "Le point le plus éloigné", "Le point où l'accommodation est maximale", "Le point où l'accommodation est minimale"],
+  ["Dans le traitement des informations visuelles, le canal P", "Intervient pour le déplacement précis de la personne", "Passe par la couche 4 du CGL", "Intervient pour la cinétique des objets", "Nécessite la couche V corticale"],
+  ["La colonne corticale de tache", "Traite de la couleur", "Traite de l'orientation de l'objet", "Est centrée sur une bande de dominance oculaire", "Aucunes des réponses précédentes"],
+  ["L’aire visuelle V3", "N'est pas associée à la forme des objets", "N'est pas associée au mouvement des objets", "Se projette uniquement dans des aires pariétales", "Utilise la voie ventrale et dorsale"],
+  ["On peut considérer la perception comme", "Un traitement unitaire", "Une réponse de jugement", "Une information pas totalement intégrée", "Aucunes des réponses précédentes"],
+  ["La composante gnosique de l'information concerne", "L'extéroception", "L'interoception", "La proprioception", "Entre autres l'olfaction"],
+  ["Etant une contraction urétrale, je fais partie de la", "Extéroception", "Proprioception", "Intéroception", "Aucunes des réponses précédentes"],
+  ["Le potentiel générateur", "Est faiblement propageable", "Est l'aboutissement de la transduction", "Peut être une hyperpolarisation", "Est mesuré en fréquence au niveau du SNC"],
+  ["La faible densité de récepteurs implique", "Un codage plutôt précis", "Un codage spatial", "Une inhibition latérale", "Toutes les réponses précédentes sont fausses"],
+  ["Pour coder l'information vitesse et fréquence de la stimulation, je fais intervenir", "Des récepteurs phasiques", "Des récepteurs toniques", "Des récepteurs dynamiques", "Des récepteurs à adaptation très rapide"],
+  ["Au cours de l'ontogenèse, on observera", "Une maturation lente des récepteurs par rapport aux centres", "Une maturation rapide des récepteurs associée à celle rapide des centres", "Une maturation stimulo-dépendante des centres", "Une maturation stimolo-dépendante des récepteurs"],
+  ["L’inhibition latérale", "Participe à l'agnosie", "Représente une voie transversale de traitement d'informations", "Accentue le contraste", "S'observe au niveau des centres corticaux"],
+  ["La chaine pré-vertébrale du système sympathique est constituée", "Des ganglions spinaux végétatifs", "Du ganglion cœliaque", "Des ganglions cervicaux inférieurs", "Des ganglions myentériques"],
+  ["Quel est le centre crânien parasympathique innervant le sphincter de l'iris?", "Un noyau du nerf III", "Un noyau du nerf VII", "Un noyau du nerf IX", "Un noyau du nerf X"],
+  ["Le système nerveux parasympathique est", "Impliqué dans le métabolisme basal", "Cardioaccélérateur", "Producteur d’énergie", "Sacré"],
+  ["Dans le système nerveux végétatif, le deutoneurone est", "A corps cellulaire central", "Pré ou post-ganglionnaire", "A vitesse lente", "De petit calibre", "Aucunes des réponses précédentes"],
+  ["Le système sympathique utilise comme premier neuromédiateur", "L'acétylcholine", "L'adrénaline", "Les catécholamines", "Le GABA"],
+  ["Le système parasympathique utilise comme second neuromédiateur", "L'acétylcholine", "L'adrénaline", "Les catécholamines", "Le glutamate"],
+  ["Au niveau médullaire, le SNV efférent", "Est présent dans les cornes dorsales", "Est présent dans les cordons latéraux", "Est présent à l'étage du tronc cérébral", "Est représenté par ses deux composantes"],
+  ["Le rameau communicant gris est formé par", "Le neurone connecteur", "Le neurone effecteur", "Le neurone somatique", "Le neurone pré-ganglionnaire"],
+  ["La chaine préviscérale est", "Longitudinale", "Constituée au maximum d'une dizaine de ganglions", "Associée à des ganglions terminaux", "Impliquée dans la motilité du côlon"],
+  ["Le plexus pulmonaire fait intervenir", "Le système sympathique", "Les deux systèmes végétatifs", "Un centre crânien", "Un centre thoracique"],
+  ["Les afférences du SNV", "Sont amyéliniques", "Sont toutes dans les racines dorsales", "Portent des informations exclusivement de nature chimique", "Aucunes de propositions précédentes"],
+  ["Le maintien de l'homéostasie fait intervenir", "Le système parasympathique", "Le système sympathique", "Le système nerveux conscient", "La notion de muscle strié", "Toutes les réponses sont fausses"],
+  ["La médullosurrénale", "Participe à la biologie du stress", "Représente un ganglion parasympathique", "Est stimulée par un neurone médullaire", "Aucunes des propositions précédentes"],
+
+  ///2019///
+  ["L'origine ectodermique des structures de l’œil concerne", "Le cristallin", "La sclérotique", "La cornée", "L'iris"],
+  ["La tunique fibreuse de l’œil comprend", "La choroïde", "La sclérotique", "La rétine", "Le corps ciliaire"],
+  ["Le corps ciliaire", "Permet l'accommodation à la lumière", "Permet l’accommodation à la distance", "Est un muscle à sarcomère", "Sécrète l’humeur aqueuse"],
+  ["La couche plexiforme externe contient", "Des synapses entre cellules bipolaires et photorécepteurs", "Des synapses entre cellules bipolaires et cellules ganglionnaires", "Des cellules amacrines", "Des cellules horizontales"],
+  ["Les cellules de Müller", "Ont un rôle de croissance", "Ont un rôle de soutien", "Sont d’origine diencéphalique", "Aucunes des réponses précédentes"],
+  ["Le nombre de types différentes de cellules du nerf optique est de", "2", "3", "4", "6"],
+  ["Les cellules ganglionnaires de type P sont", "Les moins nombreuses", "Les plus nombreuses", "Les plus centrales", "Les plus périphériques"],
+  ["La rhodopsine est spécifique", "Des cônes rouges", "Des bâtonnets", "Des cônes bleus", "De n’importe quel cône"],
+  ["Les cellules ganglionnaires de type M sont", "A champ récepteur précis", "A champ récepteur petit", "Sensibles au contraste", "Présentes dans la fovéa"],
+  ["La lumière est", "Visible en deça de 400 nm", "Est captée par la couche interne de la rétine", "traversée par les lentilles","Aucune des réponses précédentes"],
+  ["Si je suis centre bleu ON et périphérie vert OFF alors", "Je code pour les cônes verts", "Je code pour les cônes bleus", "Je code pour les deux types de cônes", "Je suis une cellule de la couche nucléaire externe"],
+  ["L'hémichamps visuel droit est projeté", "Controlatéralement", "Homolatéralement", "Controlatéralement et homolatéralement", "Ipsilatéralement"],
+  ["Le corps genouillé latéral", "Comprend deux couches ganglionnaires", "Est une structure prosencéphalique", "Permet le rythme biologique", "Comprend deux couches parvocellulaires"],
+  ["Une hémianopsie droite peut être due à une atteinte de la rétine", "Nasale gauche", "Nasale droite", "Temporale gauche", "Temporale droite"],
+  ["Concernant le réflexe pupillaire, qui est ou sont impliqué(s)?", "Le noyau supra-chiasmatique", "Le métencéphale", "Le colliculus supérieur", "Le pulvinar"],
+  ["Le punctum proximum est", "Le point le plus proche", "Le point le plus éloigné", "Le point où l'accommodation est maximale", "Le point où l'accommodation est minimale"],
+  ["Dans le traitement des informations visuelles, le canal P", "Intervient pour le déplacement des objets", "Intervient pour la forme des objets", "Intervient pour la couleur des objets", "Nécessite la couche III corticale"],
+  ["Chassez l’intrus", "Dynamique", "Tonique", "Phasique", "Il n’y a pas d’intrus"],
+  ["L’aire visuelle V5", "N'est pas associée à la forme des objets", "N'est pas associée au mouvement des objets", "Se projette dans des aires pariétales", "Ne se projette pas dans des aires frontales"],
+  ["On peut considérer la sensation comme", "Un traitement unitaire", "Une réponse de jugement", "Une information pas encore aboutie", "Absente en cas de non réponse d’un organisme fonctionnant normalement"],
+  ["L'évolution du cerveau montre", "Une diminution du cerveau associatif", "Une diminution du cerveau sensoriel", "Une diminution du cerveau moteur", "Une augmentation du cerveau associatif", "Une augmentation du cerveau moteur"],
+  ["Etant une contraction utérine, je fais partie de la", "Extéroception", "Proprioception", "Intéroception", "Aucunes des réponses précédentes"],
+  ["Le potentiel générateur peut être", "Propageable", "Une hyperpolarisation", "Créé loin du site transducteur", "Mesuré en amplitude au niveau du système nerveux central"],
+  ["L'augmentation du nombre de récepteurs peut être associée à", "Un codage précis", "Un codage spatial", "Un traitement qualitatif", "Toutes les réponses précédentes sont fausses"],
+  ["La convergence n'améliore pas le codage", "Spatial", "Temporel", "Quantitatif", "Qualitatif"],
+  ["Chassez l’intrus", "Voie primaire", "Voie secondaire", "Voie tertiaire", "Voie de la motivation"],
+  ["L’inhibition latérale", "Participe à la gnosie", "Dégrade l'information par élimination d’information", "Ajuste la convergence", "Elimine la notion de bruit"],
+  ["La chaine para-vertébrale du système sympathique est constituée", "De ganglions cérébraux", "Du ganglion cœliaque", "Des ganglions thoraciques", "Des ganglions mésentériques"],
+  ["Quelles sont les centres crâniens du parasympathique ?", "Un noyau du nerf VI", "Un noyau du nerf IV", "Un noyau du nerf X", "Un noyau du nerf XI"],
+  ["Le système nerveux parasympathique est", "Phototrope", "Cardiomodérateur", "Producteur d’énergie", "Thoracico-lombo-sacré"],
+  ["Dans le système nerveux végétatif, le premier neurone est", "Pré-viscéral", "Post-ganglionnaire", "A vitesse rapide", "Soit court soit long", "Aucunes des réponses précédentes"],
+  ["Le système sympathique utilise comme neuromédiateur", "L'acétylcholine", "L'adrénaline", "Les catécholamines", "Le GABA"],
+  ["Le système parasympathique utilise comme neuromédiateur", "L'acétylcholine", "L'adrénaline", "Les catécholamines", "Le GABA"],
+  ["Au niveau médullaire, le SNV efférent", "Est présent dans les cordons dorsaux", "Est présent dans les cordons latéraux", "Est présent dans les cordons ventraux", "Est représenté par ses deux composantes"],
+  ["Le rameau communicant blanc est formé par", "Le neurone connecteur", "Le neurone effecteur", "Le neurone amyélinique", "Le neurone pré-ganglionnaire"],
+  ["La chaine préviscérale est", "Impaire", "Constituée de nombreux ganglions", "Proche de l'organe", "Médiane"],
+  ["Le plexus myentérique est associé", "Au système sympathique", "Au système parasympathique", "A un centre crânien", "A un centre sacré"],
+  ["L’étrier est en contact avec", "Le marteau", "La fenêtre ovale", "Le tympan", "Toutes les réponses précédentes sont fausses"],
+  ["L'organe de Corti", "Contient des rangées de CCI", "Contient une rangée de cellules dites piliers", "Quatre rangées de cellules de Deiters"],
+  ["Les structures impliquées dans le traitement de l'audition sont", "L'olive pontique", "Les colliculus supérieurs", "Les gyrus transverses", "Les corps genouillés ventraux"],
+  ["La périlymphe remplit", "La rampe tympanique", "La rampe vestibulaire", "Aucunes des deux rampes citées"],
+  ["Les vibrations sonores sont", "Absorbées par les osselets", "Amplifiées par les osselets", "Transmises par les osselets"],
+  ["Les cellules ciliées internes ont une forme", "Sphérique", "Cuboïde", "Ovaloïde", "Cylindrique"],
+  ["La transduction de l'onde sonore", "Est mécano-chimique", "Suppose un courant sodique", "Suppose un courant potassique", "Est proportionnelle à l’allongement des stéréocils"],
+  ["Le nombre total de CCI est d'environ:", "3500", "7000", "12500", "Aucune des réponses précédentes"],
+  ["La zone conversationnelle en décibel se situe vers", "20", "30", "40", "60"],
+  ["L'électrocochléogramme est", "Un enregistrement au niveau de la fenêtre ronde", "Utilisé dans le contrôle courant de l’audition", "Associé à l’activité d’une fibre auditive", "Un audiogramme"],
+  ["Le nerf auditif", "Propage des potentiels évoqués", "Propage des messages efférents", "Se projette dans le corps genouillé médian", "Est une nerf mixte"],
+  ["Le deuxième relais de la voie auditive primaire est", "Le noyau cochléaire", "Le corps genouillé médian", "Le complexe olivaire", "Le colliculus inférieur"],
+  ["Cochez ce qui est vrai", "Les cellules ciliées se renouvellent jusqu’à 6 ans", "Le gyrus temporal moyen est en dessous du cortex auditif", "Les cellules ciliées reposent sur le pôle basal des cellules de soutien", "La presbyacousie s’améliore suite à un"]
+
+
+
+
+
+
+];
+
+const rep = [
+///2023///
+"10110",
+"01000",
+"10100",
+"11100",
+"10000",
+"01000",
+"00100",
+"01000",
+"00110",
+"10000",
+"00010",
+"00100",
+"00100",
+"01000",
+"01100",
+"01010",
+"00100",
+"10100",
+"10000",
+"01000",
+"10110",
+"00010",
+"11100",
+"01000",
+"10110",
+"10000",
+"10000",
+"00010",
+"00010",
+"01010",
+"00110",
+"10100",
+"10000",
+"10010",
+"10010",
+"00010",
+"00100",
+"01100",
+"11110",
+"10000",
+"00010",
+"01000",
+"00100",
+"00010",
+"00100",
+"01000",
+"10000",
+"00100",
+"01000",
+"01110",
+
+///2022///
+
+"10110",
+"01000",
+"10010",
+"00010",
+"01100",
+"01000",
+"00100",
+"01000",
+"00100",
+"01000",
+"00100",
+"00110",
+"01000",
+"10010",
+"01000",
+"01000",
+"00100",
+"01000",
+"01010",
+"01000",
+"00010",
+"00010",
+"01000",
+"10000",
+"00100",
+"01000",
+"10000",
+"00100",
+"10100",
+"10100",
+"11010",
+"01010",
+"01100",
+"10100",
+"01100",
+"01000",
+"10000",
+"00010",
+"00010",
+"01110",
+"00010",
+"00100",
+"00010",
+"00100",
+"00010",
+"00100",
+"00100",
+"00100",
+"00010",
+"00100",
+
+
+///2021///
+
+"01000",
+"00100",
+"10100",
+"01100",
+"00010",
+"00010",
+"11100",
+"01100",
+"01010",
+"10100",
+"10000",
+"10000",
+"01010",
+"01000",
+"01000",
+"10100",
+"01000",
+"10100",
+"01000",
+"01000",
+"10110",
+"00100",
+"10000",
+"00010",
+"10110",
+"00100",
+"00100",
+"01000",
+"10000",
+"10010",
+"00110",
+"10000",
+"10000",
+"00010",
+"01000",
+"10010",
+"00100",
+"10000",
+"11110",
+"10100",
+
+///2019///
+"10110",
+"01000",
+"10010",
+"10010",
+"01100",
+"01000",
+"01100",
+"01000",
+"00100",
+"00010",
+"01000",
+"00100",
+"01000",
+"01100",
+"11100",
+"10100",
+"01100",
+"01000",
+"10100",
+"10000",
+"00011",
+"00100",
+"00100",
+"11100",
+"11010",
+"00100",
+"10000",
+"00100",
+"00100",
+"01000",
+"00100",
+"10100",
+"10010",
+"00010",
+"10010",
+"00110",
+"01100",
+"01000",
+"00100",
+"00100",
+"11000",
+"01100",
+"00100",
+"10100",
+"01000",
+"00100",
+"10000",
+"01000",
+"00100",
+"01000",
+
+
+
+
+];
+
+var num_question=0;
+</script>
+<script>
+    var score =0;
+function rep1_select(){
+    if (document.getElementById('reponse_1').style.backgroundColor == "white"){
+        document.getElementById('reponse_1').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_1').style.backgroundColor = "white"
+    }
+}
+
+function rep2_select(){
+    if (document.getElementById('reponse_2').style.backgroundColor == "white"){
+        document.getElementById('reponse_2').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_2').style.backgroundColor = "white"
+    }
+}
+
+function rep3_select(){
+    if (document.getElementById('reponse_3').style.backgroundColor == "white"){
+        document.getElementById('reponse_3').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_3').style.backgroundColor = "white"
+    }
+}
+
+function rep4_select(){
+    if (document.getElementById('reponse_4').style.backgroundColor == "white"){
+        document.getElementById('reponse_4').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_4').style.backgroundColor = "white"
+    }
+}
+
+function rep5_select(){
+    if (document.getElementById('reponse_5').style.backgroundColor == "white"){
+        document.getElementById('reponse_5').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_5').style.backgroundColor = "white"
+    }
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function q_suivante(){
+
+    if((document.getElementById('reponse_1').style.backgroundColor !="yellow" && document.getElementById('reponse_1').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_2').style.backgroundColor !="yellow" && document.getElementById('reponse_2').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_3').style.backgroundColor !="yellow" && document.getElementById('reponse_3').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_4').style.backgroundColor !="yellow" && document.getElementById('reponse_4').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_5').style.backgroundColor !="yellow" && document.getElementById('reponse_5').style.backgroundColor !="red")
+    &&(
+        document.getElementById('reponse_1').style.backgroundColor =="green" ||
+        document.getElementById('reponse_2').style.backgroundColor =="green" ||
+        document.getElementById('reponse_3').style.backgroundColor =="green" ||
+        document.getElementById('reponse_4').style.backgroundColor =="green" ||
+        document.getElementById('reponse_5').style.backgroundColor =="green" 
+    )){
+        score++; 
+    }
+    else 
+    {
+        score =0;
+    }
+
+    num_question=getRandomInt(data.length);
+    document.getElementById("question").textContent = data[num_question][0] ;
+    document.getElementById("reponse_1").textContent = data[num_question][1] 
+    document.getElementById("reponse_2").textContent = data[num_question][2] 
+    document.getElementById("reponse_3").textContent = data[num_question][3] 
+    document.getElementById("reponse_4").textContent = data[num_question][4] 
+    document.getElementById("reponse_5").textContent = data[num_question][5] 
+
+    document.getElementById('reponse_1').style.backgroundColor = "white"
+    document.getElementById('reponse_2').style.backgroundColor = "white"
+    document.getElementById('reponse_3').style.backgroundColor = "white"
+    document.getElementById('reponse_4').style.backgroundColor = "white"
+    document.getElementById('reponse_5').style.backgroundColor = "white"
+
+    document.getElementById('score').innerHTML = "score : " + score;
+}
+
+function valider(){
+    chars = rep[num_question].split('');
+    if (document.getElementById('reponse_1').style.backgroundColor =="grey" && chars[0] == "1" ){
+        document.getElementById('reponse_1').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_1').style.backgroundColor =="grey" && chars[0] == "0" ){
+        document.getElementById('reponse_1').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_1').style.backgroundColor =="white" && chars[0] == "1" ){
+        document.getElementById('reponse_1').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_2').style.backgroundColor =="grey" && chars[1] == "1" ){
+        document.getElementById('reponse_2').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_2').style.backgroundColor =="grey" && chars[1] == "0" ){
+        document.getElementById('reponse_2').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_2').style.backgroundColor =="white" && chars[1] == "1" ){
+        document.getElementById('reponse_2').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_3').style.backgroundColor =="grey" && chars[2] == "1" ){
+        document.getElementById('reponse_3').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_3').style.backgroundColor =="grey" && chars[2] == "0" ){
+        document.getElementById('reponse_3').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_3').style.backgroundColor =="white" && chars[2] == "1" ){
+        document.getElementById('reponse_3').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_4').style.backgroundColor =="grey" && chars[3] == "1" ){
+        document.getElementById('reponse_4').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_4').style.backgroundColor =="grey" && chars[3] == "0" ){
+        document.getElementById('reponse_4').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_4').style.backgroundColor =="white" && chars[3] == "1" ){
+        document.getElementById('reponse_4').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_5').style.backgroundColor =="grey" && chars[4] == "1" ){
+        document.getElementById('reponse_5').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_5').style.backgroundColor =="grey" && chars[4] == "0" ){
+        document.getElementById('reponse_5').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_5').style.backgroundColor =="white" && chars[4] == "1" ){
+        document.getElementById('reponse_5').style.backgroundColor ="yellow"
+    }
+
+   
+}
+
+
+</script>
+
+
+<body>
+  <!-- Contenu de la page -->
+  
+  <!-- En-tête de la page -->
+  <header>
+    <!-- Logo, menu, etc. -->
+  </header>
+
+  <!-- Corps de la page -->
+  <main>
+    <p id="top"><a id="score">score : 0</a><a href="../annee_2.html" id="menu">Menu</a></p>
+    <p id="question">Appuyez sur "Q suivante" </p>
+    <section id="checkbox">
+        <p style="background-color:white" onclick="rep1_select()" id="reponse_1">Réponse 1</p>
+        <p style="background-color:white" onclick="rep2_select()" id="reponse_2">Réponse 2</p>
+        <p style="background-color:white" onclick="rep3_select()" id="reponse_3">Réponse 3</p>
+        <p style="background-color:white" onclick="rep4_select()" id="reponse_4">Réponse 4</p>
+        <p style="background-color:white" onclick="rep5_select()" id="reponse_5">Réponse 5</p>
+    </section> 
+    <section id="bouton">
+    <input id="valider" type="button" value="Valider" onclick="valider()">
+    <input id="q_suivante" type="button" value="Q suivante" onclick="q_suivante()">
+    </section>
+  </main>
+
+
+</body>
+</html>
+<script>q_suivante();</script>

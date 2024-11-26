@@ -788,7 +788,7 @@ const rep = [
 ];
 
 
-var num_question=-1;
+var num_question=0;
 </script>
 <script>
     var score =0;
@@ -862,7 +862,7 @@ function q_suivante(){
         score =0;
     }
 
-    num_question=num_question +1;
+    num_question=getRandomInt(data.length);
     document.getElementById("question").textContent = data[num_question][0] ;
     document.getElementById("reponse_1").textContent = data[num_question][1] 
     document.getElementById("reponse_2").textContent = data[num_question][2] 

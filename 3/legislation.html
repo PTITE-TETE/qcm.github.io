@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physiologie</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- Lien vers votre fichier CSS externe -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../qcm.css">
+</head>
+<script >
+const data = [
+    ///2022///
+
+    [
+        "La loi portant sur \"l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées\" est datée du:",
+        "04 mars 1975",
+        "15 avril 1995",
+        "11 février 2005",
+        "5 avril 2007"
+    ],
+    [
+        "Le statut d'auxiliaire de la médecine des psychomotriciens est daté du:",
+        "06 février 1974",
+        "15 mai 1988",
+        "05 février 1995",
+        "08 avril 2005"
+    ],
+    [
+        "Le décret portant création du diplôme d’Etat de psychomotricien est daté du:",
+        "08 avril 1971",
+        "15 février 1974",
+        "06 mai 1988",
+        "05 février 1995"
+    ],
+    [
+        "Le décret définissant les actes professionnels, que les psychomotriciens sont habilités à accomplir, est daté du:",
+        "15 mars 1974",
+        "06 mai 1988",
+        "7 février 1995",
+        "15 avril 1998"
+    ],
+    [
+        "Parmi les obligations d’exercice de la psychomotricité, vous devez vous enregistrer sur le répertoire ADELI auprès de :",
+        "La préfecture du lieu d'exercice principal",
+        "L'Agence Régionale de Santé de votre lieu d'exercice principal",
+        "La Mairie de votre lieu de résidence principale",
+        "La Mairie de votre lieu d'exercice principal"
+    ],
+    [
+        "Un bilan ou compte rendu psychomoteur doit obligatoirement comporter :",
+        "Les coordonnées du patient concerné",
+        "Une anamnèse précisant au moins la constitution familiale",
+        "Signature du psychomotricien qui a rédigé",
+        "Comporter le nom de la personne qui a rédigé",
+        "Les moyens qu’il compte utiliser"
+    ],
+    [
+        "Les informations fournies dans le compte rendu doivent être",
+        "Uniquement avec des termes professionnels précis",
+        "Uniquement avec des informations loyales",
+        "Écrit en langage intelligible, quitte à simplifier les termes professionnels",
+        "Totalement exhaustives et comporter tous les résultats des tests réalisés"
+    ],
+    [
+        "Quelle que soit la situation, un compte rendu psychomoteur doit être :",
+        "Transmis au médecin, et aux parents",
+        "Transmis aux deux parents si ceux-ci sont divorcés",
+        "Complet pour les parents, et peut être partiel pour les enseignants",
+        "Complet pour le médecin, simplifié et intelligible pour les parents"
+    ],
+    [
+        "La transmission du bilan peut se faire :",
+        "Par voie postale, aux parents, sans condition",
+        "Par voie postale, aux professionnels et avec accord des parents, sans condition",
+        "Par mail aux parents, sans condition",
+        "Par mail, aux professionnels et avec accord des parents, sans autre condition"
+    ],
+    [
+        "Dans la mesure où votre bilan confirme un retard à la norme d'au moins 2 écarts types à l'ensemble des épreuves de la MABC-2 et où l'ensemble des autres éléments du bilan vont dans le même sens; vous pouvez annoncer aux parents:",
+        "Un diagnostic de dyspraxie",
+        "Que l'enfant présente des troubles praxiques justifiés par l'écart type",
+        "Que l'enfant présente un retard par rapport à la norme des praxies",
+        "Uniquement les résultats car seul le médecin pourra faire la lecture du bilan"
+    ],
+    [
+        "Un adolescent est accueilli dans une institution dotée de plusieurs professionnels de chaque spécialité :",
+        "Les responsables légaux sont tenus d’accepter l’ensemble des décisions de soins vues en réunion d’équipe et validées par le médecin responsable.",
+        "Les responsables légaux peuvent s'opposer à certains des soins dispensés au sein de l'institution.",
+        "Les soins sont dispensés par n’importe lequel des professionnels et sans qu'il soit nécessaire d'en informer les parents puisque les soins ont été délégués à l'institution.",
+        "Même si les soins sont délégués à l'institution, les soins d'un patient demeurent \"nominatif\" et le patient ou son tuteur légal doivent savoir qui intervient dans les soins.",
+        "Les soins peuvent être dispensés par n’importe lequel des professionnels de santé qualifiés pour les soins prévus, sous condition d’en avoir prévenu les responsables légaux."
+    ],
+    [
+        "Dans le cadre normal du fonctionnement d’une institution :",
+        "Pour imposer leur choix de professionnel intervenant auprès de leur enfant, les parents doivent motiver leur demande.",
+        "Les parents peuvent imposer leur choix de professionnel intervenant.",
+        "En cas de réclamation pour arrêter les soins de leur enfant avec un intervenant de l’équipe, les parents doivent au préalable en faire la demande au médecin de l’établissement.",
+        "Les parents peuvent s’opposer aux choix de soins prévus par l’équipe."
+    ],
+    [
+        "Le secret professionnel concerne :",
+        "Uniquement ce qui nous est confié directement.",
+        "Uniquement ce qui nous avons recueilli dans le cadre de notre exercice.",
+        "Ce que nous avons entendu dans le cadre de notre travail.",
+        "Toute information, quelle qu’en soit l’origine."
+    ],
+    [
+        "Le « dossier médical » du patient que vous suivez en psychomotricité est :",
+        "Accessible, en toute circonstance, à tout personnel de santé dès lors que celui-ci est en charge du patient.",
+        "Partiellement accessible aux professionnels, et sur décision du médecin.",
+        "Composé, entre autres, des informations concernant la constellation familiale et de la situation professionnelle de chacun si vous avez eu cette information.",
+        "Composé, de vos notes concernant l'évolution.",
+        "Composé, de vos notes personnelles de séances."
+    ],
+    [
+        "La demande de « Soins Psychiatriques à la Demande d’un Tiers » (SPDT), peut se faire par :",
+        "Toute personne, quelle qu'elle soit, constatant une situation de mise en danger.",
+        "Un psychomotricien en exercice, auprès de votre patient.",
+        "Une personne proche (connaissance de promotion)."
+    ],
+    [
+        "Une demande de « Soins Psychiatriques à la Demande d’un Tiers » SPDT est valable pour :",
+        "Un mineur uniquement.",
+        "Un majeur uniquement.",
+        "Quel que soit l’âge."
+    ],
+    [
+        "Dans le cadre d’une mesure d’Urgence en Soins Psychiatriques, pour lancer la procédure :",
+        "Le critère d’âge n’est pas retenu.",
+        "Le premier certificat peut être rédigé par le médecin des urgences.",
+        "L’existence d’un comportement dangereux du patient pour lui ou pour autrui est nécessaire."
+    ],
+    [
+        "L’admission en service de psychiatrie d’un patient, est une information qui peut être transmise :",
+        "Uniquement aux membres de l’équipe qui suivaient régulièrement ce patient.",
+        "À l'ensemble de l'équipe.",
+        "Pour l'instruction d'un dossier de pension.",
+        "Doit être transmise à la famille."
+    ],
+    [
+        "Dans le cadre d’un exercice salarié en IME, et en cas de propos tenus par votre patient âgé de 16 ans concernant des possibilités d'avoir été en situation d'abus sexuel, vous devez :",
+        "Parce que vous ne savez pas quoi faire, contacter le CRIP.",
+        "Selon les circonstances, apprécier la nécessité absolue ou non de réaliser un signalement.",
+        "Quoi qu'il en coûte et en toute circonstance, faire un signalement individuel auprès de la brigade des mineurs.",
+        "Faire une déclaration à son responsable hiérarchique, car dans le cadre d’une institution, c’est uniquement au Directeur de faire le signalement au nom de l’équipe.",
+        "Demander aux responsables légaux de réaliser le signalement car il s'agit d'un mineur."
+    ],
+    [
+        "Exerçant à temps partiel en institution, un licenciement pour faute grave peut être dû à :",
+        "Un refus de participation à une formation sur « l'utilisation du logiciel de l'établissement ».",
+        "Avoir refusé de réaliser des soins au motif qu’il s’agit d’une personne plus âgée que vous et surtout de l'autre sexe.",
+        "Des retards répétés et constatés.",
+        "Le refus d'utilisation d'un médiateur de soins utilisé historiquement dans l'institution."
+    ],
+    [
+        "Une situation d’accident du travail est valable :",
+        "Uniquement sur votre lieu de travail.",
+        "Sur votre lieu de travail et de repas uniquement.",
+        "Sur votre lieu de travail et sur les trajets du domicile au lieu d’exercice, sans condition.",
+        "Sur votre lieu de travail et sur les trajets du domicile au lieu d’exercice, avec condition."
+    ],
+    [
+        "Dans le cadre de l’évaluation des établissements de santé par l’ARS ; vous pourriez avoir à justifier :",
+        "Des moyens mis en œuvre dans le cadre de votre activité.",
+        "Des objectifs de soins pour chacun de vos patients.",
+        "Des résultats obtenus pour chacun de vos patients.",
+        "Des dates de vos congés par rapport aux séances."
+    ],
+    [
+        "Dans de cadre de la Formation et de son Compte Personnel de Formation CPF , chaque professionnel exerçant à temps plein bénéficie :",
+        "D'un crédit de formation de 250 € par an.",
+        "D'un crédit de formation de 500 € par an.",
+        "De la possibilité de choisir la formation qu'il souhaite, quelle qu'elle soit.",
+        "De pouvoir réaliser une formation dès lors que celle-ci est en rapport avec sa profession."
+    ],
+    [
+        "Dans le cadre de la Formation du Professionnelle le CPF est :",
+        "Soumis à accord de l’employeur et doit être nécessairement en rapport avec votre emploi.",
+        "Soumis à accord de l’employeur mais ne doit pas être nécessairement en rapport avec votre emploi.",
+        "Indépendant de l’accord de l’employeur mais doit être nécessairement en rapport avec votre emploi.",
+        "Indépendant de l’accord de l’employeur et ne doit pas être nécessairement en rapport avec votre emploi."
+    ],
+    [
+        "La formation dans le cadre du Développement Professionnel Continu :",
+        "Ne doit pas être nécessairement en rapport avec votre diplôme.",
+        "Doit être nécessairement en rapport avec votre diplôme.",
+        "Concerne tous les professionnels.",
+        "Concerne uniquement les professionnels de santé (médecins, auxiliaires médicaux,…)."
+    ],
+    [
+        "La formation dans le cadre du Développement Professionnel Continu est :",
+        "Financée dans la cadre de l'obligation de contribution à la formation professionnelle.",
+        "Financée indépendamment du plan de financement de l’établissement.",
+        "Obligatoire au moins une fois tous les 3 ans."
+    ],
+    [
+        "Le « développement professionnel continu » est une formation :",
+        "Comportant un module d’approfondissement des connaissances.",
+        "Comportant un module concernant la gestion des risques.",
+        "Comportant des thèmes que vous êtes libre de choisir.",
+        "Pour rentrer dans ce cadre, doit être validée par l'ANDPC."
+    ],
+    [
+        "Dès lors qu'il a accepté de répondre à une demande de soin, le psychomotricien a :",
+        "L'obligation légale de poursuivre les soins jusqu'à sa fin.",
+        "Le devoir d'assurer des soins consciencieux, dévoués et fondés sur les recommandations de bonne pratique.",
+        "Se doit d'orienter, s'il y a lieu, vers un tiers compétent."
+    ],
+    [
+        "Dans l'intérêt du patient et pour des raisons légitimes que le psychomotricien apprécie en conscience, éventuellement avec le médecin prescripteur, son patient peut être tenu dans l'ignorance d'un diagnostic :",
+        "Quelles que soient les circonstances.",
+        "Sauf dans les cas où l'affection dont il est atteint expose les tiers à un risque.",
+        "Dans la mesure où le psychomotricien ne fait aucun diagnostic."
+    ],
+    [
+        "Concernant une personne dépendante, déficiente intellectuelle, ayant un trouble sensoriel, et donc sous tutelle :",
+        "Son consentement n'a pas besoin d'être obtenu puisque seul compte celui du tuteur.",
+        "Son consentement doit être recherché avec les moyens les plus adaptés.",
+        "Parce que le patient est déficient intellectuel, son avis n'a aucune valeur."
+    ],
+    //2023//
+    [
+        "La loi portant sur \"l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées\" est datée du :",
+        "a) 04 mars 1975",
+        "b) 15 mai 1995",
+        "c) 11 février 2005",
+        "d) 5 février 2007"
+    ],
+    [
+        "Le statut d'auxiliaire de la médecine des psychomotriciens est daté du :",
+        "a) 15 avril 1974",
+        "b) 06 février 1988",
+        "c) 18 avril 1992",
+        "d) 05 février 1995"
+    ],
+    [
+        "Le décret définissant les actes professionnels, que les psychomotriciens sont habilités à accomplir, est daté du :",
+        "a) 07 février 1974",
+        "b) 06 mai 1988",
+        "c) 15 avril 1995",
+        "d) 11 février 1996"
+    ],
+    [
+        "Le décret portant création du diplôme d’Etat de psychomotricien est daté du :",
+        "a) 14 avril 1972",
+        "b) 15 février 1974",
+        "c) 08 avril 1988",
+        "d) 06 mai 1995"
+    ],
+    [
+        "Un bilan ou compte rendu psychomoteur doit comporter obligatoirement :",
+        "a) Une anamnèse complète et exhaustive",
+        "b) Une anamnèse comportant à minima la constitution familiale",
+        "c) Comporter le nom de la personne qui a rédigé",
+        "d) L’ensemble des productions réalisées pendant le bilan",
+        "e) Les moyens proposés au regard des éléments du bilan"
+    ],
+    [
+        "Quelle que soit la situation, un compte rendu psychomoteur doit être :",
+        "a) Transmis à l’un des deux parents si vous n’avez pas d’indication particulière",
+        "b) Transmis uniquement à celui des parents qui a fait la demande de bilan, en cas de divorce et du fait de l’autorité parentale partagée.",
+        "c) Transmis aux deux parents divorcés, même si celui des deux qui a réalisé la demande de bilan spécifie que le document ne doit pas être transmis.",
+        "d) Transmis uniquement au parent qui a fait la demande de bilan si celui-ci a spécifié son souhait que ce ne soit pas transmis à l’autre parent, étant divorcé."
+    ],
+    [
+        "Quelle que soit la situation, un compte rendu psychomoteur doit être :",
+        "a) Complet pour le médecin, simplifié et intelligible pour les parents",
+        "b) Complet pour les parents, et peut être partiel pour les enseignants",
+        "c) Obligatoirement transmis au médecin, et le même aux parents",
+        "d) Transmis à au moins l’un des deux parents, à charge des parents de transmettre au médecin"
+    ],
+    [
+        "La transmission du bilan peut se faire :",
+        "a) Par voie postale, aux parents, sans condition particulière",
+        "b) Par voie postale, aux professionnels, sans autre condition",
+        "c) Par mail aux parents, sans condition particulière",
+        "d) Par mail, aux professionnels et avec accord des parents, sans autre condition"
+    ],
+    [
+        "Les informations fournies dans le compte rendu doivent être :",
+        "a) Uniquement avec des informations loyales",
+        "b) Uniquement avec des termes professionnels précis",
+        "c) Écrit en langage intelligible, quitte à simplifier les termes professionnels",
+        "d) Comporter, sans exception, toutes les informations recueillies pendant le bilan"
+    ],
+    [
+        "Un enfant est accueilli en institution dans laquelle plusieurs professionnels sont présents avec des formations différentes :",
+        "a) S’agissant d’une institution, l’institution est seule à décider des professionnels qui effectueront les suivis, quel que soit l’avis des parents",
+        "b) Les soins peuvent être dispensés par n’importe lequel des professionnels de santé qualifiés pour les soins prévus, sous condition d’en avoir prévenu les responsables légaux",
+        "c) L’avis du patient, quel qu’il soit, doit être recueilli avant d’engager les soins, malgré la décision de l’équipe et l’ordonnance médicale",
+        "d) S’agissant d’un patient déficient ou non-verbal, et donc sous tutelle, seul l’avis de son tuteur compte."
+    ],
+    [
+        "Lorsqu’un patient est admis dans un centre de rééducation fonctionnelle, quels que soient la situation, et le pronostic, les informations concernant ce patient :",
+        "a) Sont du domaine exclusif du médecin responsable",
+        "b) Sont réputées confiées par le malade à l'ensemble de l'équipe",
+        "c) Peuvent être transmises pour l'instruction d'un dossier de pension",
+        "d) Peuvent être données aux parents directement"
+    ],
+    [
+        "Un patient demande que lui soit transmis son dossier géré par le Psychomotricien de l’institution.",
+        "a) Le psychomotricien peut le lui refuser au motif que le dossier appartient à l’institution",
+        "b) La demande doit être adressée spécifiquement au médecin responsable de l’institution",
+        "c) Le psychomotricien doit le lui remettre instantanément",
+        "d) Le psychomotricien ou l’institution a 15 jours pour le lui remettre"
+    ],
+    [
+        "Le « dossier médical » du patient est :",
+        "a) Accessible, en toute circonstance, à tout personnel de santé dès lors que celui-ci est en charge du patient.",
+        "b) Avec des accès limités, fixés par chacun des professionnels",
+        "c) Avec des accès limités fixés par le médecin de l’établissement"
+    ],
+    [
+        "Le « dossier médical » de l’institution du patient est :",
+        "a) Composé uniquement des bilans des différents intervenants",
+        "b) Composé uniquement des bilans et des productions réalisées par le patient dans le cadre des soins",
+        "c) Composé notamment des comptes rendus de réunions, mais aussi des mails entre professionnels",
+        "d) Composé, entre autres, des notes personnelles de séances"
+    ],
+    [
+        "Une demande de SPDT est valable pour :",
+        "a) Un mineur uniquement",
+        "b) Un majeur uniquement",
+        "c) Quel que soit l’âge"
+    ],
+    [
+        "Dans le cadre d’une mesure d’Urgence en Soins Psychiatriques, pour lancer la procédure :",
+        "a) Le critère d’âge n’est pas retenu",
+        "b) Le premier certificat peut être rédigé par le médecin des urgences",
+        "c) L’existence d’un comportement dangereux du patient pour lui ou pour autrui est suffisante."
+    ],
+    [
+        "Un licenciement pour faute grave peut être dû à :",
+        "a) Un refus de participation à une formation sur « le logiciel d’inscription des données »",
+        "b) Avoir refusé de réaliser des soins au motif qu’il s’agit d’un garçon plus âgé que vous",
+        "c) Des retards répétés et constatés",
+        "d) Une incapacité à gérer certains troubles du comportement de patients"
+    ],
+    [
+        "Une situation d’accident du travail est valable :",
+        "a) Uniquement sur votre lieu de travail",
+        "b) Sur votre lieu de travail et de repas uniquement",
+        "c) Sur votre lieu de travail et sur les trajets du domicile au lieu d’exercice, sans condition",
+        "d) Y compris sur le trajet direct du domicile au lieu d’exercice"
+    ],
+    [
+        "Dans le cadre de l’évaluation des établissements de santé par l’Agence Régionale de la Santé ; vous devrez justifier :",
+        "a) Des moyens mises en œuvre dans le cadre de votre activité",
+        "b) Des objectifs de soins pour chacun de vos patients",
+        "c) Des résultats obtenus pour chacun de vos patients",
+        "d) Des dates de vos congés par rapport aux séances"
+    ],
+    [
+        "Dans le cadre de la Formation Professionnelle, chaque professionnel exerçant à temps plein bénéficie, dans le cadre de son Compte Personnel d’Activité :",
+        "a) De 12h par an",
+        "b) De 18h par an",
+        "c) De 24h par an",
+        "d) De 30h par an"
+    ],
+    [
+        "Dans le cadre de votre Compte Personnel d’Activité, le crédit de formation vous permet :",
+        "a) De vous former sur le thème de votre choix, sans lien avec votre métier actuel ou diplôme",
+        "b) De vous former uniquement dans un domaine en lien avec votre métier en cours",
+        "c) De vous former à ce que vous voulez, en ayant toutefois l’accord de votre employeur concernant votre absence"
+    ],
+    [
+        "La formation dans le cadre du Développement Professionnel Continu :",
+        "a) Vous concerne parce que vous exercez en tant que psychomotricien(ne)",
+        "b) Vous concerne, même si votre poste n’est pas en lien avec votre diplôme d’Etat en psychomotricité",
+        "c) Doit être nécessairement en rapport avec votre diplôme",
+        "d) Peut-être une formation concernant uniquement l’usage et la mise à jour d’un test"
+    ],
+    [
+        "La formation dans le cadre du Développement Professionnel Continu est :",
+        "a) Financée par votre employeur dans le cadre du plan de formation",
+        "b) Financée indépendamment du plan de financement de l’établissement",
+        "c) Financé par votre compte CPF",
+        "d) Obligatoire au moins une fois tous les 3 ans"
+    ],
+    [
+        "Le « développement professionnel continu » est une formation :",
+        "a) Comportant un module concernant la gestion des risques",
+        "b) Comportant des thèmes que vous êtes libre de choisir",
+        "c) Proposée par un organisme de formation quel qu’il soit",
+        "d) Un organisme devant comporter un label au moins ANDPC",
+        "e) Un organisme devant comporter un label au moins QUALIOPI"
+    ],
+    [
+        "Un psychomotricien qui a remplacé un de ses confrères pendant trois mois, consécutifs, ou un psychomotricien qui a effectué son stage d'étudiant de dernière année chez un confrère :",
+        "a) Après avoir demandé au titulaire l'autorisation, peut s'installer dans la même ville ou celles limitrophes",
+        "b) Puisqu’il s'agit d'un remplacement de courte durée ou d'un stage, il n'y a aucune contrainte d’aucune sorte",
+        "c) L'exercice libéral étant une pratique indépendante, il est possible, sans condition de s’installer à proximité d’un autre confrère (même immeuble, même rue,…)"
+    ],
+
+    //2024//
+    [
+        "Le décret portant création du diplôme d’Etat de psychomotricien est daté du :",
+        "a) 25 mai 1964",
+        "b) 15 février 1974",
+        "c) 07 février 1985",
+        "d) 16 mai 1988"
+    ],
+    [
+        "Le décret relatif à l’accomplissement de certains actes de psychomotricité (dit « décret d’actes des psychomotriciens ») est daté du :",
+        "a) 20 février 1974",
+        "b) 15 février 1978",
+        "c) 06 mai 1988",
+        "d) 05 juin 1995"
+    ],
+    [
+        "Le statut d'auxiliaire de la médecine des psychomotriciens est daté du :",
+        "a) 25 février 1976",
+        "b) 05 mai 1988",
+        "c) 05 février 1995",
+        "d) 17 juillet 1998"
+    ],
+    [
+        "La loi dite pour « l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées » date du :",
+        "a) 30 juin 1975",
+        "b) 10 mai 1995",
+        "c) 11 février 2005",
+        "d) 10 mars 2007"
+    ],
+    [
+        "Le secret professionnel concerne :",
+        "a) Uniquement ce qui nous est confié directement",
+        "b) Uniquement ce qui nous avons recueilli dans le cadre de notre exercice",
+        "c) Ce que nous avons entendu dans le cadre de notre travail",
+        "d) Toute information, quelle qu’en soit l’origine"
+    ],
+    [
+        "Le « dossier médical » du patient est :",
+        "a) Accessible complètement et en toute circonstance, à tout personnel de santé dès lors que celui-ci a la charge du patient",
+        "b) Limité uniquement à ce qui concerne le professionnel et ce quel que soit les circonstances",
+        "c) Sous la responsabilité du médecin de l'établissement",
+        "d) Composé, obligatoirement des productions réalisées par le patient dans le cadre des soins"
+    ],
+    [
+        "Quelle que soit la situation, un compte rendu psychomoteur doit être :",
+        "a) Transmis à l’un des deux parents si vous n’avez pas d’indication particulière",
+        "b) Transmis uniquement à celui des deux parents qui a fait la demande de bilan, en cas de divorce et du fait de l’autorité parentale partagée.",
+        "c) Transmis aux deux parents divorcés, même si celui des deux qui a réalisé la demande de bilan spécifie que le document ne doit pas être transmis.",
+        "d) Transmis uniquement au parent qui a fait la demande de bilan si celui-ci a spécifié son souhait que ce ne soit pas transmis à l’autre parent, étant divorcé."
+    ],
+    [
+        "Un compte rendu psychomoteur doit être :",
+        "a) Transmis à au moins l’un des deux parents, à charge des parents de transmettre au médecin",
+        "b) Complet pour le médecin, simplifié et intelligible pour les parents",
+        "c) Complet pour les parents, et transmis partiellement aux enseignants",
+        "d) Obligatoirement transmis au médecin, et le même aux parents"
+    ],
+    [
+        "Les informations fournies dans le compte rendu doivent être :",
+        "a) Uniquement avec des termes professionnels précis",
+        "b) Uniquement avec des informations loyales",
+        "c) Écrit en langage intelligible, quitte à simplifier les termes professionnels",
+        "d) Comporter, sans exception, toutes les informations recueillies pendant le bilan"
+    ],
+    [
+        "S'il considère ne pas avoir suffisamment les compétences, un professionnel de santé quel qu’il soit se doit de :",
+        "a) Mettre fin immédiatement aux soins avec son patient",
+        "b) S'efforcer de transférer son patient à un collègue qu'il jugera plus compétent",
+        "c) Poursuivre les soins au motif du 'primo-accédant' au soin et continuera à être le soignant de référence",
+        "d) Conserver le patient car il ne s'agit que d'une question éthique et non une loi"
+    ],
+    [
+        "Dans la pratique de son art, un professionnel en psychomotricité est :",
+        "a) Libre de pratiquer comme il l'entend et d'utiliser tous les médiateurs qu'il souhaite",
+        "b) Doit vérifier que les médiateurs qu'il souhaite utiliser s'appuient sur des éléments scientifiques",
+        "c) Se doit de pouvoir justifier ses choix de pratique selon des éléments fondés",
+        "d) Libre d'organiser sa pratique en bilan et en séances"
+    ],
+    [
+        "Avant de pratiquer un bilan ou même des séances de psychomotricité, le professionnel de santé :",
+        "a) Peut se dispenser de consulter l'avis du patient dans la mesure où celui-ci est dans l'institution et donc consent tacitement aux soins",
+        "b) Doit lui demander son consentement, même s'il s'agit d'un mineur",
+        "c) Doit uniquement avoir l'avis du responsable légal pour un mineur",
+        "d) Doit chercher son consentement, y compris pour une personne ayant des difficultés de communication"
+    ],
+    [
+        "Une demande de Soins Psychiatriques à la Demande d’un Tiers est valable pour :",
+        "a) Un mineur uniquement",
+        "b) Un majeur uniquement",
+        "c) Quel que soit l’âge"
+    ],
+    [
+        "Dans le cadre d’une mesure d’Urgence en Soins Psychiatriques, pour lancer la procédure :",
+        "a) Le critère d’âge n’est pas retenu",
+        "b) Le premier certificat peut être rédigé par le médecin des urgences",
+        "c) L’existence d’un comportement dangereux du patient pour lui ou pour autrui est suffisant."
+    ],
+    [
+        "Un licenciement pour faute grave peut être dû à :",
+        "a) Un refus de participation à une formation sur « demandée par le CHSCT »",
+        "b) Avoir refusé de réaliser des soins au motif qu’il s’agit d’un garçon plus âgé que vous",
+        "c) Des retards répétés et constatés",
+        "d) Une incapacité à gérer certains troubles du comportement de patients"
+    ],
+    [
+        "Une situation d’accident du travail est valable :",
+        "a) Uniquement sur votre lieu de travail",
+        "b) Sur votre lieu de travail et de repas uniquement",
+        "c) Sur votre lieu de travail et sur les trajets du domicile au lieu d’exercice, sans condition",
+        "d) Sur le trajet direct du domicile au lieu d’exercice"
+    ],
+    [
+        "Dans le cadre de l’évaluation des établissements de santé par l’Agence Régionale de la Santé ; vous devrez justifier :",
+        "a) Des moyens mis en œuvre dans le cadre de votre activité",
+        "b) Des objectifs de soins pour chacun de vos patients",
+        "c) Des résultats obtenus pour chacun de vos patients",
+        "d) Des dates de vos congés par rapport aux séances"
+    ],
+    [
+        "Dans le cadre de votre Compte Personnel d’Activité, le crédit de formation vous permet :",
+        "a) De vous former sur le thème de votre choix, sans lien avec votre métier actuel ou diplôme",
+        "b) De vous former uniquement dans un domaine en lien avec votre métier en cours",
+        "c) De vous former à ce que vous voulez, en ayant toutefois l’accord de votre employeur concernant votre absence"
+    ],
+    [
+        "La formation dans le cadre du Développement Professionnel Continu :",
+        "a) Vous concerne parce que vous exercez en tant que psychomotricien(ne)",
+        "b) Vous concerne, même si votre poste n’est pas en lien avec votre diplôme d’Etat en psychomotricité",
+        "c) Doit être nécessairement en rapport avec les plans nationaux de santé",
+        "d) Obligatoire au moins une fois tous les 3 ans"
+    ],
+    [
+        "Le « développement professionnel continu » est une formation :",
+        "a) Comportant un module concernant la gestion des risques",
+        "b) Comportant des thèmes que vous êtes libre de choisir",
+        "c) Proposée par un organisme de formation quel qu’il soit",
+        "d) Dispensée par un organisme devant comporter un label au moins ANDPC",
+        "e) Dispensée par un organisme devant comporter un label au moins QUALIOPI"
+    ],
+    //2018//
+    [
+    "Le décret portant création du diplôme d’Etat de psychomotricien est daté du:", 
+    "15 février 1961", 
+    "15 février 1974", 
+    "06 mai 1988", 
+    "15 avril 1995"
+  ],
+  [
+    "Le décret définissant les actes professionnels, que les psychomotriciens sont habilitées à accomplir, est daté du:", 
+    "15 avril 1974", 
+    "06 mai 1988", 
+    "7 février 1992", 
+    "15 avril 1996"
+  ],
+  [
+    "Le statut d'auxiliaire de la médecine des psychomotriciens est daté du:", 
+    "06 avril 1981", 
+    "15 mai 1988", 
+    "05 février 1995", 
+    "17 janvier 1996"
+  ],
+  [
+    "Le décret d’actes des psychomotriciens, précise que les psychomotriciens sont habilités à accomplir leurs actes :", 
+    "sur prescription", 
+    "après examen neuropsychologique", 
+    "Sans précision"
+  ],
+  [
+    "La loi dite 'pour le handicap' est datée du:", 
+    "04 mars 1975", 
+    "30 juin 2000", 
+    "11 février 2005", 
+    "5 avril 2010"
+  ],
+  [
+    "Parmi les obligations de l’exercice d’une profession de santé, on doit s’enregistrer sur le répertoire ADELI auprès de:", 
+    "La préfecture du lieu principal d'exercice", 
+    "L'Agence Régionale de Santé", 
+    "La mairie du lieu principal d'exercice", 
+    "L'Agence Régionale d'Hospitalisation"
+  ],
+  [
+    "Un professionnel qui réalise et rédige un bilan psychomoteur doit obligatoirement :", 
+    "signer le compte rendu", 
+    "comporter le nom de la personne diplômée", 
+    "doit préciser les moyens qu’il compte utiliser", 
+    "Les réponses A, B, C sont fausses"
+  ],
+  [
+    "Quelque soit la situation, un compte rendu psychomoteur doit être:", 
+    "Transmis aux deux parents si ceux-ci sont divorcés", 
+    "Transmis au médecin, et aux parents", 
+    "Complet pour le médecin, simplifié et intelligible pour les parents", 
+    "complet pour les parents, et peut être partiel pour les enseignants"
+  ],
+  [
+    "Etant suivi dans un IME, les parents ne souhaitent pas que les soins soient réalisés par l’un des psychomotriciens de l’établissement sans motif annoncé :", 
+    "Les soins étant en institution, ceux-ci sont réputés être acceptés en 'l’état' par le patient, et peuvent donc être réalisés par n’importe lequel des membres de l’équipe", 
+    "Bien qu’étant en institution avec des soins pris en charge, les parents peuvent imposer leur choix contre l’avis de l’équipe", 
+    "Les parents doivent motiver leur choix afin que l’on puisse tenir compte de leur demande", 
+    "La répartition des soins proposés au sein de ce type d’institution est faite par l’équipe et validée par son médecin"
+  ],
+  [
+    "Le secret professionnel concerne:", 
+    "Toute information, quelle qu’en soit l’origine", 
+    "Ce que nous avons entendu dans le cadre de notre travail", 
+    "Uniquement ce qui nous avons recueillie dans le cadre de notre exercice"
+  ],
+  [
+    "La demande de 'Soins Psychiatriques à la Demande d’un Tiers' (SPDT), peut se faire par :", 
+    "Toute personne constatant une situation de mise en danger", 
+    "Un psychomotricien en exercice", 
+    "Le maire de la commune de résidence", 
+    "Les réponses A, B, C sont fausses"
+  ],
+  [
+    "Une demande de SPDT est valable pour :", 
+    "Un mineur uniquement", 
+    "Un majeur uniquement", 
+    "Quel que soit l’âge"
+  ],
+  [
+    "Dans le cadre d’une mesure d’Urgence en Soins Psychiatriques, pour lancer la procédure :", 
+    "Le critère d’âge n’est pas retenu", 
+    "Le premier certificat peut être rédigé par le médecin des urgences", 
+    "Le risque de comportement dangereux du patient pour lui ou pour autrui est le seul critère nécessaire"
+  ],
+  [
+    "Un patient est admis en cure de désintoxication. Quelle que soit la situation, les informations concernant ce patient,", 
+    "dans l'intérêt uniquement du patient, peuvent être transmise à l'ensemble de l'équipe", 
+    "peuvent être transmises pour l'instruction d'un dossier de pension", 
+    "peuvent être transmises à la famille et aux proches"
+  ],
+  [
+    "Dans le cadre d’un exercice salarié, et en cas de mauvais traitement d’un enfant de 14 ans constaté par le psychomotricien celui-ci, doit :", 
+    "Faire une action individuelle auprès de la brigade des mineurs", 
+    "ne rien faire sans avoir au préalable l’accord de son directeur.", 
+    "Demander aux parents de réaliser le signalement", 
+    "Demander l’accord du patient pour agir"
+  ],
+  [
+    "Sont bénéficiaires de la sécurité sociale :", 
+    "Tous les citoyens français, sans condition", 
+    "uniquement les citoyens français salariés", 
+    "un cotisant quelque soit sa situation", 
+    "un salarié, son conjoint, ses enfants (étudiants)"
+  ],
+  [
+    "Un licenciement pour faute grave peut être dû à :", 
+    "Un refus de participation à une formation sur 'la prévention des lombalgies'", 
+    "Avoir refusé de réaliser des soins au motif qu’il s’agit d’un garçon", 
+    "Des retards répétés et constatés", 
+    "L’absence de rédaction de vos bilans"
+  ],
+  [
+    "Une situation d’accident du travail est valable :", 
+    "Uniquement sur votre lieu de travail", 
+    "Sur votre lieu de travail et de repas uniquement", 
+    "Sur votre lieu de travail et sur les trajets du domicile au lieu d’exercice, sans condition", 
+    "Y compris sur le trajet direct du domicile au lieu d’exercice"
+  ],
+  [
+    "Conditions particulières d’accident du travail :", 
+    "La démarche étant simplifiée il suffit d’appeler l’employeur", 
+    "Vous avez 24h pour déclarer l'accident", 
+    "Vous bénéficiez d’une prise en charge à 100% des frais des vos soins", 
+    "Quelque soit les conditions et le temps de convalescence, le salaire est maintenu"
+  ],
+  [
+    "Dans le cadre de l’évaluation des établissements de santé par l’ANESM :", 
+    "l’avis rendu, concernant l’établissement de santé, est consultatif", 
+    "L’ANESM est une agence indépendante d’audit des établissements visant à réduire les coûts de fonctionnement uniquement", 
+    "Vous serez amené à justifier de votre activité en psychomotricité", 
+    "L’avis concerne l’organisation, la fermeture ou l’ouverture des services"
+  ],
+  [
+    "Le développement professionnel continu, concerne les psychomotriciens parce que cela vous impose de :", 
+    "Participer à une formation validée par l’ARS", 
+    "Participer à une formation validée par l’ANDPC", 
+    "Réaliser des formations en lien avec votre diplôme", 
+    "Réaliser au moins une formation tous les 3 ans, quelle qu’elle soit"
+  ]
+
+
+];
+
+const rep = [
+///2022///
+ "00100",
+ "00100",
+ "01000",
+ "01000",
+ "01000",
+ "00111",
+ "01100",
+ "01100",
+ "11000",
+ "00100",
+ "01011",
+ "01010",
+ "00110",
+ "01010",
+ "01100",
+ "01000",
+ "01100",
+ "10110",
+ "11000",
+ "11000",
+ "00010",
+ "11100",
+ "01000",
+ "00010",
+ "01010",
+ "01100",
+ "11000",
+ "01100",
+ "01000",
+ "01000",
+ //2023//
+ "00100",
+ "00010",
+ "01000",
+ "01000",
+ "00101",
+ "10100",
+ "01010",
+ "10000",
+ "10100",
+ "01100",
+ "11100",
+ "01010",
+ "00100",
+ "10110",
+ "01000",
+ "01000",
+ "11000",
+ "00010",
+ "11100",
+ "00100",
+ "10100",
+ "10100",
+ "01010",
+ "10010",
+ "10000",
+
+ //2024//
+ "01000",
+ "00100",
+ "00100",
+ "00100",
+ "00110",
+ "01100",
+ "10100",
+ "10000",
+ "01100",
+ "01000",
+ "01100",
+ "01010",
+ "01000",
+ "01000",
+ "11000",
+ "00010",
+ "11100",
+ "10100",
+ "10110",
+ "10010",
+  //2018//
+"01000",
+"00100",
+"00100",
+"10000",
+"01000",
+"00100",
+"01000",
+"00100",
+"00100",
+"00100",
+"01110",
+"01100",
+"00011",
+"01000",
+"10010",
+"00110",
+"11100",
+"01000",
+"01000",
+"11010",
+"00010"
+
+
+
+];
+
+
+var num_question=0;
+</script>
+<script>
+    var score =0;
+function rep1_select(){
+    if (document.getElementById('reponse_1').style.backgroundColor == "white"){
+        document.getElementById('reponse_1').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_1').style.backgroundColor = "white"
+    }
+}
+
+function rep2_select(){
+    if (document.getElementById('reponse_2').style.backgroundColor == "white"){
+        document.getElementById('reponse_2').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_2').style.backgroundColor = "white"
+    }
+}
+
+function rep3_select(){
+    if (document.getElementById('reponse_3').style.backgroundColor == "white"){
+        document.getElementById('reponse_3').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_3').style.backgroundColor = "white"
+    }
+}
+
+function rep4_select(){
+    if (document.getElementById('reponse_4').style.backgroundColor == "white"){
+        document.getElementById('reponse_4').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_4').style.backgroundColor = "white"
+    }
+}
+
+function rep5_select(){
+    if (document.getElementById('reponse_5').style.backgroundColor == "white"){
+        document.getElementById('reponse_5').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_5').style.backgroundColor = "white"
+    }
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function q_suivante(){
+
+    if((document.getElementById('reponse_1').style.backgroundColor !="yellow" && document.getElementById('reponse_1').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_2').style.backgroundColor !="yellow" && document.getElementById('reponse_2').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_3').style.backgroundColor !="yellow" && document.getElementById('reponse_3').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_4').style.backgroundColor !="yellow" && document.getElementById('reponse_4').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_5').style.backgroundColor !="yellow" && document.getElementById('reponse_5').style.backgroundColor !="red")
+    &&(
+        document.getElementById('reponse_1').style.backgroundColor =="green" ||
+        document.getElementById('reponse_2').style.backgroundColor =="green" ||
+        document.getElementById('reponse_3').style.backgroundColor =="green" ||
+        document.getElementById('reponse_4').style.backgroundColor =="green" ||
+        document.getElementById('reponse_5').style.backgroundColor =="green" 
+    )){
+        score++; 
+    }
+    else 
+    {
+        score =0;
+    }
+
+    num_question=getRandomInt(data.length);
+    document.getElementById("question").textContent = data[num_question][0] ;
+    document.getElementById("reponse_1").textContent = data[num_question][1] 
+    document.getElementById("reponse_2").textContent = data[num_question][2] 
+    document.getElementById("reponse_3").textContent = data[num_question][3] 
+    document.getElementById("reponse_4").textContent = data[num_question][4] 
+    document.getElementById("reponse_5").textContent = data[num_question][5] 
+
+    document.getElementById('reponse_1').style.backgroundColor = "white"
+    document.getElementById('reponse_2').style.backgroundColor = "white"
+    document.getElementById('reponse_3').style.backgroundColor = "white"
+    document.getElementById('reponse_4').style.backgroundColor = "white"
+    document.getElementById('reponse_5').style.backgroundColor = "white"
+
+    document.getElementById('score').innerHTML = "score : " + score;
+}
+
+function valider(){
+    chars = rep[num_question].split('');
+    if (document.getElementById('reponse_1').style.backgroundColor =="grey" && chars[0] == "1" ){
+        document.getElementById('reponse_1').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_1').style.backgroundColor =="grey" && chars[0] == "0" ){
+        document.getElementById('reponse_1').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_1').style.backgroundColor =="white" && chars[0] == "1" ){
+        document.getElementById('reponse_1').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_2').style.backgroundColor =="grey" && chars[1] == "1" ){
+        document.getElementById('reponse_2').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_2').style.backgroundColor =="grey" && chars[1] == "0" ){
+        document.getElementById('reponse_2').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_2').style.backgroundColor =="white" && chars[1] == "1" ){
+        document.getElementById('reponse_2').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_3').style.backgroundColor =="grey" && chars[2] == "1" ){
+        document.getElementById('reponse_3').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_3').style.backgroundColor =="grey" && chars[2] == "0" ){
+        document.getElementById('reponse_3').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_3').style.backgroundColor =="white" && chars[2] == "1" ){
+        document.getElementById('reponse_3').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_4').style.backgroundColor =="grey" && chars[3] == "1" ){
+        document.getElementById('reponse_4').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_4').style.backgroundColor =="grey" && chars[3] == "0" ){
+        document.getElementById('reponse_4').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_4').style.backgroundColor =="white" && chars[3] == "1" ){
+        document.getElementById('reponse_4').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_5').style.backgroundColor =="grey" && chars[4] == "1" ){
+        document.getElementById('reponse_5').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_5').style.backgroundColor =="grey" && chars[4] == "0" ){
+        document.getElementById('reponse_5').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_5').style.backgroundColor =="white" && chars[4] == "1" ){
+        document.getElementById('reponse_5').style.backgroundColor ="yellow"
+    }
+
+   
+}
+
+
+</script>
+
+
+<body>
+  <!-- Contenu de la page -->
+  
+  <!-- En-tête de la page -->
+  <header>
+    <!-- Logo, menu, etc. -->
+  </header>
+
+  <!-- Corps de la page -->
+  <main>
+    <p id="top"><a id="score">score : 0</a><a href="../annee_2.html" id="menu">Menu</a></p>
+    <p id="question">Appuyez sur "Q suivante" </p>
+    <section id="checkbox">
+        <p style="background-color:white" onclick="rep1_select()" id="reponse_1">Réponse 1</p>
+        <p style="background-color:white" onclick="rep2_select()" id="reponse_2">Réponse 2</p>
+        <p style="background-color:white" onclick="rep3_select()" id="reponse_3">Réponse 3</p>
+        <p style="background-color:white" onclick="rep4_select()" id="reponse_4">Réponse 4</p>
+        <p style="background-color:white" onclick="rep5_select()" id="reponse_5">Réponse 5</p>
+    </section> 
+    <section id="bouton">
+    <input id="valider" type="button" value="Valider" onclick="valider()">
+    <input id="q_suivante" type="button" value="Q suivante" onclick="q_suivante()">
+    </section>
+  </main>
+
+
+</body>
+</html>
+<script>q_suivante();</script>

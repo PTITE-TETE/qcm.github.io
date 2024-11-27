@@ -1,1 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physiologie</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- Lien vers votre fichier CSS externe -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../qcm.css">
+</head>
+<script >
+const data = [
 
+    //2021
+    
+    [
+    "Les HPI présentent souvent la ou les spécificité(s) suivante(s) :", 
+    "Hyposensibilité", 
+    "Hypersensibilité", 
+    "Troubles moteurs", 
+    "Manière de penser différente", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "Les HPI présentent souvent la ou les spécificité(s) suivante(s) :", 
+    "Hyperémotivité", 
+    "Manière de bouger différente", 
+    "Troubles psychiatriques", 
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Les HPI sont :", 
+    "Surdoués", 
+    "A haut potentiel intellectuel", 
+    "Très précoces", 
+    "Aspergers", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "Les HPI peuvent être :", 
+    "Homogènes", 
+    "Hétérogènes", 
+    "Laminaires", 
+    "Complexes", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "Est considéré comme HPI un enfant dont :", 
+    "Le QI est supérieur > 125", 
+    "Le QI est supérieur > 130", 
+    "Le QD est supérieur > 125", 
+    "Le QI est supérieur > 125 avec au moins un des subtests supérieurs > 130", 
+    "Le QD est supérieur > 130"
+  ],
+  [
+    "Le HPI dépend :", 
+    "De l'alimentation", 
+    "De la génétique", 
+    "De l'environnement", 
+    "Est multifactoriel", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "Tous les HPI :", 
+    "Ont des troubles psychomoteurs", 
+    "Sont dysgraphiques", 
+    "Sont dyspraxiques", 
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Les HPI homogènes :", 
+    "Ont des particularités psychomotrices", 
+    "Vont plutôt bien", 
+    "N'aiment pas l'école", 
+    "Les réponses A, B, C sont fausses"
+  ],
+  [
+    "Les HPI hétérogènes :", 
+    "Peuvent présenter un profil psychomoteur spécifique", 
+    "Sont toujours en difficulté", 
+    "N'ont aucune difficulté", 
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "La psychomotricité peut accompagner le HPI :", 
+    "Autour du langage", 
+    "Dans l'utilisation de son corps", 
+    "Dans ses acquis scolaires", 
+    "Dans l'investissement positif du graphisme", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+
+  
+  [
+    "Les HPI présentent souvent les spécificités suivantes :", 
+    "Hyposensibilité", 
+    "Hypoémotivité", 
+    "Troubles intellectuels", 
+    "Manière de penser différente", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "Les HPI présentent souvent les spécificités suivantes :", 
+    "Hypersensibilité", 
+    "Hyperémotivité", 
+    "Manière de bouger différente", 
+    "Troubles moteurs", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "Les HPI sont :", 
+    "Surdoués", 
+    "A haut potentiel intellectuel", 
+    "Gifted", 
+    "Aspergers", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "Les HPI peuvent être :", 
+    "Homogènes", 
+    "Hétérogènes", 
+    "Laminaires", 
+    "Complexes", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "Est considéré comme HPI un enfant dont :", 
+    "Le QI est supérieur à 125", 
+    "Le QI est supérieur à 130", 
+    "Le QD est supérieur à 125", 
+    "Le QI est supérieur à 125 avec au moins un des subtests supérieurs à 130", 
+    "Le QD est supérieur à 130"
+  ],
+  [
+    "Le HPI :", 
+    "Dépend de l'alimentation", 
+    "Dépend de la génétique", 
+    "Dépend de l'environnement", 
+    "Est multifactoriel", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "Tous les HPI :", 
+    "Ont des troubles psychomoteurs", 
+    "Sont dysgraphiques", 
+    "Sont dyspraxiques", 
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Les HPI homogènes :", 
+    "n'ont pas de particularités psychomotrices", 
+    "vont plutôt bien", 
+    "n'aiment pas l'école", 
+    "les réponses A, B, C sont fausses"
+  ],
+  [
+    "Les HPI hétérogènes :", 
+    "Peuvent présenter un profil psychomoteur spécifique", 
+    "Sont toujours en difficulté", 
+    "N'ont aucune difficulté", 
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "La psychomotricité peut accompagner le HPI :", 
+    "Autour de la gestion des émotions", 
+    "Dans l'utilisation de son corps", 
+    "Dans ses acquis scolaires", 
+    "Dans l'investissement positif du graphisme", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+
+  
+  [
+    "Est considéré comme HPI un enfant dont :", 
+    "Le QI est supérieur à 115", 
+    "Le QD est supérieur à 130", 
+    "Le QI est supérieur à 130", 
+    "Le QD est supérieur à 125", 
+    "Le QD est supérieur à 125 avec au moins un des subtests supérieur à 130"
+  ],
+  [
+    "Le HPI dépend :", 
+    "Du QI des parents", 
+    "De la génétique", 
+    "De l'environnement", 
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Tous les HPI :", 
+    "Ont des troubles psychomoteurs", 
+    "Sont dysgraphiques", 
+    "Sont dyspraxiques", 
+    "Sont Asperger", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "La psychomotricité peut accompagner le HPI :", 
+    "Dans l'utilisation de son corps", 
+    "Dans l'investissement positif du langage", 
+    "Autour des praxies", 
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Les HPI peuvent être :", 
+    "Homogènes", 
+    "Hétérogènes", 
+    "Laminaires", 
+    "Dysrégulés", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "Les HPI homogènes :", 
+    "Ont des fonctions psychomotrices perturbées", 
+    "Vont plutôt bien", 
+    "N'aiment pas l'école", 
+    "Les réponses A, B, C sont fausses"
+  ],
+  [
+    "Les HPI hétérogènes :", 
+    "Sont identiques aux HPI homogènes", 
+    "Peuvent présenter un profil psychomoteur spécifique", 
+    "Ne sont pas forcément en difficulté", 
+    "N'ont jamais de difficulté", 
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Les HPI présentent souvent les spécificités suivantes :", 
+    "Hyposensibilité", 
+    "Hyperémotivité", 
+    "Troubles psychomoteurs", 
+    "Manière de penser différente", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "Le HPI :", 
+    "Est nécessaire à la réussite scolaire", 
+    "Est un obstacle à la réussite scolaire", 
+    "Génère des TND", 
+    "N’est pas une pathologie", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  
+  [
+    "La psychomotricité peut accompagner le HPI :", 
+    "Dans l'utilisation de son corps", 
+    "Dans l'investissement positif du graphisme", 
+    "Autour du langage", 
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Est considéré comme HPI un enfant dont :", 
+    "Le QI est supérieur à 115", 
+    "Le QD est supérieur à 130", 
+    "Le QI est supérieur à 130", 
+    "Le QD est supérieur à 125", 
+    "Le QI est supérieur à 125 avec au moins un des subtests supérieur à 130"
+  ],
+  [
+    "Le HPI dépend :", 
+    "Du QI des parents", 
+    "De la génétique", 
+    "De l'environnement", 
+    "Est multifactoriel", 
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Tous les HPI :", 
+    "Ont des troubles psychomoteurs", 
+    "Sont dysgraphiques", 
+    "Sont dyspraxiques", 
+    "Sont Asperger", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "Les HPI peuvent être :", 
+    "Dysrégulés", 
+    "Hétérogènes", 
+    "Laminaires", 
+    "Complexes", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "Les HPI homogènes :", 
+    "N'ont pas de particularités psychomotrices perturbées", 
+    "Ne vont pas bien", 
+    "N'aiment pas l'école", 
+    "Les réponses A, B, C sont fausses"
+  ],
+  [
+    "Les HPI hétérogènes :", 
+    "Sont identiques aux homogènes", 
+    "Peuvent présenter un profil psychomoteur spécifique", 
+    "Sont toujours en difficulté", 
+    "N'ont jamais de difficulté", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "Les HPI présentent souvent les spécificités suivantes :", 
+    "Hypersensibilité", 
+    "Hyperémotivité", 
+    "Manière de penser différente", 
+    "Troubles moteurs", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "Les HPI présentent souvent les spécificités suivantes :", 
+    "Hyposensibilité", 
+    "Hypoémotivité", 
+    "Manière de bouger différente", 
+    "Troubles moteurs", 
+    "Les réponses A, B, C et D sont fausses"
+  ],
+  [
+    "La psychomotricité peut accompagner le HPI :", 
+    "Dans l'apprentissage de la marche", 
+    "Dans l'investissement de son corps", 
+    "Dans sa réussite scolaire", 
+    "Les réponses A, B et C sont fausses"
+  ],
+  [
+    "Le HPI :", 
+    "Est nécessaire à la réussite scolaire", 
+    "Est un obstacle à la réussite scolaire", 
+    "Génère des TND", 
+    "Les réponses A, B et C sont fausses"
+  ]
+
+
+
+
+];
+
+const rep = [
+"01010",
+"10000",
+"01000",
+"11110",
+"01010",
+"00010",
+"00010",
+"01000",
+"10000",
+"01010",
+
+"00010",
+"01000",
+"01000",
+"11110",
+"01010",
+"00010",
+"00010",
+"01000",
+"10000",
+"11010",
+
+"00101",
+"00010",
+"00001",
+"10000",
+"11100",
+"01000",
+"01100",
+"00010",
+"00010",
+
+"11000",
+"00101",
+"00010",
+"00001",
+"01110",
+"10000",
+"01000",
+"10100",
+"00001",
+"01000",
+"00010"
+
+
+];
+
+
+var num_question=-1;
+</script>
+<script>
+    var score =0;
+function rep1_select(){
+    if (document.getElementById('reponse_1').style.backgroundColor == "white"){
+        document.getElementById('reponse_1').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_1').style.backgroundColor = "white"
+    }
+}
+
+function rep2_select(){
+    if (document.getElementById('reponse_2').style.backgroundColor == "white"){
+        document.getElementById('reponse_2').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_2').style.backgroundColor = "white"
+    }
+}
+
+function rep3_select(){
+    if (document.getElementById('reponse_3').style.backgroundColor == "white"){
+        document.getElementById('reponse_3').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_3').style.backgroundColor = "white"
+    }
+}
+
+function rep4_select(){
+    if (document.getElementById('reponse_4').style.backgroundColor == "white"){
+        document.getElementById('reponse_4').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_4').style.backgroundColor = "white"
+    }
+}
+
+function rep5_select(){
+    if (document.getElementById('reponse_5').style.backgroundColor == "white"){
+        document.getElementById('reponse_5').style.backgroundColor ="grey"
+    }
+    else{
+        document.getElementById('reponse_5').style.backgroundColor = "white"
+    }
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function q_suivante(){
+
+    if((document.getElementById('reponse_1').style.backgroundColor !="yellow" && document.getElementById('reponse_1').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_2').style.backgroundColor !="yellow" && document.getElementById('reponse_2').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_3').style.backgroundColor !="yellow" && document.getElementById('reponse_3').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_4').style.backgroundColor !="yellow" && document.getElementById('reponse_4').style.backgroundColor !="red")
+    &&(document.getElementById('reponse_5').style.backgroundColor !="yellow" && document.getElementById('reponse_5').style.backgroundColor !="red")
+    &&(
+        document.getElementById('reponse_1').style.backgroundColor =="green" ||
+        document.getElementById('reponse_2').style.backgroundColor =="green" ||
+        document.getElementById('reponse_3').style.backgroundColor =="green" ||
+        document.getElementById('reponse_4').style.backgroundColor =="green" ||
+        document.getElementById('reponse_5').style.backgroundColor =="green" 
+    )){
+        score++; 
+    }
+    else 
+    {
+        score =0;
+    }
+
+    num_question=num_question +1 //getRandomInt(data.length);
+    document.getElementById("question").textContent = data[num_question][0] ;
+    document.getElementById("reponse_1").textContent = data[num_question][1] 
+    document.getElementById("reponse_2").textContent = data[num_question][2] 
+    document.getElementById("reponse_3").textContent = data[num_question][3] 
+    document.getElementById("reponse_4").textContent = data[num_question][4] 
+    document.getElementById("reponse_5").textContent = data[num_question][5] 
+
+    document.getElementById('reponse_1').style.backgroundColor = "white"
+    document.getElementById('reponse_2').style.backgroundColor = "white"
+    document.getElementById('reponse_3').style.backgroundColor = "white"
+    document.getElementById('reponse_4').style.backgroundColor = "white"
+    document.getElementById('reponse_5').style.backgroundColor = "white"
+
+    document.getElementById('score').innerHTML = "score : " + score;
+}
+
+function valider(){
+    chars = rep[num_question].split('');
+    if (document.getElementById('reponse_1').style.backgroundColor =="grey" && chars[0] == "1" ){
+        document.getElementById('reponse_1').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_1').style.backgroundColor =="grey" && chars[0] == "0" ){
+        document.getElementById('reponse_1').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_1').style.backgroundColor =="white" && chars[0] == "1" ){
+        document.getElementById('reponse_1').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_2').style.backgroundColor =="grey" && chars[1] == "1" ){
+        document.getElementById('reponse_2').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_2').style.backgroundColor =="grey" && chars[1] == "0" ){
+        document.getElementById('reponse_2').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_2').style.backgroundColor =="white" && chars[1] == "1" ){
+        document.getElementById('reponse_2').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_3').style.backgroundColor =="grey" && chars[2] == "1" ){
+        document.getElementById('reponse_3').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_3').style.backgroundColor =="grey" && chars[2] == "0" ){
+        document.getElementById('reponse_3').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_3').style.backgroundColor =="white" && chars[2] == "1" ){
+        document.getElementById('reponse_3').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_4').style.backgroundColor =="grey" && chars[3] == "1" ){
+        document.getElementById('reponse_4').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_4').style.backgroundColor =="grey" && chars[3] == "0" ){
+        document.getElementById('reponse_4').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_4').style.backgroundColor =="white" && chars[3] == "1" ){
+        document.getElementById('reponse_4').style.backgroundColor ="yellow"
+    }
+
+    if (document.getElementById('reponse_5').style.backgroundColor =="grey" && chars[4] == "1" ){
+        document.getElementById('reponse_5').style.backgroundColor ="green"
+    }
+    else if(document.getElementById('reponse_5').style.backgroundColor =="grey" && chars[4] == "0" ){
+        document.getElementById('reponse_5').style.backgroundColor ="red"
+    }
+    else if(document.getElementById('reponse_5').style.backgroundColor =="white" && chars[4] == "1" ){
+        document.getElementById('reponse_5').style.backgroundColor ="yellow"
+    }
+
+   
+}
+
+
+</script>
+
+
+<body>
+  <!-- Contenu de la page -->
+  
+  <!-- En-tête de la page -->
+  <header>
+    <!-- Logo, menu, etc. -->
+  </header>
+
+  <!-- Corps de la page -->
+  <main>
+    <p id="top"><a id="score">score : 0</a><a href="../annee_3.html" id="menu">Menu</a></p>
+    <p id="question">Appuyez sur "Q suivante" </p>
+    <section id="checkbox">
+        <p style="background-color:white" onclick="rep1_select()" id="reponse_1">Réponse 1</p>
+        <p style="background-color:white" onclick="rep2_select()" id="reponse_2">Réponse 2</p>
+        <p style="background-color:white" onclick="rep3_select()" id="reponse_3">Réponse 3</p>
+        <p style="background-color:white" onclick="rep4_select()" id="reponse_4">Réponse 4</p>
+        <p style="background-color:white" onclick="rep5_select()" id="reponse_5">Réponse 5</p>
+    </section> 
+    <section id="bouton">
+    <input id="valider" type="button" value="Valider" onclick="valider()">
+    <input id="q_suivante" type="button" value="Q suivante" onclick="q_suivante()">
+    </section>
+  </main>
+
+
+</body>
+</html>
+<script>q_suivante();</script>
